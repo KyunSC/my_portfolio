@@ -1,3 +1,5 @@
+import Project from "@/components/Project";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -13,7 +15,7 @@ export default function Home() {
             Sunny Chen
           </h1>
           <p className="mb-8 max-w-2xl text-xl text-zinc-600 dark:text-zinc-400 md:text-2xl">
-            Full Stack Developer & Creative Problem Solver
+            Software Developer & Creative Problem Solver
           </p>
           <p className="mb-12 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             I build exceptional digital experiences that combine clean code with thoughtful design.
@@ -42,9 +44,9 @@ export default function Home() {
           </h2>
           <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
             <p className="leading-relaxed">
-              I&apos;m a passionate developer with expertise in modern web technologies. I love turning ideas
+              I&apos;m a passionate developer with expertise in modern technologies. I love turning ideas
               into reality through code and constantly learning new technologies to stay at the forefront
-              of web development.
+              of software development.
             </p>
             <p className="leading-relaxed">
               When I&apos;m not coding, you can find me contributing to open-source projects, writing technical
@@ -73,8 +75,8 @@ export default function Home() {
               <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
                 <li>Node.js</li>
                 <li>Python</li>
-                <li>REST APIs</li>
-                <li>Databases</li>
+                <li>Java</li>
+                <li>Javascript</li>
               </ul>
             </div>
             <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
@@ -82,7 +84,7 @@ export default function Home() {
               <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
                 <li>Git & GitHub</li>
                 <li>VS Code</li>
-                <li>Docker</li>
+                
                 <li>CI/CD</li>
               </ul>
             </div>
@@ -95,37 +97,16 @@ export default function Home() {
             Featured <span className="text-[#22c55e]">Projects</span>
           </h2>
           <div className="space-y-6">
-            <div className="rounded-lg border border-zinc-200 p-6 transition-all hover:shadow-lg dark:border-zinc-800">
-              <h3 className="mb-2 text-xl font-semibold">Project Name</h3>
-              <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-                A brief description of your amazing project and what technologies you used to build it.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-900">
-                  React
-                </span>
-                <span className="rounded-full bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-900">
-                  TypeScript
-                </span>
-                <span className="rounded-full bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-900">
-                  Next.js
-                </span>
-              </div>
-            </div>
-            <div className="rounded-lg border border-zinc-200 p-6 transition-all hover:shadow-lg dark:border-zinc-800">
-              <h3 className="mb-2 text-xl font-semibold">Another Project</h3>
-              <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-                Description of another impressive project showcasing your skills and creativity.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-900">
-                  Node.js
-                </span>
-                <span className="rounded-full bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-900">
-                  MongoDB
-                </span>
-              </div>
-            </div>
+            <Project
+              title="Project Name"
+              description="A brief description of your amazing project and what technologies you used to build it."
+              tags={["React", "TypeScript", "Next.js"]}
+            />
+            <Project
+              title="Another Project"
+              description="Description of another impressive project showcasing your skills and creativity."
+              tags={["Node.js", "MongoDB"]}
+            />
           </div>
         </section>
 

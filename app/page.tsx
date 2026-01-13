@@ -22,13 +22,13 @@ export default function Home() {
           <div className="flex flex-wrap gap-4">
             <a
               href="#contact"
-              className="rounded-lg bg-foreground px-6 py-3 font-medium text-background transition-all hover:opacity-90"
+              className="rounded-lg bg-[#22c55e] px-6 py-3 font-medium text-white transition-all hover:bg-[#00ff00] hover:shadow-lg hover:shadow-[#22c55e]/50"
             >
               Get in Touch
             </a>
             <a
               href="#projects"
-              className="rounded-lg border border-zinc-300 px-6 py-3 font-medium transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+              className="rounded-lg border-2 border-[#22c55e] px-6 py-3 font-medium transition-all hover:bg-[#22c55e] hover:text-white hover:shadow-lg hover:shadow-[#22c55e]/30"
             >
               View Projects
             </a>
@@ -37,7 +37,9 @@ export default function Home() {
 
         {/* About Section */}
         <section className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">About Me</h2>
+          <h2 className="mb-8 text-3xl font-bold">
+            About <span className="text-[#22c55e]">Me</span>
+          </h2>
           <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
             <p className="leading-relaxed">
               I&apos;m a passionate developer with expertise in modern web technologies. I love turning ideas
@@ -53,7 +55,9 @@ export default function Home() {
 
         {/* Skills Section */}
         <section className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">Skills & Technologies</h2>
+          <h2 className="mb-8 text-3xl font-bold">
+            Skills & <span className="text-[#22c55e]">Technologies</span>
+          </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
               <h3 className="mb-3 text-lg font-semibold">Frontend</h3>
@@ -87,7 +91,9 @@ export default function Home() {
 
         {/* Projects Section */}
         <section id="projects" className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">Featured Projects</h2>
+          <h2 className="mb-8 text-3xl font-bold">
+            Featured <span className="text-[#22c55e]">Projects</span>
+          </h2>
           <div className="space-y-6">
             <div className="rounded-lg border border-zinc-200 p-6 transition-all hover:shadow-lg dark:border-zinc-800">
               <h3 className="mb-2 text-xl font-semibold">Project Name</h3>
@@ -125,14 +131,16 @@ export default function Home() {
 
         {/* Contact Section */}
         <section id="contact" className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">Let&apos;s Connect</h2>
+          <h2 className="mb-8 text-3xl font-bold">
+            Let&apos;s <span className="text-[#22c55e]">Connect</span>
+          </h2>
           <p className="mb-6 text-lg text-zinc-600 dark:text-zinc-400">
             I&apos;m always open to discussing new projects, opportunities, or just having a chat about technology.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="exsunnychen2006@gmail.com"
-              className="flex items-center gap-2 rounded-lg border border-zinc-300 px-6 py-3 font-medium transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+              href="mailto:exsunnychen2006@gmail.com"
+              className="flex items-center gap-2 rounded-lg border-2 border-[#22c55e] px-6 py-3 font-medium transition-all hover:bg-[#22c55e] hover:text-white hover:shadow-lg hover:shadow-[#22c55e]/30"
             >
               Email
             </a>
@@ -140,7 +148,7 @@ export default function Home() {
               href="https://github.com/KyunSC"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-zinc-300 px-6 py-3 font-medium transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+              className="flex items-center gap-2 rounded-lg border-2 border-[#22c55e] px-6 py-3 font-medium transition-all hover:bg-[#22c55e] hover:text-white hover:shadow-lg hover:shadow-[#22c55e]/30"
             >
               GitHub
             </a>
@@ -148,7 +156,7 @@ export default function Home() {
               href="https://www.linkedin.com/in/sunny-chen-software/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-zinc-300 px-6 py-3 font-medium transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+              className="flex items-center gap-2 rounded-lg border-2 border-[#22c55e] px-6 py-3 font-medium transition-all hover:bg-[#22c55e] hover:text-white hover:shadow-lg hover:shadow-[#22c55e]/30"
             >
               LinkedIn
             </a>

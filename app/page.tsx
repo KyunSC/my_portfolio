@@ -10,7 +10,7 @@ export default function Home() {
             </span>
           </div>
           <h1 className="mb-6 text-5xl font-bold tracking-tight md:text-7xl">
-            Your Name
+            Sunny Chen
           </h1>
           <p className="mb-8 max-w-2xl text-xl text-zinc-600 dark:text-zinc-400 md:text-2xl">
             Full Stack Developer & Creative Problem Solver
@@ -131,13 +131,13 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="mailto:your.email@example.com"
+              href="exsunnychen2006@gmail.com"
               className="flex items-center gap-2 rounded-lg border border-zinc-300 px-6 py-3 font-medium transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
             >
               Email
             </a>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/KyunSC"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-lg border border-zinc-300 px-6 py-3 font-medium transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
@@ -145,27 +145,19 @@ export default function Home() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/sunny-chen-software/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-lg border border-zinc-300 px-6 py-3 font-medium transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
             >
               LinkedIn
             </a>
-            <a
-              href="https://twitter.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-zinc-300 px-6 py-3 font-medium transition-all hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
-            >
-              Twitter
-            </a>
           </div>
         </section>
 
         {/* Footer */}
         <footer className="border-t border-zinc-200 pt-8 text-center text-sm text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
-          <p>&copy; 2026 Your Name. All rights reserved.</p>
+          <p>&copy; 2026 Sunny Chen. All rights reserved.</p>
         </footer>
       </main>
     </div>

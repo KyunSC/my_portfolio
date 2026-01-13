@@ -16,7 +16,6 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 - **Framework**: Next.js 15
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Fonts**: Geist Sans & Geist Mono
 
 ## Getting Started
 
@@ -65,44 +64,6 @@ my-portfolio/
 │   └── Project.tsx      # Reusable project card component
 └── public/              # Static assets
 ```
-
-## Customization
-
-### Colors
-
-The accent color can be easily changed in all files by replacing:
-- Primary: `#22c55e` (green)
-- Hover: `#00ff00` (neon green)
-
-### Content
-
-Update your personal information in:
-- `app/page.tsx` - Main content (name, bio, skills, projects, contact)
-- `app/layout.tsx` - Page title and meta description
-
-### Adding Projects
-
-Use the `Project` component to add new projects:
-
-```tsx
-<Project
-  title="Your Project Name"
-  description="Project description here"
-  tags={["React", "TypeScript", "Next.js"]}
-  link="https://github.com/username/project" // optional
-/>
-```
-
-## Deployment
-
-The easiest way to deploy is using [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/KyunSC/my_portfolio)
-
-Or deploy to other platforms:
-- [Netlify](https://www.netlify.com/)
-- [Railway](https://railway.app/)
-- [AWS Amplify](https://aws.amazon.com/amplify/)
 
 ## License
 

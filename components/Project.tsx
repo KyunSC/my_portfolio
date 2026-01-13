@@ -19,9 +19,9 @@ export default function Project({ title, description, tags, link }: ProjectProps
       className="rounded-lg border border-zinc-200 p-6 transition-all hover:shadow-lg dark:border-zinc-800 block"
     >
       <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-      <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+      <div className="mb-4 text-zinc-600 dark:text-zinc-400 whitespace-pre-line">
         {description}
-      </p>
+      </div>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
           <span

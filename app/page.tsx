@@ -98,14 +98,22 @@ export default function Home() {
           </h2>
           <div className="space-y-6">
             <Project
-              title="Project Name"
-              description="A brief description of your amazing project and what technologies you used to build it."
-              tags={["React", "TypeScript", "Next.js"]}
+              title="Ideal Gas Law Simulator"
+              description="
+              Built an Ideal Gas Law simulator in Java/JavaFX to model the relationship between variables in real time
+              Implemented interactive visualizations and user controls to dynamically adjust variables and observe simulation outcomes.
+              Led a team of 3 to accomplish the project with tight deadlines
+              "
+              tags={["Java", "JavaFX", "Scene Builder"]}
+              link="https://github.com/KyunSC/ideal-gas-law-simulator"
             />
             <Project
-              title="Another Project"
-              description="Description of another impressive project showcasing your skills and creativity."
-              tags={["Node.js", "MongoDB"]}
+              title="Université de Montreal's Game Jam 2024"
+              description="Collaborated as part of a dynamic team of five to achieve first place in a competitive Game Jam competition
+                           Developed and implemented innovative game concepts within tight time constraints, resulting in recognition for excellence
+                           Led the conceptualization and design of a game project"
+              tags={["C#", "Unity"]}
+              link="https://itch.io/jam/udem-game-jam-2024/rate/2604780"
             />
           </div>
         </section>

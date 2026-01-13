@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sunny Chen - Portfolio Website
+
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features a clean design with neon green accents and dark mode support.
+
+## Features
+
+- **Modern Design**: Clean, professional layout with neon green (#22c55e) accent colors
+- **Dark Mode**: Pure black (#000000) background with automatic dark mode detection
+- **Responsive**: Mobile-first design that works on all devices
+- **Performance**: Built with Next.js 15 for optimal performance
+- **Type-Safe**: Written in TypeScript for better code quality
+- **Reusable Components**: Modular component architecture
+
+## Tech Stack
+
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Fonts**: Geist Sans & Geist Mono
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ installed
+- npm, yarn, pnpm, or bun package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/KyunSC/my_portfolio.git
+cd my-portfolio
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+my-portfolio/
+├── app/
+│   ├── globals.css      # Global styles and CSS variables
+│   ├── layout.tsx       # Root layout with metadata
+│   └── page.tsx         # Main homepage
+├── components/
+│   └── Project.tsx      # Reusable project card component
+└── public/              # Static assets
+```
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Colors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The accent color can be easily changed in all files by replacing:
+- Primary: `#22c55e` (green)
+- Hover: `#00ff00` (neon green)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Content
 
-## Deploy on Vercel
+Update your personal information in:
+- `app/page.tsx` - Main content (name, bio, skills, projects, contact)
+- `app/layout.tsx` - Page title and meta description
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Adding Projects
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Use the `Project` component to add new projects:
+
+```tsx
+<Project
+  title="Your Project Name"
+  description="Project description here"
+  tags={["React", "TypeScript", "Next.js"]}
+  link="https://github.com/username/project" // optional
+/>
+```
+
+## Deployment
+
+The easiest way to deploy is using [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/KyunSC/my_portfolio)
+
+Or deploy to other platforms:
+- [Netlify](https://www.netlify.com/)
+- [Railway](https://railway.app/)
+- [AWS Amplify](https://aws.amazon.com/amplify/)
+
+## License
+
+MIT License - feel free to use this project for your own portfolio!
+
+## Contact
+
+- **Email**: exsunnychen2006@gmail.com
+- **GitHub**: [@KyunSC](https://github.com/KyunSC)
+- **LinkedIn**: [Sunny Chen](https://www.linkedin.com/in/sunny-chen-software/)
+
+---
+
+Built with ❤️ by Sunny Chen

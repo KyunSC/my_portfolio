@@ -128,6 +128,23 @@ Delivered project updates through technical presentations and documentation, str
           </div>
         </section>
 
+        {/* Work in Progress Section */}
+        <section className="mb-24">
+          <h2 className="mb-8 text-3xl font-bold">
+            Work in <span className="text-[#22c55e]">Progress</span>
+          </h2>
+          <div className="space-y-6">
+            <Project
+              title="F1 Race Prediction Model"
+              description="Machine learning model to predict Formula 1 race outcomes based on historical data, driver performance, and track conditions.
+Utilizing Python, Pandas, Scikit-learn, and TensorFlow to preprocess data, engineer features, and train predictive algorithms.
+Aiming to provide insights for teams and enthusiasts to enhance race strategies and fan engagement."
+              tags={["Python", "Pandas", "Scikit-learn", "TensorFlow"]}
+              link="https://github.com/KyunSC/F1Predictions"
+            />
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section id="contact" className="mb-24">
           <h2 className="mb-8 text-3xl font-bold">

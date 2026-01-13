@@ -104,7 +104,7 @@ export default function Home() {
               Implemented interactive visualizations and user controls to dynamically adjust variables and observe simulation outcomes.
               Led a team of 3 to accomplish the project with tight deadlines
               "
-              tags={["Java", "JavaFX", "Scene Builder"]}
+              tags={["Java", "JavaFX", "Scene Builder", "Git"]}
               link="https://github.com/KyunSC/ideal-gas-law-simulator"
             />
             <Project
@@ -112,8 +112,18 @@ export default function Home() {
               description="Collaborated as part of a dynamic team of five to achieve first place in a competitive Game Jam competition
                            Developed and implemented innovative game concepts within tight time constraints, resulting in recognition for excellence
                            Led the conceptualization and design of a game project"
-              tags={["C#", "Unity"]}
+              tags={["C#", "Unity", "Git"]}
               link="https://itch.io/jam/udem-game-jam-2024/rate/2604780"
+            />
+            <Project
+              title="PhysiPlay – 2D Physics Simulator"
+              description="Developed a 2D physics simulation engine in Java and JavaFX, modeling pendulums, springs, collisions, and momentum
+Applied object-oriented programming (OOP) and design patterns to build modular and scalable simulation modules
+Collaborated in a team of 4 using Agile methodologies (Scrum, sprint planning, stand-ups) to ensure efficient project delivery
+Utilized Git/GitHub for version control, implementing branching strategies and code reviews to maintain code quality
+Delivered project updates through technical presentations and documentation, strengthening communication skills"
+              tags={["Java", "JavaFX", "Scene Builder", "Git"]}
+              link="https://github.com/adinashby-vanier-college/integrative-project-in-csm-project-gape-horn-123"
             />
           </div>
         </section>

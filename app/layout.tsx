@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name - Portfolio",
-  description: "Full Stack Developer & Creative Problem Solver. Building exceptional digital experiences with modern web technologies.",
+  title: "Sunny Chen - Portfolio",
+  description: "Software Developer & Creative Problem Solver. Building exceptional digital experiences with modern web technologies.",
 };
 
 export default function RootLayout({

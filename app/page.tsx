@@ -108,6 +108,14 @@ export default function Home() {
               link="https://github.com/KyunSC/ideal-gas-law-simulator"
             />
             <Project
+              title="Vanier Robotics Team Website"
+              description="A Plants vs. Zombies themed website built for the Vanier College Robotics Team.
+Designed and developed an engaging, game-inspired interface to showcase the team and attract new members.
+Built with Vue.js for a dynamic and interactive user experience."
+              tags={["Vue.js", "JavaScript", "CSS", "HTML"]}
+              link="https://github.com/Vanier-Robotics/Website2025"
+            />
+            <Project
               title="Université de Montreal's Game Jam 2024"
               description="Collaborated as part of a dynamic team of five to achieve first place in a competitive Game Jam competition
                            Developed and implemented innovative game concepts within tight time constraints, resulting in recognition for excellence

@@ -142,6 +142,14 @@ Aiming to provide insights for teams and enthusiasts to enhance race strategies 
               tags={["Python", "Pandas", "Scikit-learn", "TensorFlow"]}
               link="https://github.com/KyunSC/F1Predictions"
             />
+            <Project
+              title="Azure Live Market Data App"
+              description="A serverless application that retrieves real-time stock prices using the yfinance API.
+Implements a REST API endpoint supporting GET and POST requests to fetch market data for specified stock tickers.
+Built on Azure Functions for scalable, cost-effective cloud deployment."
+              tags={["Python", "Azure Functions", "yfinance", "REST API"]}
+              link="https://github.com/KyunSC/azure-market-data"
+            />
           </div>
         </section>
 

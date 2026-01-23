@@ -113,7 +113,7 @@ export default function Home() {
 Designed and developed an engaging, game-inspired interface to showcase the team and attract new members.
 Built with Vue.js for a dynamic and interactive user experience."
               tags={["Vue.js", "JavaScript", "CSS", "HTML"]}
-              link="https://github.com/Vanier-Robotics/Website2025"
+              link="http://vanierplantforce.crcrobotics.com/"
             />
             <Project
               title="Université de Montreal's Game Jam 2024"

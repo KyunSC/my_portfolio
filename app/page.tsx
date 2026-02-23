@@ -64,7 +64,7 @@ export default function Home() {
             <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
               <h3 className="mb-3 text-lg font-semibold">Frontend</h3>
               <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
-                <li>React / Next.js</li>
+                <li>React / Next.js / Angular</li>
                 <li>TypeScript</li>
                 <li>Tailwind CSS</li>
                 <li>HTML5 & CSS3</li>
@@ -73,6 +73,7 @@ export default function Home() {
             <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
               <h3 className="mb-3 text-lg font-semibold">Backend</h3>
               <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
+                <li>SQL / PostgreSQL</li>
                 <li>Node.js</li>
                 <li>Python</li>
                 <li>Java</li>
@@ -83,8 +84,7 @@ export default function Home() {
               <h3 className="mb-3 text-lg font-semibold">Tools & Others</h3>
               <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
                 <li>Git & GitHub</li>
-                <li>VS Code</li>
-                
+                <li>GitLab</li>
                 <li>CI/CD</li>
               </ul>
             </div>
@@ -97,6 +97,12 @@ export default function Home() {
             Featured <span className="text-[#22c55e]">Projects</span>
           </h2>
           <div className="space-y-6">
+            <Project
+              title="CrowdCheck"
+              description="A web application built with Angular to help users check crowd levels and wait times at various locations."
+              tags={["Angular", "TypeScript", "HTML", "CSS"]}
+              link="https://github.com/KyunSC/crowd-check"
+            />
             <Project
               title="Ideal Gas Law Simulator"
               description="

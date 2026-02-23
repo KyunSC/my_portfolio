@@ -1,101 +1,117 @@
+import { Mail, Code2, Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Project from "@/components/Project";
+import TerminalBio from "@/components/TerminalBio";
+import StatCard from "@/components/StatCard";
+import SectionHeading from "@/components/SectionHeading";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="mx-auto max-w-4xl px-6 py-16 md:py-24">
+
         {/* Hero Section */}
-        <section className="mb-24">
-          <div className="mb-4">
-            <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-              Hello, I&apos;m
-            </span>
+        <section className="mb-24 pt-8">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-sm font-mono text-muted-foreground">available for work</span>
           </div>
           <h1 className="mb-6 text-5xl font-bold tracking-tight md:text-7xl">
             Sunny Chen
           </h1>
-          <p className="mb-8 max-w-2xl text-xl text-zinc-600 dark:text-zinc-400 md:text-2xl">
-            Software Developer & Creative Problem Solver
+          <p className="mb-8 max-w-2xl text-xl text-muted-foreground md:text-2xl">
+            Software Developer &amp; Creative Problem Solver
           </p>
-          <p className="mb-12 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="mb-12 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             I build exceptional digital experiences that combine clean code with thoughtful design.
             Passionate about creating scalable applications and solving complex problems.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a
-              href="#contact"
-              className="rounded-lg bg-[#22c55e] px-6 py-3 font-medium text-white transition-all hover:bg-[#00ff00] hover:shadow-lg hover:shadow-[#22c55e]/50"
-            >
-              Get in Touch
-            </a>
-            <a
-              href="#projects"
-              className="rounded-lg border-2 border-[#22c55e] px-6 py-3 font-medium transition-all hover:bg-[#22c55e] hover:text-white hover:shadow-lg hover:shadow-[#22c55e]/30"
-            >
-              View Projects
-            </a>
+            <Button asChild>
+              <a href="#contact">
+                <Mail size={16} />
+                Get in Touch
+              </a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="#projects">
+                View Projects
+              </a>
+            </Button>
           </div>
         </section>
 
         {/* About Section */}
-        <section className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">
-            About <span className="text-[#22c55e]">Me</span>
-          </h2>
-          <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
+        <section id="about" className="mb-24">
+          <SectionHeading prefix="About" highlight="Me" showSeparator />
+          <TerminalBio />
+          <div className="space-y-4 text-muted-foreground mb-8">
             <p className="leading-relaxed">
               I&apos;m a passionate developer with expertise in modern technologies. I love turning ideas
               into reality through code and constantly learning new technologies to stay at the forefront
               of software development.
             </p>
             <p className="leading-relaxed">
-              When I&apos;m not coding, you can find me contributing to open-source projects, writing technical
-              articles, or exploring new frameworks and tools.
+              When I&apos;m not coding, you can find me exploring new frameworks and tools.
             </p>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            <StatCard value="5+" label="Projects Shipped" />
+            <StatCard value="1st" label="Game Jam 2024" />
+            <StatCard value="4+" label="Languages" />
           </div>
         </section>
 
         {/* Skills Section */}
-        <section className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">
-            Skills & <span className="text-[#22c55e]">Technologies</span>
-          </h2>
+        <section id="skills" className="mb-24">
+          <SectionHeading prefix="Skills &amp;" highlight="Technologies" showSeparator />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
-              <h3 className="mb-3 text-lg font-semibold">Frontend</h3>
-              <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
-                <li>React / Next.js / Angular</li>
-                <li>TypeScript</li>
-                <li>Tailwind CSS</li>
-                <li>HTML5 & CSS3</li>
-              </ul>
-            </div>
-            <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
-              <h3 className="mb-3 text-lg font-semibold">Backend</h3>
-              <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
-                <li>SQL / PostgreSQL</li>
-                <li>Node.js</li>
-                <li>Python</li>
-                <li>Java</li>
-                <li>Javascript</li>
-              </ul>
-            </div>
-            <div className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
-              <h3 className="mb-3 text-lg font-semibold">Tools & Others</h3>
-              <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
-                <li>Git & GitHub</li>
-                <li>GitLab</li>
-                <li>CI/CD</li>
-              </ul>
-            </div>
+            <Card className="border-l-4 border-l-primary">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg">Frontend</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "HTML5 & CSS3"].map((skill) => (
+                    <Badge key={skill} variant="secondary">{skill}</Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-l-4 border-l-primary">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg">Backend</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {["SQL / PostgreSQL", "Node.js", "Python", "Java", "JavaScript"].map((skill) => (
+                    <Badge key={skill} variant="secondary">{skill}</Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-l-4 border-l-primary">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg">Tools &amp; Others</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {["Git & GitHub", "GitLab", "CI/CD"].map((skill) => (
+                    <Badge key={skill} variant="secondary">{skill}</Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
         {/* Projects Section */}
         <section id="projects" className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">
-            Featured <span className="text-[#22c55e]">Projects</span>
-          </h2>
+          <SectionHeading prefix="Featured" highlight="Projects" showSeparator />
           <div className="space-y-6">
             <Project
               title="CrowdCheck"
@@ -105,11 +121,9 @@ export default function Home() {
             />
             <Project
               title="Ideal Gas Law Simulator"
-              description="
-              Built an Ideal Gas Law simulator in Java/JavaFX to model the relationship between variables in real time
-              Implemented interactive visualizations and user controls to dynamically adjust variables and observe simulation outcomes.
-              Led a team of 3 to accomplish the project with tight deadlines
-              "
+              description="Built an Ideal Gas Law simulator in Java/JavaFX to model the relationship between variables in real time.
+Implemented interactive visualizations and user controls to dynamically adjust variables and observe simulation outcomes.
+Led a team of 3 to accomplish the project with tight deadlines."
               tags={["Java", "JavaFX", "Scene Builder", "Git"]}
               link="https://github.com/KyunSC/ideal-gas-law-simulator"
             />
@@ -123,19 +137,18 @@ Built with Vue.js for a dynamic and interactive user experience."
             />
             <Project
               title="Université de Montreal's Game Jam 2024"
-              description="Collaborated as part of a dynamic team of five to achieve first place in a competitive Game Jam competition
-                           Developed and implemented innovative game concepts within tight time constraints, resulting in recognition for excellence
-                           Led the conceptualization and design of a game project"
+              description="Collaborated as part of a dynamic team of five to achieve first place in a competitive Game Jam competition.
+Developed and implemented innovative game concepts within tight time constraints, resulting in recognition for excellence.
+Led the conceptualization and design of a game project."
               tags={["C#", "Unity", "Git"]}
               link="https://itch.io/jam/udem-game-jam-2024/rate/2604780"
             />
             <Project
               title="PhysiPlay – 2D Physics Simulator"
-              description="Developed a 2D physics simulation engine in Java and JavaFX, modeling pendulums, springs, collisions, and momentum
-Applied object-oriented programming (OOP) and design patterns to build modular and scalable simulation modules
-Collaborated in a team of 4 using Agile methodologies (Scrum, sprint planning, stand-ups) to ensure efficient project delivery
-Utilized Git/GitHub for version control, implementing branching strategies and code reviews to maintain code quality
-Delivered project updates through technical presentations and documentation, strengthening communication skills"
+              description="Developed a 2D physics simulation engine in Java and JavaFX, modeling pendulums, springs, collisions, and momentum.
+Applied object-oriented programming (OOP) and design patterns to build modular and scalable simulation modules.
+Collaborated in a team of 4 using Agile methodologies (Scrum, sprint planning, stand-ups) to ensure efficient project delivery.
+Utilized Git/GitHub for version control, implementing branching strategies and code reviews to maintain code quality."
               tags={["Java", "JavaFX", "Scene Builder", "Git"]}
               link="https://github.com/adinashby-vanier-college/integrative-project-in-csm-project-gape-horn-123"
             />
@@ -144,9 +157,7 @@ Delivered project updates through technical presentations and documentation, str
 
         {/* Work in Progress Section */}
         <section className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">
-            Work in <span className="text-[#22c55e]">Progress</span>
-          </h2>
+          <SectionHeading prefix="Work in" highlight="Progress" showSeparator />
           <div className="space-y-6">
             <Project
               title="F1 Race Prediction Model"
@@ -155,6 +166,7 @@ Utilizing Python, Pandas, Scikit-learn, and TensorFlow to preprocess data, engin
 Aiming to provide insights for teams and enthusiasts to enhance race strategies and fan engagement."
               tags={["Python", "Pandas", "Scikit-learn", "TensorFlow"]}
               link="https://github.com/KyunSC/F1Predictions"
+              inProgress
             />
             <Project
               title="Azure Live Market Data App"
@@ -163,48 +175,63 @@ Implements a REST API endpoint supporting GET and POST requests to fetch market 
 Built on Azure Functions for scalable, cost-effective cloud deployment."
               tags={["Python", "Azure Functions", "yfinance", "REST API"]}
               link="https://github.com/KyunSC/azure-market-data"
+              inProgress
             />
           </div>
         </section>
 
         {/* Contact Section */}
         <section id="contact" className="mb-24">
-          <h2 className="mb-8 text-3xl font-bold">
-            Let&apos;s <span className="text-[#22c55e]">Connect</span>
-          </h2>
-          <p className="mb-6 text-lg text-zinc-600 dark:text-zinc-400">
+          <SectionHeading prefix="Let&apos;s" highlight="Connect" showSeparator />
+          <p className="mb-6 text-lg text-muted-foreground">
             I&apos;m always open to discussing new projects, opportunities, or just having a chat about technology.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a
-              href="mailto:exsunnychen2006@gmail.com"
-              className="flex items-center gap-2 rounded-lg border-2 border-[#22c55e] px-6 py-3 font-medium transition-all hover:bg-[#22c55e] hover:text-white hover:shadow-lg hover:shadow-[#22c55e]/30"
-            >
-              Email
-            </a>
-            <a
-              href="https://github.com/KyunSC"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg border-2 border-[#22c55e] px-6 py-3 font-medium transition-all hover:bg-[#22c55e] hover:text-white hover:shadow-lg hover:shadow-[#22c55e]/30"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/sunny-chen-software/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-lg border-2 border-[#22c55e] px-6 py-3 font-medium transition-all hover:bg-[#22c55e] hover:text-white hover:shadow-lg hover:shadow-[#22c55e]/30"
-            >
-              LinkedIn
-            </a>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" asChild>
+                  <a href="mailto:exsunnychen2006@gmail.com">
+                    <Mail size={16} />
+                    Email
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>exsunnychen2006@gmail.com</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" asChild>
+                  <a href="https://github.com/KyunSC" target="_blank" rel="noopener noreferrer">
+                    <Code2 size={16} />
+                    GitHub
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>@KyunSC</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" asChild>
+                  <a href="https://www.linkedin.com/in/sunny-chen-software/" target="_blank" rel="noopener noreferrer">
+                    <Globe size={16} />
+                    LinkedIn
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>@sunny-chen-software</TooltipContent>
+            </Tooltip>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-zinc-200 pt-8 text-center text-sm text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
-          <p>&copy; 2026 Sunny Chen. All rights reserved.</p>
+        <footer className="pt-8">
+          <Separator className="mb-8" />
+          <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
+            <p>&copy; 2026 Sunny Chen. All rights reserved.</p>
+            <p className="font-mono text-xs">Built with Next.js + shadcn/ui</p>
+          </div>
         </footer>
+
       </main>
     </div>
   );

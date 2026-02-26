@@ -141,8 +141,8 @@ export default function Home() {
               <div className="space-y-6">
                 <Project
                   title="CrowdCheck"
-                  description="A web application built with Angular to help users check crowd levels and wait times at various locations."
-                  tags={["Angular", "TypeScript", "HTML", "CSS"]}
+                  description="A web application built with Angular to help users check crowd levels and wait times at the McGill University Library and B2 Gym."
+                  tags={["Angular", "TypeScript", "HTML", "CSS, C#, .Net"]}
                   link="https://github.com/KyunSC/crowd-check"
                 />
                 <Project

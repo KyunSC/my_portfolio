@@ -104,7 +104,7 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {["SQL / PostgreSQL", "Node.js", "Python", "Java", "JavaScript"].map((skill) => (
+                  {["SQL / PostgreSQL", "Node.js", "Python", "Java", "JavaScript", "C#", ".NET"].map((skill) => (
                     <Badge key={skill} variant="secondary">{skill}</Badge>
                   ))}
                 </div>
@@ -142,7 +142,7 @@ export default function Home() {
                 <Project
                   title="CrowdCheck"
                   description="A web application built with Angular to help users check crowd levels and wait times at the McGill University Library and B2 Gym."
-                  tags={["Angular", "TypeScript", "HTML", "CSS, C#, .Net"]}
+                  tags={["Angular", "TypeScript", "C#", ".NET"]}
                   link="https://github.com/KyunSC/crowd-check"
                 />
                 <Project
@@ -197,7 +197,7 @@ Aiming to provide insights for teams and enthusiasts to enhance race strategies 
                   description="A serverless application that retrieves real-time stock prices using the yfinance API.
 Implements a REST API endpoint supporting GET and POST requests to fetch market data for specified stock tickers.
 Built on Azure Functions for scalable, cost-effective cloud deployment."
-                  tags={["Python", "Azure Functions", "yfinance", "REST API"]}
+                  tags={["Python", "Azure Functions", "yfinance", "REST API, PostgreSQL"]}
                   link="https://github.com/KyunSC/azure-market-data"
                   inProgress
                 />

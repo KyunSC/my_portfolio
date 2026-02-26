@@ -28,7 +28,7 @@ export default function Home() {
                 Sunny Chen
               </h1>
               <p className="mb-8 text-xl text-muted-foreground md:text-2xl">
-                Software Developer &amp;
+                Software Developer
               </p>
               <p className="mb-12 text-lg leading-relaxed text-muted-foreground">
                 I build exceptional digital experiences that combine clean code with thoughtful design.

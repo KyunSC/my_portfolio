@@ -28,7 +28,7 @@ export default function TerminalBio() {
           <span className="text-zinc-500">&gt;</span> Passionate about robotics &amp; simulation
         </p>
         <p>
-          <span className="text-zinc-500">&gt;</span> Currently building: F1 Prediction Model
+          <span className="text-zinc-500">&gt;</span> Currently building: CrowdCheck
         </p>
         <p>
           <span className="text-zinc-500">&gt;</span> Open to: Full-time &amp; internship opportunities

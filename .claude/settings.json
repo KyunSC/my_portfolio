@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install react-icons --save)"
+      "Bash(npm install react-icons --save)",
+      "Bash(npm install framer-motion)"
     ]
   }
 }

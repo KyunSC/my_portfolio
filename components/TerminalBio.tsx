@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 interface HistoryEntry {
   command: string;
@@ -57,13 +57,75 @@ const INITIAL_HISTORY: HistoryEntry[] = [
 ];
 
 export default function TerminalBio() {
-  const [history, setHistory] = useState<HistoryEntry[]>(INITIAL_HISTORY);
+  const prefersReducedMotion = typeof window !== "undefined"
+    && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const [history, setHistory] = useState<HistoryEntry[]>(prefersReducedMotion ? INITIAL_HISTORY : []);
   const [input, setInput] = useState("");
   const [focused, setFocused] = useState(false);
+  const [isTyping, setIsTyping] = useState(!prefersReducedMotion);
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const hasMounted = useRef(false);
 
+  // Typewriter effect on mount
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    let cancelled = false;
+    const entries = INITIAL_HISTORY;
+    let builtHistory: HistoryEntry[] = [];
+
+    async function sleep(ms: number) {
+      return new Promise((r) => setTimeout(r, ms));
+    }
+
+    async function typeEntries() {
+      for (let ei = 0; ei < entries.length; ei++) {
+        if (cancelled) return;
+        const entry = entries[ei];
+
+        // Type command character by character
+        for (let ci = 0; ci <= entry.command.length; ci++) {
+          if (cancelled) return;
+          const partial = entry.command.slice(0, ci);
+          setHistory([
+            ...builtHistory,
+            { command: partial, output: [] },
+          ]);
+          await sleep(35);
+        }
+
+        // Small pause before output
+        await sleep(150);
+
+        // Reveal output lines one at a time
+        for (let li = 1; li <= entry.output.length; li++) {
+          if (cancelled) return;
+          setHistory([
+            ...builtHistory,
+            { command: entry.command, output: entry.output.slice(0, li) },
+          ]);
+          await sleep(60);
+        }
+
+        builtHistory = [
+          ...builtHistory,
+          { command: entry.command, output: entry.output },
+        ];
+
+        // Pause between entries
+        if (ei < entries.length - 1) await sleep(300);
+      }
+
+      if (!cancelled) setIsTyping(false);
+    }
+
+    typeEntries();
+    return () => { cancelled = true; };
+  }, [prefersReducedMotion]);
+
+  // Auto-scroll on history change (skip first mount)
   useEffect(() => {
     if (!hasMounted.current) {
       hasMounted.current = true;
@@ -73,8 +135,9 @@ export default function TerminalBio() {
     if (el) el.scrollTop = el.scrollHeight;
   }, [history]);
 
-  function handleSubmit(e: React.FormEvent) {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
+    if (isTyping) return;
     const cmd = input.trim().toLowerCase();
     if (!cmd) return;
 
@@ -90,7 +153,7 @@ export default function TerminalBio() {
 
     setHistory((prev) => [...prev, { command: cmd, output }]);
     setInput("");
-  }
+  }, [input, isTyping]);
 
   return (
     <Card
@@ -127,6 +190,10 @@ export default function TerminalBio() {
             <p>
               <span className="text-primary">$</span>{" "}
               <span className="text-zinc-400">{entry.command}</span>
+              {/* Show blinking cursor at end of currently-typing command */}
+              {isTyping && i === history.length - 1 && entry.output.length === 0 && (
+                <span className="inline-block w-2 h-[1em] bg-green-400 ml-px align-middle terminal-cursor" />
+              )}
             </p>
             {entry.output.map((line, j) => (
               <p key={j} className="text-zinc-200 whitespace-pre">
@@ -136,30 +203,32 @@ export default function TerminalBio() {
           </div>
         ))}
 
-        {/* Input line */}
-        <form onSubmit={handleSubmit} className="flex items-center gap-2 mt-2">
-          <span className="text-primary">$</span>
-          <div className="relative flex-1 flex items-center">
-            {/* Visible text + cursor */}
-            <span className="text-zinc-200 whitespace-pre">{input}</span>
-            <span
-              className={`inline-block w-2 h-[1em] bg-green-400 ml-px align-middle terminal-cursor${focused ? "" : " opacity-0"}`}
-            />
-            {/* Hidden input captures keystrokes */}
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
-              className="absolute inset-0 opacity-0 w-full"
-              autoComplete="off"
-              spellCheck={false}
-              aria-label="Terminal input"
-            />
-          </div>
-        </form>
+        {/* Input line — hidden while typewriter is active */}
+        {!isTyping && (
+          <form onSubmit={handleSubmit} className="flex items-center gap-2 mt-2">
+            <span className="text-primary">$</span>
+            <div className="relative flex-1 flex items-center">
+              {/* Visible text + cursor */}
+              <span className="text-zinc-200 whitespace-pre">{input}</span>
+              <span
+                className={`inline-block w-2 h-[1em] bg-green-400 ml-px align-middle terminal-cursor${focused ? "" : " opacity-0"}`}
+              />
+              {/* Hidden input captures keystrokes */}
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
+                className="absolute inset-0 opacity-0 w-full"
+                autoComplete="off"
+                spellCheck={false}
+                aria-label="Terminal input"
+              />
+            </div>
+          </form>
+        )}
 
         <div />
       </div>

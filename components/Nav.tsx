@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
@@ -59,14 +60,21 @@ export default function Nav() {
             variant="ghost"
             size="sm"
             asChild
-            className={`transition-colors ${
+            className={`relative transition-colors ${
               activeSection === id
-                ? "text-primary font-semibold bg-primary/10"
+                ? "text-primary font-semibold"
                 : ""
             }`}
           >
             <a href={href} className="font-mono text-xs">
               {label}
+              {activeSection === id && (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute -bottom-0.5 left-2 right-2 h-0.5 bg-primary rounded-full"
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                />
+              )}
             </a>
           </Button>
         ))}

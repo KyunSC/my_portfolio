@@ -136,43 +136,6 @@ html {
   }
 }
 
-/* ── Scroll-triggered animations ── */
-.scroll-animate {
-  opacity: 0;
-  transition:
-    opacity 0.6s ease-out,
-    transform 0.6s ease-out;
-  will-change: opacity, transform;
-}
-
-.scroll-animate--fade-up {
-  transform: translateY(24px);
-}
-
-.scroll-animate--fade-in {
-  transform: none;
-}
-
-.scroll-animate--fade-left {
-  transform: translateX(-24px);
-}
-
-.scroll-animate--fade-right {
-  transform: translateX(24px);
-}
-
-.scroll-animate--visible {
-  opacity: 1;
-  transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .scroll-animate {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
 
 /* ── Terminal cursor blink ── */
 @keyframes terminal-blink {
@@ -184,54 +147,29 @@ html {
   animation: terminal-blink 1s step-end infinite;
 }
 
-/* ── Hero entrance animation ── */
-@keyframes hero-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.hero-animate {
-  animation: hero-fade-in 0.8s ease-out both;
-}
-
-.hero-animate-delay-1 {
-  animation-delay: 0.1s;
-}
-
-.hero-animate-delay-2 {
-  animation-delay: 0.2s;
-}
-
-.hero-animate-delay-3 {
-  animation-delay: 0.3s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-animate {
-    animation: none;
-    opacity: 1;
-  }
-}
-
 /* ── Hero background glow ── */
+@keyframes hero-glow-drift {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(-20px); }
+}
+
 .hero-glow {
   position: absolute;
-  top: -20%;
+  top: -10%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, oklch(0.723 0.21 146 / 8%) 0%, transparent 70%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, oklch(0.723 0.21 146 / 12%) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+  animation: hero-glow-drift 6s ease-in-out infinite;
 }
 
 .dark .hero-glow {
-  background: radial-gradient(circle, oklch(0.723 0.21 146 / 12%) 0%, transparent 70%);
+  background: radial-gradient(circle, oklch(0.723 0.21 146 / 18%) 0%, transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow { animation: none; }
 }

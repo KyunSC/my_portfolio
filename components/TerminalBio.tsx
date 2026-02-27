@@ -94,26 +94,26 @@ export default function TerminalBio() {
 
   return (
     <Card
-      className="overflow-hidden bg-zinc-950 border-zinc-800 font-mono text-sm mb-6 cursor-text"
+      className="overflow-hidden bg-zinc-950 border-zinc-800 font-mono text-sm mb-6"
       onClick={() => inputRef.current?.focus()}
     >
       {/* Title bar */}
       <div className="flex items-center gap-2 border-b border-zinc-800 px-4 py-2">
         <div className="flex items-center gap-2">
-          <span className="group/red relative h-3 w-3 rounded-full bg-red-500 flex items-center justify-center">
+          <span className="group/red relative h-3 w-3 rounded-full bg-red-500 flex items-center justify-center cursor-pointer">
             <span className="absolute text-[8px] font-bold leading-none text-red-900 opacity-0 group-hover/red:opacity-100 transition-opacity">✕</span>
           </span>
-          <span className="group/yellow relative h-3 w-3 rounded-full bg-yellow-500 flex items-center justify-center">
+          <span className="group/yellow relative h-3 w-3 rounded-full bg-yellow-500 flex items-center justify-center cursor-pointer">
             <span className="absolute text-[8px] font-bold leading-none text-yellow-900 opacity-0 group-hover/yellow:opacity-100 transition-opacity">−</span>
           </span>
-          <span className="group/green relative h-3 w-3 rounded-full bg-green-500 flex items-center justify-center">
+          <span className="group/green relative h-3 w-3 rounded-full bg-green-500 flex items-center justify-center cursor-pointer">
             <svg
               width="8" height="8" viewBox="0 0 8 8"
               className="absolute opacity-0 group-hover/green:opacity-100 transition-opacity"
               fill="#14532d"
             >
-              <polygon points="3,0 0,3 3,3" />
-              <polygon points="5,8 8,5 5,5" />
+              <polygon points="4,0 0,4 4,4" />
+              <polygon points="4,8 8,4 4,4" />
             </svg>
           </span>
         </div>
@@ -121,7 +121,7 @@ export default function TerminalBio() {
       </div>
 
       {/* Body */}
-      <div ref={bodyRef} className="p-4 space-y-1 text-zinc-300 max-h-72 overflow-y-auto">
+      <div ref={bodyRef} className="p-4 space-y-1 text-zinc-300 max-h-72 overflow-y-auto cursor-text">
         {history.map((entry, i) => (
           <div key={i} className="space-y-1">
             <p>

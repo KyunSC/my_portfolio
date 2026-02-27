@@ -112,8 +112,8 @@ export default function TerminalBio() {
               className="absolute opacity-0 group-hover/green:opacity-100 transition-opacity"
               fill="#14532d"
             >
-              <polygon points="0,0 3,0 0,3" />
-              <polygon points="8,8 5,8 8,5" />
+              <polygon points="3,0 0,3 3,3" />
+              <polygon points="5,8 8,5 5,5" />
             </svg>
           </span>
         </div>

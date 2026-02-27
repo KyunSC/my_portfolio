@@ -59,6 +59,7 @@ const INITIAL_HISTORY: HistoryEntry[] = [
 export default function TerminalBio() {
   const [history, setHistory] = useState<HistoryEntry[]>(INITIAL_HISTORY);
   const [input, setInput] = useState("");
+  const [focused, setFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const hasMounted = useRef(false);
@@ -98,9 +99,24 @@ export default function TerminalBio() {
     >
       {/* Title bar */}
       <div className="flex items-center gap-2 border-b border-zinc-800 px-4 py-2">
-        <span className="h-3 w-3 rounded-full bg-red-500" />
-        <span className="h-3 w-3 rounded-full bg-yellow-500" />
-        <span className="h-3 w-3 rounded-full bg-green-500" />
+        <div className="flex items-center gap-2">
+          <span className="group/red relative h-3 w-3 rounded-full bg-red-500 flex items-center justify-center">
+            <span className="absolute text-[8px] font-bold leading-none text-red-900 opacity-0 group-hover/red:opacity-100 transition-opacity">✕</span>
+          </span>
+          <span className="group/yellow relative h-3 w-3 rounded-full bg-yellow-500 flex items-center justify-center">
+            <span className="absolute text-[8px] font-bold leading-none text-yellow-900 opacity-0 group-hover/yellow:opacity-100 transition-opacity">−</span>
+          </span>
+          <span className="group/green relative h-3 w-3 rounded-full bg-green-500 flex items-center justify-center">
+            <svg
+              width="8" height="8" viewBox="0 0 8 8"
+              className="absolute opacity-0 group-hover/green:opacity-100 transition-opacity"
+              fill="#14532d"
+            >
+              <polygon points="0,0 3,0 0,3" />
+              <polygon points="8,8 5,8 8,5" />
+            </svg>
+          </span>
+        </div>
         <span className="ml-2 text-xs text-zinc-500">terminal</span>
       </div>
 
@@ -123,16 +139,26 @@ export default function TerminalBio() {
         {/* Input line */}
         <form onSubmit={handleSubmit} className="flex items-center gap-2 mt-2">
           <span className="text-primary">$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="flex-1 bg-transparent text-zinc-200 outline-none caret-primary"
-            autoComplete="off"
-            spellCheck={false}
-            aria-label="Terminal input"
-          />
+          <div className="relative flex-1 flex items-center">
+            {/* Visible text + cursor */}
+            <span className="text-zinc-200 whitespace-pre">{input}</span>
+            <span
+              className={`inline-block w-2 h-[1em] bg-green-400 ml-px align-middle terminal-cursor${focused ? "" : " opacity-0"}`}
+            />
+            {/* Hidden input captures keystrokes */}
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              className="absolute inset-0 opacity-0 w-full"
+              autoComplete="off"
+              spellCheck={false}
+              aria-label="Terminal input"
+            />
+          </div>
         </form>
 
         <div />

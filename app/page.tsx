@@ -1,6 +1,10 @@
 import { Mail, Code2, Globe, Monitor, Server, Wrench, Briefcase, Trophy } from "lucide-react";
+import {
+  SiReact, SiNextdotjs, SiAngular, SiTypescript, SiTailwindcss, SiHtml5,
+  SiPostgresql, SiNodedotjs, SiPython, SiJavascript, SiSharp, SiDotnet,
+  SiGit, SiGithub, SiGitlab, SiDocker, SiFirebase, SiOpenjdk,
+} from "react-icons/si";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -101,9 +105,19 @@ export default function Home() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "HTML5 & CSS3"].map((skill) => (
-                      <Badge key={skill} variant="secondary">{skill}</Badge>
+                  <div className="flex flex-wrap gap-x-4 gap-y-3">
+                    {[
+                      { icon: <SiReact style={{ color: "#61DAFB" }} />, label: "React" },
+                      { icon: <SiNextdotjs />, label: "Next.js" },
+                      { icon: <SiAngular style={{ color: "#DD0031" }} />, label: "Angular" },
+                      { icon: <SiTypescript style={{ color: "#3178C6" }} />, label: "TypeScript" },
+                      { icon: <SiTailwindcss style={{ color: "#06B6D4" }} />, label: "Tailwind CSS" },
+                      { icon: <SiHtml5 style={{ color: "#E34F26" }} />, label: "HTML5 & CSS3" },
+                    ].map(({ icon, label }) => (
+                      <div key={label} className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                        <span className="text-base">{icon}</span>
+                        {label}
+                      </div>
                     ))}
                   </div>
                 </CardContent>
@@ -118,9 +132,20 @@ export default function Home() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {["SQL / PostgreSQL", "Node.js", "Python", "Java", "JavaScript", "C#", ".NET"].map((skill) => (
-                      <Badge key={skill} variant="secondary">{skill}</Badge>
+                  <div className="flex flex-wrap gap-x-4 gap-y-3">
+                    {[
+                      { icon: <SiPostgresql style={{ color: "#4169E1" }} />, label: "PostgreSQL" },
+                      { icon: <SiNodedotjs style={{ color: "#5FA04E" }} />, label: "Node.js" },
+                      { icon: <SiPython style={{ color: "#3776AB" }} />, label: "Python" },
+                      { icon: <SiOpenjdk style={{ color: "#ED8B00" }} />, label: "Java" },
+                      { icon: <SiJavascript style={{ color: "#F7DF1E" }} />, label: "JavaScript" },
+                      { icon: <SiSharp style={{ color: "#239120" }} />, label: "C#" },
+                      { icon: <SiDotnet style={{ color: "#512BD4" }} />, label: ".NET" },
+                    ].map(({ icon, label }) => (
+                      <div key={label} className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                        <span className="text-base">{icon}</span>
+                        {label}
+                      </div>
                     ))}
                   </div>
                 </CardContent>
@@ -135,9 +160,18 @@ export default function Home() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {["Git & GitHub", "GitLab", "CI/CD"].map((skill) => (
-                      <Badge key={skill} variant="secondary">{skill}</Badge>
+                  <div className="flex flex-wrap gap-x-4 gap-y-3">
+                    {[
+                      { icon: <SiGit style={{ color: "#F05032" }} />, label: "Git" },
+                      { icon: <SiGithub />, label: "GitHub" },
+                      { icon: <SiGitlab style={{ color: "#FC6D26" }} />, label: "GitLab" },
+                      { icon: <SiDocker style={{ color: "#2496ED" }} />, label: "Docker" },
+                      { icon: <SiFirebase style={{ color: "#DD2C00" }} />, label: "Firebase" },
+                    ].map(({ icon, label }) => (
+                      <div key={label} className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                        <span className="text-base">{icon}</span>
+                        {label}
+                      </div>
                     ))}
                   </div>
                 </CardContent>

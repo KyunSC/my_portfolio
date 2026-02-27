@@ -59,11 +59,11 @@ export default function Nav() {
             variant="ghost"
             size="sm"
             asChild
-            className={
+            className={`transition-colors ${
               activeSection === id
-                ? "text-primary font-semibold"
+                ? "text-primary font-semibold bg-primary/10"
                 : ""
-            }
+            }`}
           >
             <a href={href} className="font-mono text-xs">
               {label}

@@ -9,6 +9,7 @@ import Project from "@/components/Project";
 import TerminalBio from "@/components/TerminalBio";
 import StatCard from "@/components/StatCard";
 import SectionHeading from "@/components/SectionHeading";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 export default function Home() {
   return (
@@ -16,25 +17,26 @@ export default function Home() {
       <main className="mx-auto max-w-4xl px-6 py-16 md:py-24">
 
         {/* Hero Section — two-column on md+ */}
-        <section className="mb-24 pt-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <section className="relative mb-24 pt-8 overflow-hidden">
+          <div className="hero-glow" />
+          <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             {/* Left: text content */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
+              <div className="hero-animate flex items-center gap-2 mb-4">
                 <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
                 <span className="text-sm font-mono text-muted-foreground">available for work</span>
               </div>
-              <h1 className="mb-6 text-5xl font-bold tracking-tight md:text-7xl">
+              <h1 className="hero-animate hero-animate-delay-1 mb-6 text-5xl font-bold tracking-tight md:text-7xl">
                 Sunny Chen
               </h1>
-              <p className="mb-8 text-xl text-muted-foreground md:text-2xl">
+              <p className="hero-animate hero-animate-delay-2 mb-8 text-xl text-muted-foreground md:text-2xl">
                 Software Developer
               </p>
-              <p className="mb-12 text-lg leading-relaxed text-muted-foreground">
+              <p className="hero-animate hero-animate-delay-2 mb-12 text-lg leading-relaxed text-muted-foreground">
                 I build exceptional digital experiences that combine clean code with thoughtful design.
                 Passionate about creating scalable applications and solving complex problems.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="hero-animate hero-animate-delay-3 flex flex-wrap gap-4">
                 <Button asChild>
                   <a href="#contact">
                     <Mail size={16} />
@@ -50,7 +52,7 @@ export default function Home() {
             </div>
 
             {/* Right: terminal — hidden on mobile */}
-            <div className="hidden md:block">
+            <div className="hero-animate hero-animate-delay-2 hidden md:block">
               <TerminalBio />
             </div>
           </div>
@@ -58,209 +60,249 @@ export default function Home() {
 
         {/* About Section */}
         <section id="about" className="mb-24">
-          <SectionHeading prefix="About" highlight="Me" showSeparator />
-          <div className="space-y-4 text-muted-foreground mb-8">
-            <p className="leading-relaxed">
-              I&apos;m a passionate developer with expertise in modern technologies. I love turning ideas
-              into reality through code and constantly learning new technologies to stay at the forefront
-              of software development.
-            </p>
-            <p className="leading-relaxed">
-              When I&apos;m not coding, you can find me exploring new frameworks and tools.
-            </p>
-          </div>
+          <AnimateOnScroll>
+            <SectionHeading prefix="About" highlight="Me" showSeparator />
+            <div className="space-y-4 text-muted-foreground mb-8">
+              <p className="leading-relaxed">
+                I&apos;m a passionate developer with expertise in modern technologies. I love turning ideas
+                into reality through code and constantly learning new technologies to stay at the forefront
+                of software development.
+              </p>
+              <p className="leading-relaxed">
+                When I&apos;m not coding, you can find me exploring new frameworks and tools.
+              </p>
+            </div>
+          </AnimateOnScroll>
           <div className="grid grid-cols-3 gap-4">
-            <StatCard value="5+" label="Projects Shipped" icon={<Briefcase size={20} />} />
-            <StatCard value="1st" label="Game Jam 2024" icon={<Trophy size={20} />} />
-            <StatCard value="4+" label="Languages" icon={<Code2 size={20} />} />
+            <AnimateOnScroll delay={0}>
+              <StatCard value="5+" label="Projects Shipped" icon={<Briefcase size={20} />} />
+            </AnimateOnScroll>
+            <AnimateOnScroll delay={100}>
+              <StatCard value="1st" label="Game Jam 2024" icon={<Trophy size={20} />} />
+            </AnimateOnScroll>
+            <AnimateOnScroll delay={200}>
+              <StatCard value="4+" label="Languages" icon={<Code2 size={20} />} />
+            </AnimateOnScroll>
           </div>
         </section>
 
         {/* Skills Section */}
         <section id="skills" className="mb-24">
-          <SectionHeading prefix="Skills &amp;" highlight="Technologies" showSeparator />
+          <AnimateOnScroll>
+            <SectionHeading prefix="Skills &amp;" highlight="Technologies" showSeparator />
+          </AnimateOnScroll>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="border-l-4 border-l-primary">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Monitor size={18} className="text-primary" />
-                  Frontend
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "HTML5 & CSS3"].map((skill) => (
-                    <Badge key={skill} variant="secondary">{skill}</Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border-l-4 border-l-primary">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Server size={18} className="text-primary" />
-                  Backend
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {["SQL / PostgreSQL", "Node.js", "Python", "Java", "JavaScript", "C#", ".NET"].map((skill) => (
-                    <Badge key={skill} variant="secondary">{skill}</Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border-l-4 border-l-primary">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Wrench size={18} className="text-primary" />
-                  Tools &amp; Others
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {["Git & GitHub", "GitLab", "CI/CD"].map((skill) => (
-                    <Badge key={skill} variant="secondary">{skill}</Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <AnimateOnScroll delay={0}>
+              <Card className="border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Monitor size={18} className="text-primary" />
+                    Frontend
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {["React", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "HTML5 & CSS3"].map((skill) => (
+                      <Badge key={skill} variant="secondary">{skill}</Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimateOnScroll>
+            <AnimateOnScroll delay={100}>
+              <Card className="border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Server size={18} className="text-primary" />
+                    Backend
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {["SQL / PostgreSQL", "Node.js", "Python", "Java", "JavaScript", "C#", ".NET"].map((skill) => (
+                      <Badge key={skill} variant="secondary">{skill}</Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimateOnScroll>
+            <AnimateOnScroll delay={200}>
+              <Card className="border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Wrench size={18} className="text-primary" />
+                    Tools &amp; Others
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {["Git & GitHub", "GitLab", "CI/CD"].map((skill) => (
+                      <Badge key={skill} variant="secondary">{skill}</Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimateOnScroll>
           </div>
         </section>
 
         {/* Projects Section — Tabs for Completed / In Progress */}
         <section id="projects" className="mb-24">
-          <SectionHeading prefix="My" highlight="Projects" showSeparator />
-          <Tabs defaultValue="completed">
-            <TabsList className="mb-6">
-              <TabsTrigger value="completed">Completed (5)</TabsTrigger>
-              <TabsTrigger value="in-progress">In Progress (2)</TabsTrigger>
-            </TabsList>
+          <AnimateOnScroll>
+            <SectionHeading prefix="My" highlight="Projects" showSeparator />
+          </AnimateOnScroll>
+          <AnimateOnScroll>
+            <Tabs defaultValue="completed">
+              <TabsList className="mb-6">
+                <TabsTrigger value="completed">Completed (5)</TabsTrigger>
+                <TabsTrigger value="in-progress">In Progress (2)</TabsTrigger>
+              </TabsList>
 
-            <TabsContent value="completed">
-              <div className="space-y-6">
-                <Project
-                  title="CrowdCheck"
-                  description="A web application built with Angular to help users check crowd levels and wait times at the McGill University Library and B2 Gym."
-                  tags={["Angular", "TypeScript", "C#", ".NET"]}
-                  link="https://github.com/KyunSC/crowd-check"
-                />
-                <Project
-                  title="Ideal Gas Law Simulator"
-                  description="Built an Ideal Gas Law simulator in Java/JavaFX to model the relationship between variables in real time.
+              <TabsContent value="completed">
+                <div className="space-y-6">
+                  <AnimateOnScroll delay={0}>
+                    <Project
+                      title="CrowdCheck"
+                      description="A web application built with Angular to help users check crowd levels and wait times at the McGill University Library and B2 Gym."
+                      tags={["Angular", "TypeScript", "C#", ".NET"]}
+                      link="https://github.com/KyunSC/crowd-check"
+                    />
+                  </AnimateOnScroll>
+                  <AnimateOnScroll delay={100}>
+                    <Project
+                      title="Ideal Gas Law Simulator"
+                      description="Built an Ideal Gas Law simulator in Java/JavaFX to model the relationship between variables in real time.
 Implemented interactive visualizations and user controls to dynamically adjust variables and observe simulation outcomes.
 Led a team of 3 to accomplish the project with tight deadlines."
-                  tags={["Java", "JavaFX", "Scene Builder", "Git"]}
-                  link="https://github.com/KyunSC/ideal-gas-law-simulator"
-                />
-                <Project
-                  title="Vanier Robotics Team Website"
-                  description="A Plants vs. Zombies themed website built for the Vanier College Robotics Team.
+                      tags={["Java", "JavaFX", "Scene Builder", "Git"]}
+                      link="https://github.com/KyunSC/ideal-gas-law-simulator"
+                    />
+                  </AnimateOnScroll>
+                  <AnimateOnScroll delay={200}>
+                    <Project
+                      title="Vanier Robotics Team Website"
+                      description="A Plants vs. Zombies themed website built for the Vanier College Robotics Team.
 Designed and developed an engaging, game-inspired interface to showcase the team and attract new members.
 Built with Vue.js for a dynamic and interactive user experience."
-                  tags={["Vue.js", "JavaScript", "CSS", "HTML"]}
-                  link="http://vanierplantforce.crcrobotics.com/"
-                />
-                <Project
-                  title="Université de Montreal's Game Jam 2024"
-                  description="Collaborated as part of a dynamic team of five to achieve first place in a competitive Game Jam competition.
+                      tags={["Vue.js", "JavaScript", "CSS", "HTML"]}
+                      link="http://vanierplantforce.crcrobotics.com/"
+                    />
+                  </AnimateOnScroll>
+                  <AnimateOnScroll delay={300}>
+                    <Project
+                      title="Université de Montreal's Game Jam 2024"
+                      description="Collaborated as part of a dynamic team of five to achieve first place in a competitive Game Jam competition.
 Developed and implemented innovative game concepts within tight time constraints, resulting in recognition for excellence.
 Led the conceptualization and design of a game project."
-                  tags={["C#", "Unity", "Git"]}
-                  link="https://itch.io/jam/udem-game-jam-2024/rate/2604780"
-                />
-                <Project
-                  title="PhysiPlay – 2D Physics Simulator"
-                  description="Developed a 2D physics simulation engine in Java and JavaFX, modeling pendulums, springs, collisions, and momentum.
+                      tags={["C#", "Unity", "Git"]}
+                      link="https://itch.io/jam/udem-game-jam-2024/rate/2604780"
+                    />
+                  </AnimateOnScroll>
+                  <AnimateOnScroll delay={400}>
+                    <Project
+                      title="PhysiPlay – 2D Physics Simulator"
+                      description="Developed a 2D physics simulation engine in Java and JavaFX, modeling pendulums, springs, collisions, and momentum.
 Applied object-oriented programming (OOP) and design patterns to build modular and scalable simulation modules.
 Collaborated in a team of 4 using Agile methodologies (Scrum, sprint planning, stand-ups) to ensure efficient project delivery.
 Utilized Git/GitHub for version control, implementing branching strategies and code reviews to maintain code quality."
-                  tags={["Java", "JavaFX", "Scene Builder", "Git"]}
-                  link="https://github.com/adinashby-vanier-college/integrative-project-in-csm-project-gape-horn-123"
-                />
-              </div>
-            </TabsContent>
+                      tags={["Java", "JavaFX", "Scene Builder", "Git"]}
+                      link="https://github.com/adinashby-vanier-college/integrative-project-in-csm-project-gape-horn-123"
+                    />
+                  </AnimateOnScroll>
+                </div>
+              </TabsContent>
 
-            <TabsContent value="in-progress">
-              <div className="space-y-6">
-                <Project
-                  title="F1 Race Prediction Model"
-                  description="Machine learning model to predict Formula 1 race outcomes based on historical data, driver performance, and track conditions.
+              <TabsContent value="in-progress">
+                <div className="space-y-6">
+                  <AnimateOnScroll delay={0}>
+                    <Project
+                      title="F1 Race Prediction Model"
+                      description="Machine learning model to predict Formula 1 race outcomes based on historical data, driver performance, and track conditions.
 Utilizing Python, Pandas, Scikit-learn, and TensorFlow to preprocess data, engineer features, and train predictive algorithms.
 Aiming to provide insights for teams and enthusiasts to enhance race strategies and fan engagement."
-                  tags={["Python", "Pandas", "Scikit-learn", "TensorFlow"]}
-                  link="https://github.com/KyunSC/F1Predictions"
-                  inProgress
-                />
-                <Project
-                  title="Azure Live Market Data App"
-                  description="A serverless application that retrieves real-time stock prices using the yfinance API.
+                      tags={["Python", "Pandas", "Scikit-learn", "TensorFlow"]}
+                      link="https://github.com/KyunSC/F1Predictions"
+                      inProgress
+                    />
+                  </AnimateOnScroll>
+                  <AnimateOnScroll delay={100}>
+                    <Project
+                      title="Azure Live Market Data App"
+                      description="A serverless application that retrieves real-time stock prices using the yfinance API.
 Implements a REST API endpoint supporting GET and POST requests to fetch market data for specified stock tickers.
 Built on Azure Functions for scalable, cost-effective cloud deployment."
-                  tags={["Python", "Azure Functions", "yfinance", "REST API, PostgreSQL"]}
-                  link="https://github.com/KyunSC/azure-market-data"
-                  inProgress
-                />
-              </div>
-            </TabsContent>
-          </Tabs>
+                      tags={["Python", "Azure Functions", "yfinance", "REST API, PostgreSQL"]}
+                      link="https://github.com/KyunSC/azure-market-data"
+                      inProgress
+                    />
+                  </AnimateOnScroll>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </AnimateOnScroll>
         </section>
 
         {/* Contact Section — CTA Card */}
         <section id="contact" className="mb-24">
-          <SectionHeading prefix="Let&apos;s" highlight="Connect" showSeparator />
-          <Card className="border-primary/20 bg-primary/5 p-6 md:p-10">
-            <CardContent className="p-0">
-              <p className="mb-6 text-lg text-muted-foreground">
-                I&apos;m always open to discussing new projects, opportunities, or just having a chat about technology.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="outline" asChild>
-                      <a href="mailto:exsunnychen2006@gmail.com">
-                        <Mail size={16} />
-                        Email
-                      </a>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>exsunnychen2006@gmail.com</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="outline" asChild>
-                      <a href="https://github.com/KyunSC" target="_blank" rel="noopener noreferrer">
-                        <Code2 size={16} />
-                        GitHub
-                      </a>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>@KyunSC</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="outline" asChild>
-                      <a href="https://www.linkedin.com/in/sunny-chen-software/" target="_blank" rel="noopener noreferrer">
-                        <Globe size={16} />
-                        LinkedIn
-                      </a>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>@sunny-chen-software</TooltipContent>
-                </Tooltip>
-              </div>
-            </CardContent>
-          </Card>
+          <AnimateOnScroll>
+            <SectionHeading prefix="Let&apos;s" highlight="Connect" showSeparator />
+          </AnimateOnScroll>
+          <AnimateOnScroll delay={100}>
+            <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 p-6 md:p-10">
+              <CardContent className="p-0">
+                <p className="mb-6 text-lg text-muted-foreground">
+                  I&apos;m always open to discussing new projects, opportunities, or just having a chat about technology.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" asChild>
+                        <a href="mailto:exsunnychen2006@gmail.com">
+                          <Mail size={16} />
+                          Email
+                        </a>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>exsunnychen2006@gmail.com</TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" asChild>
+                        <a href="https://github.com/KyunSC" target="_blank" rel="noopener noreferrer">
+                          <Code2 size={16} />
+                          GitHub
+                        </a>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>@KyunSC</TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" asChild>
+                        <a href="https://www.linkedin.com/in/sunny-chen-software/" target="_blank" rel="noopener noreferrer">
+                          <Globe size={16} />
+                          LinkedIn
+                        </a>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>@sunny-chen-software</TooltipContent>
+                  </Tooltip>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimateOnScroll>
         </section>
 
         {/* Footer */}
-        <footer className="pt-8">
-          <Separator className="mb-8" />
-          <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>&copy; 2026 Sunny Chen. All rights reserved.</p>
-            <p className="font-mono text-xs">Built with Next.js + shadcn/ui</p>
-          </div>
-        </footer>
+        <AnimateOnScroll animation="fade-in">
+          <footer className="pt-8">
+            <Separator className="mb-8" />
+            <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
+              <p>&copy; 2026 Sunny Chen. All rights reserved.</p>
+              <p className="font-mono text-xs">Built with Next.js + shadcn/ui</p>
+            </div>
+          </footer>
+        </AnimateOnScroll>
 
       </main>
     </div>

@@ -1,5 +1,3 @@
-import { Separator } from "@/components/ui/separator";
-
 interface SectionHeadingProps {
   prefix: string;
   highlight: string;
@@ -12,7 +10,9 @@ export default function SectionHeading({ prefix, highlight, showSeparator }: Sec
       <h2 className="text-3xl font-bold">
         {prefix} <span className="text-primary">{highlight}</span>
       </h2>
-      {showSeparator && <Separator className="mt-4" />}
+      {showSeparator && (
+        <div className="mt-4 h-1 w-12 rounded-full bg-primary/60" />
+      )}
     </div>
   );
 }

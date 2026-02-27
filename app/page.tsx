@@ -2,8 +2,9 @@ import { Mail, Code2, Globe, Monitor, Server, Wrench, Briefcase, Trophy } from "
 import {
   SiReact, SiNextdotjs, SiAngular, SiTypescript, SiTailwindcss, SiHtml5,
   SiPostgresql, SiNodedotjs, SiPython, SiJavascript, SiSharp, SiDotnet,
-  SiGit, SiGithub, SiGitlab, SiDocker, SiFirebase, SiOpenjdk,
+  SiGit, SiGithub, SiGitlab, SiDocker,
 } from "react-icons/si";
+import { DiJava } from "react-icons/di";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -96,87 +97,63 @@ export default function Home() {
             <SectionHeading prefix="Skills &amp;" highlight="Technologies" showSeparator />
           </AnimateOnScroll>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <AnimateOnScroll delay={0}>
-              <Card className="border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Monitor size={18} className="text-primary" />
-                    Frontend
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-x-4 gap-y-3">
-                    {[
-                      { icon: <SiReact style={{ color: "#61DAFB" }} />, label: "React" },
-                      { icon: <SiNextdotjs />, label: "Next.js" },
-                      { icon: <SiAngular style={{ color: "#DD0031" }} />, label: "Angular" },
-                      { icon: <SiTypescript style={{ color: "#3178C6" }} />, label: "TypeScript" },
-                      { icon: <SiTailwindcss style={{ color: "#06B6D4" }} />, label: "Tailwind CSS" },
-                      { icon: <SiHtml5 style={{ color: "#E34F26" }} />, label: "HTML5 & CSS3" },
-                    ].map(({ icon, label }) => (
-                      <div key={label} className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                        <span className="text-base">{icon}</span>
-                        {label}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimateOnScroll>
-            <AnimateOnScroll delay={100}>
-              <Card className="border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Server size={18} className="text-primary" />
-                    Backend
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-x-4 gap-y-3">
-                    {[
-                      { icon: <SiPostgresql style={{ color: "#4169E1" }} />, label: "PostgreSQL" },
-                      { icon: <SiNodedotjs style={{ color: "#5FA04E" }} />, label: "Node.js" },
-                      { icon: <SiPython style={{ color: "#3776AB" }} />, label: "Python" },
-                      { icon: <SiOpenjdk style={{ color: "#ED8B00" }} />, label: "Java" },
-                      { icon: <SiJavascript style={{ color: "#F7DF1E" }} />, label: "JavaScript" },
-                      { icon: <SiSharp style={{ color: "#239120" }} />, label: "C#" },
-                      { icon: <SiDotnet style={{ color: "#512BD4" }} />, label: ".NET" },
-                    ].map(({ icon, label }) => (
-                      <div key={label} className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                        <span className="text-base">{icon}</span>
-                        {label}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimateOnScroll>
-            <AnimateOnScroll delay={200}>
-              <Card className="border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Wrench size={18} className="text-primary" />
-                    Tools &amp; Others
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-x-4 gap-y-3">
-                    {[
-                      { icon: <SiGit style={{ color: "#F05032" }} />, label: "Git" },
-                      { icon: <SiGithub />, label: "GitHub" },
-                      { icon: <SiGitlab style={{ color: "#FC6D26" }} />, label: "GitLab" },
-                      { icon: <SiDocker style={{ color: "#2496ED" }} />, label: "Docker" },
-                      { icon: <SiFirebase style={{ color: "#DD2C00" }} />, label: "Firebase" },
-                    ].map(({ icon, label }) => (
-                      <div key={label} className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                        <span className="text-base">{icon}</span>
-                        {label}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimateOnScroll>
+            {[
+              {
+                label: "Frontend",
+                icon: <Monitor size={18} className="text-primary" />,
+                skills: [
+                  { icon: <SiReact style={{ color: "#61DAFB" }} />, label: "React" },
+                  { icon: <SiNextdotjs />, label: "Next.js" },
+                  { icon: <SiAngular style={{ color: "#DD0031" }} />, label: "Angular" },
+                  { icon: <SiTypescript style={{ color: "#3178C6" }} />, label: "TypeScript" },
+                  { icon: <SiTailwindcss style={{ color: "#06B6D4" }} />, label: "Tailwind CSS" },
+                  { icon: <SiHtml5 style={{ color: "#E34F26" }} />, label: "HTML5 & CSS3" },
+                ],
+              },
+              {
+                label: "Backend",
+                icon: <Server size={18} className="text-primary" />,
+                skills: [
+                  { icon: <SiPostgresql style={{ color: "#4169E1" }} />, label: "PostgreSQL" },
+                  { icon: <SiNodedotjs style={{ color: "#5FA04E" }} />, label: "Node.js" },
+                  { icon: <SiPython style={{ color: "#3776AB" }} />, label: "Python" },
+                  { icon: <DiJava style={{ color: "#ED8B00" }} />, label: "Java" },
+                  { icon: <SiJavascript style={{ color: "#F7DF1E" }} />, label: "JavaScript" },
+                  { icon: <SiSharp style={{ color: "#239120" }} />, label: "C#" },
+                  { icon: <SiDotnet style={{ color: "#512BD4" }} />, label: ".NET" },
+                ],
+              },
+              {
+                label: "Tools & Others",
+                icon: <Wrench size={18} className="text-primary" />,
+                skills: [
+                  { icon: <SiGit style={{ color: "#F05032" }} />, label: "Git" },
+                  { icon: <SiGithub />, label: "GitHub" },
+                  { icon: <SiGitlab style={{ color: "#FC6D26" }} />, label: "GitLab" },
+                  { icon: <SiDocker style={{ color: "#2496ED" }} />, label: "Docker" },
+                ],
+              },
+            ].map(({ label, icon, skills }, i) => (
+              <AnimateOnScroll key={label} delay={i * 100}>
+                <Card className="border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      {icon}{label}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-x-5 gap-y-4">
+                      {skills.map(({ icon: skillIcon, label: skillLabel }) => (
+                        <div key={skillLabel} className="flex flex-col items-center gap-1.5 w-14">
+                          <span className="text-4xl">{skillIcon}</span>
+                          <span className="text-[11px] text-muted-foreground text-center leading-tight">{skillLabel}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </AnimateOnScroll>
+            ))}
           </div>
         </section>
 

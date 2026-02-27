@@ -25,7 +25,7 @@ export default function TerminalBio() {
           <span className="text-zinc-500">&gt;</span> Software developer based in Montreal
         </p>
         <p>
-          <span className="text-zinc-500">&gt;</span> Passionate about robotics &amp; simulation
+          <span className="text-zinc-500">&gt;</span> Passionate about building impactful products and finance
         </p>
         <p>
           <span className="text-zinc-500">&gt;</span> Currently building: CrowdCheck

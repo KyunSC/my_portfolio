@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { Code2, Globe, Monitor, Server, Wrench, Briefcase, Trophy, Mail } from "lucide-react";
 import {
   SiReact, SiNextdotjs, SiAngular, SiTypescript, SiTailwindcss, SiHtml5,
@@ -12,9 +13,10 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import SectionHeading from "@/components/SectionHeading";
 import MotionSection from "@/components/MotionSection";
 import HeroSection from "@/components/HeroSection";
-import ProjectTabs from "@/components/ProjectTabs";
-import StatCard from "@/components/StatCard";
-import SkillIcon from "@/components/SkillIcon";
+
+const ProjectTabs = dynamic(() => import("@/components/ProjectTabs"));
+const StatCard = dynamic(() => import("@/components/StatCard"));
+const SkillIcon = dynamic(() => import("@/components/SkillIcon"));
 
 const COMPLETED_PROJECTS = [
   {

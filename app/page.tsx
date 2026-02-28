@@ -118,7 +118,7 @@ export default function Home() {
 
         {/* About Section */}
         <section id="about" className="mb-24">
-          <MotionSection>
+          <div>
             <SectionHeading prefix="About" highlight="Me" showSeparator />
             <div className="space-y-4 text-muted-foreground mb-8">
               <p className="leading-relaxed">
@@ -130,7 +130,7 @@ export default function Home() {
                 When I&apos;m not coding, you can find me exploring new frameworks and tools.
               </p>
             </div>
-          </MotionSection>
+          </div>
           <div className="grid grid-cols-3 gap-4">
             <MotionSection delay={0}>
               <StatCard value="5+" label="Projects Shipped" icon={<Briefcase size={20} />} />

@@ -180,7 +180,7 @@ export default function TerminalBio() {
             </svg>
           </span>
         </div>
-        <span className="ml-2 text-xs text-zinc-500">terminal</span>
+        <span className="ml-2 text-xs text-zinc-400">terminal</span>
       </div>
 
       {/* Body */}

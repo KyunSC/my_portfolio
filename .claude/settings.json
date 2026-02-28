@@ -4,7 +4,8 @@
       "Bash(npm install react-icons --save)",
       "Bash(npm install framer-motion)",
       "Bash(wc -l /Users/sunnychen/Developper/PersonalProjects/my_portfolio/components/ui/*.tsx)",
-      "Bash(grep -r \"Image\\\\|image\\\\|img\" /Users/sunnychen/Developper/PersonalProjects/my_portfolio/components/*.tsx)"
+      "Bash(grep -r \"Image\\\\|image\\\\|img\" /Users/sunnychen/Developper/PersonalProjects/my_portfolio/components/*.tsx)",
+      "Bash(npm install critters)"
     ]
   }
 }

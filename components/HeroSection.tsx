@@ -46,7 +46,7 @@ export default function HeroSection() {
         </div>
 
         {/* Right: lazy terminal — hidden on mobile */}
-        <div className="hidden md:block hero-fade-in hero-fade-in-delay">
+        <div className="hero-fade-in hero-fade-in-delay">
           <LazyTerminalBio />
         </div>
       </div>

@@ -2,6 +2,7 @@ import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HeroAnimations from "@/components/HeroAnimations";
 import LazyTerminalBio from "@/components/LazyTerminalBio";
+import WeatherGreeting from "@/components/WeatherGreeting";
 
 export default function HeroSection() {
   return (
@@ -25,7 +26,7 @@ export default function HeroSection() {
           </p>
 
           <p className="hero-fade-up hero-fade-up-3 mb-12 text-lg leading-relaxed text-muted-foreground">
-            I like building.
+            <WeatherGreeting />
           </p>
 
           <div className="hero-fade-up hero-fade-up-4">

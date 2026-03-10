@@ -16,6 +16,7 @@ const COMMANDS: Record<string, string[]> = {
     "  skills      — list my skills",
     "  projects    — see what I'm building",
     "  contact     — how to reach me",
+    "  weather     — is it Sunny outside?",
     "  clear       — clear the terminal",
     "  help        — show this message",
   ],
@@ -144,6 +145,43 @@ export default function TerminalBio() {
     if (cmd === "clear") {
       setHistory(INITIAL_HISTORY);
       setInput("");
+      return;
+    }
+
+    if (cmd === "weather") {
+      const loadingEntry: HistoryEntry = { command: cmd, output: ["Checking if it's Sunny outside..."] };
+      setHistory((prev) => [...prev, loadingEntry]);
+      setInput("");
+
+      fetch("/api/weather")
+        .then((r) => r.json())
+        .then((data) => {
+          const lines: string[] = [];
+          if (data.temperature !== null) {
+            lines.push(`Current weather in Montreal: ${data.description}, ${data.temperature}°C`);
+            if (data.isSunny) {
+              lines.push("Sunny confirmed. ✓");
+            } else {
+              lines.push("Not sunny outside... but always Sunny in this terminal.");
+            }
+          } else {
+            lines.push("Could not fetch weather data. But trust me, it's always Sunny here.");
+          }
+          setHistory((prev) =>
+            prev.map((entry, i) =>
+              i === prev.length - 1 ? { ...entry, output: lines } : entry
+            )
+          );
+        })
+        .catch(() => {
+          setHistory((prev) =>
+            prev.map((entry, i) =>
+              i === prev.length - 1
+                ? { ...entry, output: ["Failed to reach weather API. But it's always Sunny here."] }
+                : entry
+            )
+          );
+        });
       return;
     }
 

@@ -6,8 +6,8 @@ import WeatherGreeting from "@/components/WeatherGreeting";
 
 export default function HeroSection() {
   return (
-    <section className="relative mb-24 pt-8">
-      <div className="hero-glow" />
+    <section className="relative mb-12 pt-8">
+      <div className="hero-glow" aria-hidden="true" />
 
       <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
         {/* Left: server-rendered text with CSS entrance animations */}
@@ -25,9 +25,12 @@ export default function HeroSection() {
             Software Developer
           </p>
 
-          <p className="hero-fade-up hero-fade-up-3 mb-12 text-lg leading-relaxed text-muted-foreground">
-            <WeatherGreeting />
-          </p>
+          <div className="hero-fade-up hero-fade-up-3 mb-12 text-lg leading-relaxed text-muted-foreground relative">
+            <p>I like building.</p>
+            <div className="absolute top-full left-0 w-full">
+              <WeatherGreeting />
+            </div>
+          </div>
 
           <div className="hero-fade-up hero-fade-up-4">
             <HeroAnimations>

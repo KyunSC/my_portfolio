@@ -5,13 +5,15 @@ import { useWeather } from "@/components/WeatherProvider";
 export default function WeatherGreeting() {
   const { weather } = useWeather();
 
-  if (!weather || weather.isSunny === null) {
-    return <>I like building.</>;
-  }
+  if (!weather || weather.isSunny === null) return null;
 
-  if (weather.isSunny) {
-    return <>It&apos;s Sunny outside... and on this website.</>;
-  }
+  const text = weather.isSunny
+    ? "It's Sunny outside... and on this website."
+    : "It may not be sunny outside, but it's always Sunny here.";
 
-  return <>It may not be sunny outside, but it&apos;s always Sunny here.</>;
+  return (
+    <span className="weather-greeting-fade-in block mt-1 text-base italic text-muted-foreground/70">
+      {text}
+    </span>
+  );
 }

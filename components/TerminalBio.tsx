@@ -195,7 +195,7 @@ export default function TerminalBio() {
 
   return (
     <Card
-      className="overflow-hidden bg-zinc-950 border-zinc-800 font-mono text-sm mb-6"
+      className="overflow-hidden bg-zinc-950 border-zinc-800 font-mono text-sm mb-6 h-[340px] flex flex-col"
       onClick={() => inputRef.current?.focus()}
     >
       {/* Title bar */}
@@ -222,7 +222,7 @@ export default function TerminalBio() {
       </div>
 
       {/* Body */}
-      <div ref={bodyRef} className="p-4 space-y-1 text-zinc-300 max-h-72 overflow-y-auto cursor-text">
+      <div ref={bodyRef} className="p-4 space-y-1 text-zinc-300 flex-1 overflow-y-auto cursor-text">
         {history.map((entry, i) => (
           <div key={i} className="space-y-1">
             <p>

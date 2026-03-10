@@ -8,7 +8,8 @@
       "Bash(npm install critters)",
       "Bash(npx next:*)",
       "Bash(curl -s \"https://api.open-meteo.com/v1/forecast?latitude=45.5017&longitude=-73.5673&current=temperature_2m,weather_code\")",
-      "Bash(python3 -m json.tool)"
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s \"https://api.open-meteo.com/v1/forecast?latitude=45.5017&longitude=-73.5673&current=temperature_2m,weather_code&daily=sunrise,sunset&timezone=America/Montreal&forecast_days=1\")"
     ],
     "additionalDirectories": [
       "/Users/sunnychen/Developper/PersonalProjects/my_portfolio/app/api"

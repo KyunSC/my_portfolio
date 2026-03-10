@@ -39,7 +39,7 @@ const WEATHER_MAP: Record<number, { description: string; isSunny: boolean }> = {
 export async function GET() {
   try {
     const res = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,weather_code`,
+      `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,weather_code&daily=sunrise,sunset&timezone=America/Montreal&forecast_days=1`,
       { next: { revalidate: 600 } } // cache for 10 minutes
     );
 
@@ -55,6 +55,8 @@ export async function GET() {
       description: weather.description,
       isSunny: weather.isSunny,
       weatherCode: code,
+      sunrise: data.daily.sunrise[0],
+      sunset: data.daily.sunset[0],
     });
   } catch {
     return NextResponse.json(

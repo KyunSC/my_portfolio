@@ -7,6 +7,8 @@ export interface WeatherData {
   description: string;
   isSunny: boolean | null;
   weatherCode: number | null;
+  sunrise: string | null;
+  sunset: string | null;
 }
 
 type WeatherCategory = "sunny" | "cloudy" | "rainy" | "snowy" | "stormy" | null;

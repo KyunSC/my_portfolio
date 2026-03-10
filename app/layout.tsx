@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import WeatherProvider from "@/components/WeatherProvider";
 import Nav from "@/components/Nav";
 import "./globals.css";
 
@@ -42,10 +43,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <TooltipProvider>
-          <Nav />
-          {children}
-        </TooltipProvider>
+        <WeatherProvider>
+          <TooltipProvider>
+            <Nav />
+            {children}
+          </TooltipProvider>
+        </WeatherProvider>
         <Analytics />
       </body>
     </html>

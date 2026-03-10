@@ -6,7 +6,9 @@
       "Bash(wc -l /Users/sunnychen/Developper/PersonalProjects/my_portfolio/components/ui/*.tsx)",
       "Bash(grep -r \"Image\\\\|image\\\\|img\" /Users/sunnychen/Developper/PersonalProjects/my_portfolio/components/*.tsx)",
       "Bash(npm install critters)",
-      "Bash(npx next:*)"
+      "Bash(npx next:*)",
+      "Bash(curl -s \"https://api.open-meteo.com/v1/forecast?latitude=45.5017&longitude=-73.5673&current=temperature_2m,weather_code\")",
+      "Bash(python3 -m json.tool)"
     ],
     "additionalDirectories": [
       "/Users/sunnychen/Developper/PersonalProjects/my_portfolio/app/api"

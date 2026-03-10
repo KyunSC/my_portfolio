@@ -43,7 +43,7 @@ export default function ProjectTabs({ completed, inProgress }: ProjectTabsProps)
   );
 
   return (
-    <Tabs value={activeTab} onValueChange={setActiveTab}>
+    <Tabs id="project-tabs" value={activeTab} onValueChange={setActiveTab}>
       <TabsList className="mb-6">
         <TabsTrigger value="completed">Completed ({completed.length})</TabsTrigger>
         <TabsTrigger value="in-progress">In Progress ({inProgress.length})</TabsTrigger>

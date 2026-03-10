@@ -1,22 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-interface WeatherData {
-  temperature: number | null;
-  description: string;
-  isSunny: boolean | null;
-}
+import { useWeather } from "@/components/WeatherProvider";
 
 export default function WeatherGreeting() {
-  const [weather, setWeather] = useState<WeatherData | null>(null);
-
-  useEffect(() => {
-    fetch("/api/weather")
-      .then((r) => r.json())
-      .then(setWeather)
-      .catch(() => {});
-  }, []);
+  const { weather } = useWeather();
 
   if (!weather || weather.isSunny === null) {
     return <>I like building.</>;

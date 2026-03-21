@@ -26,7 +26,7 @@ export default function HeroSection() {
             Software Developer
           </p>
 
-          <div className="hero-fade-up hero-fade-up-3 mb-12 text-lg leading-relaxed text-muted-foreground relative">
+          <div className="hero-fade-up hero-fade-up-3 mb-20 text-lg leading-relaxed text-muted-foreground relative">
             <p>I like building.</p>
             <div className="absolute top-full left-0 w-full">
               <WeatherGreeting />

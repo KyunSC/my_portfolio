@@ -4,6 +4,7 @@ import HeroAnimations from "@/components/HeroAnimations";
 import LazyTerminalBio from "@/components/LazyTerminalBio";
 import WeatherGreeting from "@/components/WeatherGreeting";
 import SunPosition from "@/components/SunPosition";
+import WeatherProvider from "@/components/WeatherProvider";
 
 export default function HeroSection() {
   return (

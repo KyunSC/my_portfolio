@@ -3,7 +3,7 @@ import { Code2, Globe, Monitor, Server, Wrench, Briefcase, Trophy, Mail } from "
 import {
   SiReact, SiNextdotjs, SiAngular, SiTypescript, SiTailwindcss, SiHtml5,
   SiPostgresql, SiNodedotjs, SiPython, SiJavascript, SiSharp, SiDotnet,
-  SiGit, SiGithub, SiGitlab, SiDocker,
+  SiSpringboot, SiGit, SiGithub, SiGitlab, SiDocker,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,12 @@ const StatCard = dynamic(() => import("@/components/StatCard"));
 const SkillIcon = dynamic(() => import("@/components/SkillIcon"));
 
 const COMPLETED_PROJECTS = [
+  {
+    title: "Azure Live Market Data App",
+    description: "A serverless application that retrieves real-time stock prices using the yfinance API.\nImplements a REST API endpoint supporting GET and POST requests to fetch market data for specified stock tickers.\nBuilt on Azure Functions for scalable, cost-effective cloud deployment.",
+    tags: ["Python", "Azure Functions", "yfinance", "REST API, PostgreSQL", "Java Spring Boot"],
+    link: "https://github.com/KyunSC/azure-market-data",
+  },
   {
     title: "CrowdCheck",
     description: "A web application built with Angular to help users check crowd levels and wait times at the McGill University Library and B2 Gym.",
@@ -59,13 +65,6 @@ const IN_PROGRESS_PROJECTS = [
     link: "https://github.com/KyunSC/F1Predictions",
     inProgress: true,
   },
-  {
-    title: "Azure Live Market Data App",
-    description: "A serverless application that retrieves real-time stock prices using the yfinance API.\nImplements a REST API endpoint supporting GET and POST requests to fetch market data for specified stock tickers.\nBuilt on Azure Functions for scalable, cost-effective cloud deployment.",
-    tags: ["Python", "Azure Functions", "yfinance", "REST API, PostgreSQL"],
-    link: "https://github.com/KyunSC/azure-market-data",
-    inProgress: false,
-  },
 ];
 
 const SKILL_CATEGORIES = [
@@ -91,6 +90,7 @@ const SKILL_CATEGORIES = [
       { icon: <SiNodedotjs style={{ color: "#5FA04E" }} />, label: "Node.js" },
       { icon: <SiPython style={{ color: "#3776AB" }} />, label: "Python" },
       { icon: <DiJava style={{ color: "#ED8B00" }} />, label: "Java" },
+      { icon: <SiSpringboot style={{ color: "#6DB33F" }} />, label: "Spring Boot" },
       { icon: <SiJavascript style={{ color: "#F7DF1E" }} />, label: "JavaScript" },
       { icon: <SiSharp style={{ color: "#239120" }} />, label: "C#" },
       { icon: <SiDotnet style={{ color: "#512BD4" }} />, label: ".NET" },

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import WeatherProvider from "@/components/WeatherProvider";
 import Nav from "@/components/Nav";
 import "./globals.css";
 
@@ -19,6 +18,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sunny Chen - Portfolio",
   description: "Software Developer & Creative Problem Solver. Building exceptional digital experiences with modern web technologies.",
+  openGraph: {
+    title: "Sunny Chen - Portfolio",
+    description: "Software Developer & Creative Problem Solver. Building exceptional digital experiences with modern web technologies.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sunny Chen - Portfolio",
+    description: "Software Developer & Creative Problem Solver. Building exceptional digital experiences with modern web technologies.",
+  },
 };
 
 export default function RootLayout({
@@ -43,12 +53,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <WeatherProvider>
-          <TooltipProvider>
-            <Nav />
-            {children}
-          </TooltipProvider>
-        </WeatherProvider>
+        <TooltipProvider>
+          <Nav />
+          {children}
+        </TooltipProvider>
         <Analytics />
       </body>
     </html>

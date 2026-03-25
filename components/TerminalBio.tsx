@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useSyncExternalStore } from "react";
 
 interface HistoryEntry {
   command: string;
@@ -57,23 +57,31 @@ const INITIAL_HISTORY: HistoryEntry[] = [
   },
 ];
 
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+const subscribe = (cb: () => void) => {
+  const mql = window.matchMedia(reducedMotionQuery);
+  mql.addEventListener("change", cb);
+  return () => mql.removeEventListener("change", cb);
+};
+const getSnapshot = () => window.matchMedia(reducedMotionQuery).matches;
+const getServerSnapshot = () => false;
+
 export default function TerminalBio() {
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const prefersReducedMotion = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+
+  const [history, setHistory] = useState<HistoryEntry[]>(() =>
+    prefersReducedMotion ? INITIAL_HISTORY : []
+  );
   const [input, setInput] = useState("");
   const [focused, setFocused] = useState(false);
-  const [isTyping, setIsTyping] = useState(true);
+  const [isTyping, setIsTyping] = useState(() => !prefersReducedMotion);
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const hasMounted = useRef(false);
 
   // Typewriter effect on mount (skipped if user prefers reduced motion)
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) {
-      setHistory(INITIAL_HISTORY);
-      setIsTyping(false);
-      return;
-    }
+    if (prefersReducedMotion) return;
 
     let cancelled = false;
     const entries = INITIAL_HISTORY;
@@ -126,7 +134,7 @@ export default function TerminalBio() {
 
     typeEntries();
     return () => { cancelled = true; };
-  }, []);
+  }, [prefersReducedMotion]);
 
   // Auto-scroll on history change (skip first mount)
   useEffect(() => {

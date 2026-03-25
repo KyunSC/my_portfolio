@@ -64,7 +64,7 @@ const IN_PROGRESS_PROJECTS = [
     description: "A serverless application that retrieves real-time stock prices using the yfinance API.\nImplements a REST API endpoint supporting GET and POST requests to fetch market data for specified stock tickers.\nBuilt on Azure Functions for scalable, cost-effective cloud deployment.",
     tags: ["Python", "Azure Functions", "yfinance", "REST API, PostgreSQL"],
     link: "https://github.com/KyunSC/azure-market-data",
-    inProgress: true,
+    inProgress: false,
   },
 ];
 

@@ -126,7 +126,6 @@ export default function TerminalBio() {
 
     typeEntries();
     return () => { cancelled = true; };
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- runs once on mount
   }, []);
 
   // Auto-scroll on history change (skip first mount)

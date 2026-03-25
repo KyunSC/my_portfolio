@@ -42,7 +42,16 @@ export default function WeatherProvider({ children }: { children: ReactNode }) {
     fetch("/api/weather")
       .then((r) => r.json())
       .then(setWeather)
-      .catch(() => {});
+      .catch(() => {
+        setWeather({
+          temperature: null,
+          description: "Unavailable",
+          isSunny: null,
+          weatherCode: null,
+          sunrise: null,
+          sunset: null,
+        });
+      });
   }, []);
 
   // Apply weather category as a data attribute on <html> for CSS targeting

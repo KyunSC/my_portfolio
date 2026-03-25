@@ -2,6 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { useRef, useState, useEffect, useCallback, useSyncExternalStore } from "react";
+import { useWeather } from "@/components/WeatherProvider";
 
 interface HistoryEntry {
   command: string;
@@ -68,6 +69,7 @@ const getServerSnapshot = () => false;
 
 export default function TerminalBio() {
   const prefersReducedMotion = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const { weather } = useWeather();
 
   const [history, setHistory] = useState<HistoryEntry[]>(() =>
     prefersReducedMotion ? INITIAL_HISTORY : []
@@ -75,6 +77,7 @@ export default function TerminalBio() {
   const [input, setInput] = useState("");
   const [focused, setFocused] = useState(false);
   const [isTyping, setIsTyping] = useState(() => !prefersReducedMotion);
+  const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const hasMounted = useRef(false);
@@ -155,43 +158,25 @@ export default function TerminalBio() {
     if (cmd === "clear") {
       setHistory(INITIAL_HISTORY);
       setInput("");
+      setHistoryIndex(-1);
       return;
     }
 
     if (cmd === "weather") {
-      const loadingEntry: HistoryEntry = { command: cmd, output: ["Checking if it's Sunny outside..."] };
-      setHistory((prev) => [...prev, loadingEntry]);
+      const lines: string[] = [];
+      if (weather && weather.temperature !== null) {
+        lines.push(`Current weather in Montreal: ${weather.description}, ${weather.temperature}°C`);
+        if (weather.isSunny) {
+          lines.push("Sunny confirmed. ✓");
+        } else {
+          lines.push("Not sunny outside... but always Sunny in this terminal.");
+        }
+      } else {
+        lines.push("Could not fetch weather data. But trust me, it's always Sunny here.");
+      }
+      setHistory((prev) => [...prev, { command: cmd, output: lines }]);
       setInput("");
-
-      fetch("/api/weather")
-        .then((r) => r.json())
-        .then((data) => {
-          const lines: string[] = [];
-          if (data.temperature !== null) {
-            lines.push(`Current weather in Montreal: ${data.description}, ${data.temperature}°C`);
-            if (data.isSunny) {
-              lines.push("Sunny confirmed. ✓");
-            } else {
-              lines.push("Not sunny outside... but always Sunny in this terminal.");
-            }
-          } else {
-            lines.push("Could not fetch weather data. But trust me, it's always Sunny here.");
-          }
-          setHistory((prev) =>
-            prev.map((entry, i) =>
-              i === prev.length - 1 ? { ...entry, output: lines } : entry
-            )
-          );
-        })
-        .catch(() => {
-          setHistory((prev) =>
-            prev.map((entry, i) =>
-              i === prev.length - 1
-                ? { ...entry, output: ["Failed to reach weather API. But it's always Sunny here."] }
-                : entry
-            )
-          );
-        });
+      setHistoryIndex(-1);
       return;
     }
 
@@ -201,7 +186,30 @@ export default function TerminalBio() {
 
     setHistory((prev) => [...prev, { command: cmd, output }]);
     setInput("");
-  }, [input, isTyping]);
+    setHistoryIndex(-1);
+  }, [input, isTyping, weather]);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    const pastCommands = history.map((entry) => entry.command);
+    if (pastCommands.length === 0) return;
+
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const nextIndex = historyIndex < pastCommands.length - 1 ? historyIndex + 1 : historyIndex;
+      setHistoryIndex(nextIndex);
+      setInput(pastCommands[pastCommands.length - 1 - nextIndex]);
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIndex <= 0) {
+        setHistoryIndex(-1);
+        setInput("");
+      } else {
+        const nextIndex = historyIndex - 1;
+        setHistoryIndex(nextIndex);
+        setInput(pastCommands[pastCommands.length - 1 - nextIndex]);
+      }
+    }
+  }, [history, historyIndex]);
 
   return (
     <Card
@@ -267,6 +275,7 @@ export default function TerminalBio() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
                 className="absolute inset-0 opacity-0 w-full"

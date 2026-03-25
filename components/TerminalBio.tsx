@@ -58,20 +58,22 @@ const INITIAL_HISTORY: HistoryEntry[] = [
 ];
 
 export default function TerminalBio() {
-  const prefersReducedMotion = typeof window !== "undefined"
-    && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const [history, setHistory] = useState<HistoryEntry[]>(prefersReducedMotion ? INITIAL_HISTORY : []);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [input, setInput] = useState("");
   const [focused, setFocused] = useState(false);
-  const [isTyping, setIsTyping] = useState(!prefersReducedMotion);
+  const [isTyping, setIsTyping] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const hasMounted = useRef(false);
 
-  // Typewriter effect on mount
+  // Typewriter effect on mount (skipped if user prefers reduced motion)
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      setHistory(INITIAL_HISTORY);
+      setIsTyping(false);
+      return;
+    }
 
     let cancelled = false;
     const entries = INITIAL_HISTORY;
@@ -124,7 +126,8 @@ export default function TerminalBio() {
 
     typeEntries();
     return () => { cancelled = true; };
-  }, [prefersReducedMotion]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- runs once on mount
+  }, []);
 
   // Auto-scroll on history change (skip first mount)
   useEffect(() => {

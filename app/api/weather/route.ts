@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
-// Montreal coordinates
-const LAT = 45.5017;
-const LON = -73.5673;
+// Montreal fallback coordinates
+const DEFAULT_LAT = 45.5017;
+const DEFAULT_LON = -73.5673;
+const DEFAULT_CITY = "Montreal";
 
 // WMO weather codes → description + isSunny
 const WEATHER_MAP: Record<number, { description: string; isSunny: boolean }> = {
@@ -36,16 +37,56 @@ const WEATHER_MAP: Record<number, { description: string; isSunny: boolean }> = {
   99: { description: "Thunderstorm with heavy hail", isSunny: false },
 };
 
-export async function GET() {
+async function reverseGeocode(lat: number, lon: number): Promise<string> {
   try {
     const res = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,weather_code&daily=sunrise,sunset&timezone=America/Montreal&forecast_days=1`,
-      { next: { revalidate: 600 } } // cache for 10 minutes
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`,
+      {
+        headers: { "User-Agent": "sunny-chen-portfolio/1.0 (https://sunnychen.dev)" },
+        next: { revalidate: 86400 }, // city name cached for 24h
+      }
     );
-
-    if (!res.ok) throw new Error("Weather API failed");
-
+    if (!res.ok) return "Your location";
     const data = await res.json();
+    return (
+      data.address?.city ||
+      data.address?.town ||
+      data.address?.village ||
+      data.address?.county ||
+      "Your location"
+    );
+  } catch {
+    return "Your location";
+  }
+}
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const rawLat = searchParams.get("lat");
+  const rawLon = searchParams.get("lon");
+
+  const hasCustomCoords = rawLat !== null && rawLon !== null;
+  const lat = hasCustomCoords ? parseFloat(rawLat) : DEFAULT_LAT;
+  const lon = hasCustomCoords ? parseFloat(rawLon) : DEFAULT_LON;
+
+  if (hasCustomCoords && (isNaN(lat) || isNaN(lon))) {
+    return NextResponse.json({ error: "Invalid coordinates" }, { status: 400 });
+  }
+
+  const timezone = hasCustomCoords ? "auto" : "America/Montreal";
+
+  try {
+    const [weatherRes, city] = await Promise.all([
+      fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=sunrise,sunset&timezone=${timezone}&forecast_days=1`,
+        { next: { revalidate: 600 } }
+      ),
+      hasCustomCoords ? reverseGeocode(lat, lon) : Promise.resolve(DEFAULT_CITY),
+    ]);
+
+    if (!weatherRes.ok) throw new Error("Weather API failed");
+
+    const data = await weatherRes.json();
     const code: number = data.current.weather_code;
     const temp: number = Math.round(data.current.temperature_2m);
     const weather = WEATHER_MAP[code] ?? { description: "Unknown", isSunny: false };
@@ -57,10 +98,11 @@ export async function GET() {
       weatherCode: code,
       sunrise: data.daily.sunrise[0],
       sunset: data.daily.sunset[0],
+      city,
     });
   } catch {
     return NextResponse.json(
-      { temperature: null, description: "Unavailable", isSunny: null, weatherCode: null },
+      { temperature: null, description: "Unavailable", isSunny: null, weatherCode: null, city: null },
       { status: 500 }
     );
   }

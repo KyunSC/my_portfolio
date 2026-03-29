@@ -9,6 +9,7 @@ export interface WeatherData {
   weatherCode: number | null;
   sunrise: string | null;
   sunset: string | null;
+  city: string | null;
 }
 
 type WeatherCategory = "sunny" | "cloudy" | "rainy" | "snowy" | "stormy" | null;
@@ -34,24 +35,47 @@ function getCategory(code: number | null): WeatherCategory {
   return "cloudy";
 }
 
+const FALLBACK: WeatherData = {
+  temperature: null,
+  description: "Unavailable",
+  isSunny: null,
+  weatherCode: null,
+  sunrise: null,
+  sunset: null,
+  city: null,
+};
+
+function fetchWeather(lat?: number, lon?: number): Promise<WeatherData> {
+  const url =
+    lat !== undefined && lon !== undefined
+      ? `/api/weather?lat=${lat}&lon=${lon}`
+      : "/api/weather";
+  return fetch(url)
+    .then((r) => r.json())
+    .catch(() => FALLBACK);
+}
+
 export default function WeatherProvider({ children }: { children: ReactNode }) {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const category = getCategory(weather?.weatherCode ?? null);
 
   useEffect(() => {
-    fetch("/api/weather")
-      .then((r) => r.json())
-      .then(setWeather)
-      .catch(() => {
-        setWeather({
-          temperature: null,
-          description: "Unavailable",
-          isSunny: null,
-          weatherCode: null,
-          sunrise: null,
-          sunset: null,
-        });
-      });
+    if (!navigator.geolocation || !navigator.permissions) {
+      fetchWeather().then(setWeather);
+      return;
+    }
+
+    // Only use geolocation if already granted — never show a permission popup
+    navigator.permissions.query({ name: "geolocation" }).then((result) => {
+      if (result.state === "granted") {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => fetchWeather(pos.coords.latitude, pos.coords.longitude).then(setWeather),
+          () => fetchWeather().then(setWeather)
+        );
+      } else {
+        fetchWeather().then(setWeather);
+      }
+    }).catch(() => fetchWeather().then(setWeather));
   }, []);
 
   // Apply weather category as a data attribute on <html> for CSS targeting

@@ -165,7 +165,8 @@ export default function TerminalBio() {
     if (cmd === "weather") {
       const lines: string[] = [];
       if (weather && weather.temperature !== null) {
-        lines.push(`Current weather in Montreal: ${weather.description}, ${weather.temperature}°C`);
+        const city = weather.city ?? "Montreal";
+        lines.push(`Current weather in ${city}: ${weather.description}, ${weather.temperature}°C`);
         if (weather.isSunny) {
           lines.push("Sunny confirmed. ✓");
         } else {

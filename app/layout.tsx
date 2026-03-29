@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "KobL4Bgb3W3h6bDmlj1zxDD4AQjTaeF88NL28_dIONI",
+  },
   openGraph: {
     title: "Sunny Chen — Software Developer in Montreal",
     description: "Sunny Chen is a software developer based in Montreal. Building exceptional digital experiences with React, Next.js, TypeScript, and modern web technologies.",

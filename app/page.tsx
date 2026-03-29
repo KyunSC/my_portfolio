@@ -13,9 +13,31 @@ import { COMPLETED_PROJECTS, IN_PROGRESS_PROJECTS, SKILL_CATEGORIES } from "@/li
 
 const ProjectTabs = dynamic(() => import("@/components/ProjectTabs"));
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sunny Chen",
+  url: "https://sunnychen.dev",
+  jobTitle: "Software Developer",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Montreal",
+    addressCountry: "CA",
+  },
+  sameAs: [
+    "https://github.com/KyunSC",
+    "https://www.linkedin.com/in/sunny-chen-software/",
+  ],
+  knowsAbout: ["React", "Next.js", "TypeScript", "Angular", "Python", "Java", "C#", ".NET", "Docker"],
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="mx-auto max-w-4xl px-6 py-16 md:py-24">
 
         <HeroSection />

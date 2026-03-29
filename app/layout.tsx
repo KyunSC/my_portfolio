@@ -16,18 +16,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sunny Chen - Portfolio",
-  description: "Software Developer & Creative Problem Solver. Building exceptional digital experiences with modern web technologies.",
+  metadataBase: new URL("https://sunnychen.dev"),
+  title: "Sunny Chen — Software Developer in Montreal",
+  description: "Sunny Chen is a software developer based in Montreal. Building exceptional digital experiences with React, Next.js, TypeScript, and modern web technologies.",
+  keywords: ["Sunny Chen", "software developer", "Montreal", "React", "Next.js", "TypeScript", "portfolio"],
+  authors: [{ name: "Sunny Chen", url: "https://sunnychen.dev" }],
+  creator: "Sunny Chen",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Sunny Chen - Portfolio",
-    description: "Software Developer & Creative Problem Solver. Building exceptional digital experiences with modern web technologies.",
+    title: "Sunny Chen — Software Developer in Montreal",
+    description: "Sunny Chen is a software developer based in Montreal. Building exceptional digital experiences with React, Next.js, TypeScript, and modern web technologies.",
+    url: "https://sunnychen.dev",
+    siteName: "Sunny Chen",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sunny Chen - Portfolio",
-    description: "Software Developer & Creative Problem Solver. Building exceptional digital experiences with modern web technologies.",
+    title: "Sunny Chen — Software Developer in Montreal",
+    description: "Sunny Chen is a software developer based in Montreal. Building exceptional digital experiences with React, Next.js, TypeScript, and modern web technologies.",
   },
 };
 

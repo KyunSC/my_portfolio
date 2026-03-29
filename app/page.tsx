@@ -17,7 +17,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Sunny Chen",
-  url: "https://sunnychen.dev",
+  url: "https://chensunny.com",
   jobTitle: "Software Developer",
   address: {
     "@type": "PostalAddress",

@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sunnychen.dev"),
+  metadataBase: new URL("https://chensunny.com"),
   title: "Sunny Chen — Software Developer in Montreal",
   description: "Sunny Chen is a software developer based in Montreal. Building exceptional digital experiences with React, Next.js, TypeScript, and modern web technologies.",
   keywords: ["Sunny Chen", "software developer", "Montreal", "React", "Next.js", "TypeScript", "portfolio"],
-  authors: [{ name: "Sunny Chen", url: "https://sunnychen.dev" }],
+  authors: [{ name: "Sunny Chen", url: "https://chensunny.com" }],
   creator: "Sunny Chen",
   alternates: {
     canonical: "/",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sunny Chen — Software Developer in Montreal",
     description: "Sunny Chen is a software developer based in Montreal. Building exceptional digital experiences with React, Next.js, TypeScript, and modern web technologies.",
-    url: "https://sunnychen.dev",
+    url: "https://chensunny.com",
     siteName: "Sunny Chen",
     type: "website",
     locale: "en_US",

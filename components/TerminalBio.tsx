@@ -25,7 +25,7 @@ const COMMANDS: Record<string, string[]> = {
   about: [
     "> Software developer based in Montreal",
     "> Passionate about building impactful products and finance",
-    "> Currently building: CrowdCheck",
+    "> Currently building: Live Market Data App",
     "> Open to: Full-time & internship opportunities",
   ],
   skills: [
@@ -35,8 +35,8 @@ const COMMANDS: Record<string, string[]> = {
     "Tools:      Git, Docker, PostgreSQL, Firebase",
   ],
   projects: [
-    "CrowdCheck — Real-time crowd density platform",
-    "  → crowdcheck.live",
+    "Live Market Data App — Real-time stock prices via Azure Functions",
+    "  → github.com/KyunSC/azure-market-data",
   ],
   contact: [
     "Email:    sunnychen.dev@gmail.com",
@@ -52,7 +52,7 @@ const INITIAL_HISTORY: HistoryEntry[] = [
     output: [
       "> Software developer based in Montreal",
       "> Passionate about building impactful products and finance",
-      "> Currently building: CrowdCheck",
+      "> Currently building: Live Market Data App",
       "> Open to: Full-time & internship opportunities",
     ],
   },

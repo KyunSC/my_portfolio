@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -7,10 +8,11 @@ interface ProjectProps {
   description: string;
   tags: string[];
   link?: string;
+  github?: string;
   inProgress?: boolean;
 }
 
-export default function Project({ title, description, tags, link, inProgress }: ProjectProps) {
+export default function Project({ title, description, tags, link, github, inProgress }: ProjectProps) {
   return (
     <Card
       className={`group relative transition-all ${
@@ -27,6 +29,18 @@ export default function Project({ title, description, tags, link, inProgress }: 
           className="absolute inset-0 z-10"
           aria-label={title}
         />
+      )}
+      {github && (
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-3 right-3 z-20 text-muted-foreground hover:text-foreground transition-colors"
+          aria-label={`${title} GitHub repository`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <SiGithub size={18} />
+        </a>
       )}
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-xl group-hover:text-primary transition-colors">

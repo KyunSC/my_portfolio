@@ -11,6 +11,7 @@ interface ProjectData {
   description: string;
   tags: string[];
   link?: string;
+  github?: string;
   inProgress?: boolean;
 }
 

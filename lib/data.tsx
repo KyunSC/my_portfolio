@@ -11,19 +11,22 @@ export const COMPLETED_PROJECTS = [
     title: "Azure Live Market Data App",
     description: "A serverless application that retrieves real-time stock prices using the yfinance API.\nImplements a REST API endpoint supporting GET and POST requests to fetch market data for specified stock tickers.\nBuilt on Azure Functions for scalable, cost-effective cloud deployment.",
     tags: ["Python", "Azure Functions", "yfinance", "REST API, PostgreSQL", "Java Spring Boot"],
-    link: "https://github.com/KyunSC/azure-market-data",
+    link: "https://azure-market-data-nbr5.vercel.app/",
+    github: "https://github.com/KyunSC/azure-market-data",
   },
   {
     title: "CrowdCheck",
     description: "A web application built with Angular to help users check crowd levels and wait times at the McGill University Library and B2 Gym.",
     tags: ["Angular", "TypeScript", "C#", ".NET"],
     link: "https://github.com/KyunSC/crowd-check",
+    github: "https://github.com/KyunSC/crowd-check",
   },
   {
     title: "Ideal Gas Law Simulator",
     description: "Built an Ideal Gas Law simulator in Java/JavaFX to model the relationship between variables in real time.\nImplemented interactive visualizations and user controls to dynamically adjust variables and observe simulation outcomes.\nLed a team of 3 to accomplish the project with tight deadlines.",
     tags: ["Java", "JavaFX", "Scene Builder", "Git"],
     link: "https://github.com/KyunSC/ideal-gas-law-simulator",
+    github: "https://github.com/KyunSC/ideal-gas-law-simulator",
   },
   {
     title: "Vanier Robotics Team Website",
@@ -42,6 +45,7 @@ export const COMPLETED_PROJECTS = [
     description: "Developed a 2D physics simulation engine in Java and JavaFX, modeling pendulums, springs, collisions, and momentum.\nApplied object-oriented programming (OOP) and design patterns to build modular and scalable simulation modules.\nCollaborated in a team of 4 using Agile methodologies (Scrum, sprint planning, stand-ups) to ensure efficient project delivery.\nUtilized Git/GitHub for version control, implementing branching strategies and code reviews to maintain code quality.",
     tags: ["Java", "JavaFX", "Scene Builder", "Git"],
     link: "https://github.com/adinashby-vanier-college/integrative-project-in-csm-project-gape-horn-123",
+    github: "https://github.com/adinashby-vanier-college/integrative-project-in-csm-project-gape-horn-123",
   },
 ];
 
@@ -51,6 +55,7 @@ export const IN_PROGRESS_PROJECTS = [
     description: "Machine learning model to predict Formula 1 race outcomes based on historical data, driver performance, and track conditions.\nUtilizing Python, Pandas, Scikit-learn, and TensorFlow to preprocess data, engineer features, and train predictive algorithms.\nAiming to provide insights for teams and enthusiasts to enhance race strategies and fan engagement.",
     tags: ["Python", "Pandas", "Scikit-learn", "TensorFlow"],
     link: "https://github.com/KyunSC/F1Predictions",
+    github: "https://github.com/KyunSC/F1Predictions",
     inProgress: true,
   },
 ];

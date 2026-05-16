@@ -15,7 +15,7 @@ interface ProjectProps {
 export default function Project({ title, description, tags, link, github, inProgress }: ProjectProps) {
   return (
     <Card
-      className={`group relative transition-all ${
+      className={`group relative gap-3 transition-all ${
         link
           ? "cursor-pointer hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 active:translate-y-0 active:shadow-md"
           : ""

@@ -58,6 +58,22 @@ export const IN_PROGRESS_PROJECTS = [
     github: "https://github.com/KyunSC/F1Predictions",
     inProgress: true,
   },
+  {
+    title: "Gmail Internship Scanner",
+    description: "LLM-powered tool that scans a Gmail inbox to surface internship-related emails and extract structured details like company, role, and status.\nIntegrates with the Gmail API to fetch messages and runs a local Qwen model via Ollama for private, offline classification and extraction.\nDesigned to keep all email content on-device while automating the tedious work of tracking internship applications.",
+    tags: ["Python", "Gmail API", "Ollama", "Qwen", "LLM"],
+    link: "https://github.com/KyunSC/gmail-internship-scanner",
+    github: "https://github.com/KyunSC/gmail-internship-scanner",
+    inProgress: true,
+  },
+  {
+    title: "Git Scribe – Commit Documentation Generator",
+    description: "CLI tool that reads a repository's Git history and generates human-readable documentation and changelogs from commit messages and diffs.\nUses a local Qwen model via Ollama to summarize changes, group related commits, and produce release-ready notes without sending code off-machine.\nBuilt in Python to streamline documentation for solo projects and small teams.",
+    tags: ["Python", "Git CLI", "Ollama", "Qwen", "LLM"],
+    link: "https://github.com/KyunSC/git-scribe",
+    github: "https://github.com/KyunSC/git-scribe",
+    inProgress: true,
+  },
 ];
 
 export const SKILL_CATEGORIES = [

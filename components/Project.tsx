@@ -49,7 +49,7 @@ export default function Project({ title, description, tags, link, github, inProg
             <ExternalLink size={14} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
           )}
           {inProgress && (
-            <Badge variant="outline" className="ml-auto text-amber-500 border-amber-500 text-xs font-normal">
+            <Badge variant="outline" className="ml-auto mr-7 mt-2 text-amber-500 border-amber-500 text-xs font-normal">
               <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse inline-block" />
               In Progress
             </Badge>

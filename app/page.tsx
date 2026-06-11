@@ -59,7 +59,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <MotionSection delay={0}>
-              <StatCard value="5+" label="Projects Shipped" icon={<Briefcase size={20} />} />
+              <StatCard value="10+" label="Projects Shipped" icon={<Briefcase size={20} />} />
             </MotionSection>
             <MotionSection delay={100}>
               <StatCard value="1st" label="Game Jam 2024" icon={<Trophy size={20} />} />

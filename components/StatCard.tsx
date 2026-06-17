@@ -48,15 +48,15 @@ export default function StatCard({ value, label, icon }: StatCardProps) {
   }, [isInView, value, shouldReduceMotion]);
 
   return (
-    <Card ref={ref} className="text-center p-6 transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
+    <Card ref={ref} className="text-center p-4 transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5 md:p-6">
       <CardContent className="p-0">
         {icon && (
           <div className="flex justify-center mb-2 text-primary">
             {icon}
           </div>
         )}
-        <p className="text-4xl font-bold text-primary">{displayValue}</p>
-        <p className="mt-1 text-sm text-muted-foreground">{label}</p>
+        <p className="text-2xl font-bold text-primary md:text-4xl">{displayValue}</p>
+        <p className="mt-1 text-xs text-muted-foreground md:text-sm">{label}</p>
       </CardContent>
     </Card>
   );

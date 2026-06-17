@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { label: "About", href: "#about", id: "about" },
@@ -16,6 +19,7 @@ const NAV_LINKS = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100);
@@ -46,15 +50,27 @@ export default function Nav() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
+  // Close the mobile menu on Escape.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border border-border bg-background/80 px-5 py-2 backdrop-blur-md transition-shadow ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 flex max-w-[calc(100vw-1.5rem)] items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 backdrop-blur-md transition-shadow md:px-5 ${
         scrolled ? "shadow-lg" : ""
       }`}
     >
-      <span className="font-mono font-bold text-primary text-sm">SC</span>
+      <a href="#" className="font-mono font-bold text-primary text-sm">
+        SC
+      </a>
       <Separator orientation="vertical" className="h-4" />
-      <div className="flex items-center gap-1">
+
+      {/* Desktop links */}
+      <div className="hidden items-center gap-1 md:flex">
         {NAV_LINKS.map(({ label, href, id }) => (
           <Button
             key={label}
@@ -62,9 +78,7 @@ export default function Nav() {
             size="sm"
             asChild
             className={`relative transition-colors ${
-              activeSection === id
-                ? "text-primary font-semibold"
-                : ""
+              activeSection === id ? "text-primary font-semibold" : ""
             }`}
           >
             <a href={href} className="font-mono text-xs">
@@ -80,6 +94,51 @@ export default function Nav() {
           </Button>
         ))}
       </div>
+
+      <Separator orientation="vertical" className="hidden h-4 md:block" />
+      <ThemeSwitcher />
+
+      {/* Mobile menu toggle */}
+      <Button
+        variant="ghost"
+        size="icon-sm"
+        aria-label="Toggle navigation menu"
+        aria-haspopup="menu"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((v) => !v)}
+        className="text-muted-foreground hover:text-primary md:hidden"
+      >
+        {menuOpen ? <X /> : <Menu />}
+      </Button>
+
+      {/* Mobile dropdown */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            role="menu"
+            initial={{ opacity: 0, scale: 0.95, y: -4 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -4 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute right-0 top-full mt-2 flex w-44 origin-top-right flex-col rounded-2xl border border-border bg-background/95 p-1.5 shadow-lg backdrop-blur-md md:hidden"
+          >
+            {NAV_LINKS.map(({ label, href, id }) => (
+              <a
+                key={label}
+                href={href}
+                role="menuitem"
+                onClick={() => setMenuOpen(false)}
+                className={cn(
+                  "rounded-lg px-3 py-2 font-mono text-sm transition-colors hover:bg-accent",
+                  activeSection === id ? "text-primary font-semibold" : "text-foreground"
+                )}
+              >
+                {label}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

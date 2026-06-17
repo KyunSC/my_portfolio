@@ -39,7 +39,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="mx-auto max-w-4xl px-6 py-16 md:py-24">
+      <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 md:py-24">
 
         <HeroSection />
 
@@ -58,7 +58,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
             <MotionSection delay={0}>
               <StatCard value="10+" label="Projects Shipped" icon={<Briefcase size={20} />} />
             </MotionSection>

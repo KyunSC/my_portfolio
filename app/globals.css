@@ -116,6 +116,45 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ── Named "vibe" themes (data-theme on <html>) ──────────────────── */
+/* Default theme = no data-theme attribute → green from :root / .dark   */
+
+/* F1 — racing red */
+:root[data-theme="f1"] {
+  --primary: oklch(0.55 0.22 27);
+  --ring: oklch(0.55 0.22 27);
+  --glow: oklch(0.55 0.22 27);
+}
+:root.dark[data-theme="f1"] {
+  --primary: oklch(0.65 0.23 27);
+  --ring: oklch(0.65 0.23 27);
+  --glow: oklch(0.65 0.23 27);
+}
+
+/* Finance — professional navy/blue */
+:root[data-theme="finance"] {
+  --primary: oklch(0.45 0.15 255);
+  --ring: oklch(0.45 0.15 255);
+  --glow: oklch(0.45 0.15 255);
+}
+:root.dark[data-theme="finance"] {
+  --primary: oklch(0.62 0.16 255);
+  --ring: oklch(0.62 0.16 255);
+  --glow: oklch(0.62 0.16 255);
+}
+
+/* Coding — terminal cyan */
+:root[data-theme="coding"] {
+  --primary: oklch(0.55 0.13 195);
+  --ring: oklch(0.55 0.13 195);
+  --glow: oklch(0.55 0.13 195);
+}
+:root.dark[data-theme="coding"] {
+  --primary: oklch(0.72 0.14 195);
+  --ring: oklch(0.72 0.14 195);
+  --glow: oklch(0.72 0.14 195);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -165,14 +204,14 @@ html {
   transform: translateX(-50%);
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, oklch(0.5 0.19 146 / 15%) 0%, transparent 70%);
+  background: radial-gradient(circle, oklch(from var(--glow, oklch(0.5 0.19 146)) l c h / 15%) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
   animation: hero-glow-fade-in 1.2s ease 1.5s both, hero-glow-drift 6s ease-in-out 1.5s infinite;
 }
 
 .dark .hero-glow {
-  background: radial-gradient(circle, oklch(0.65 0.19 146 / 20%) 0%, transparent 70%);
+  background: radial-gradient(circle, oklch(from var(--glow, oklch(0.65 0.19 146)) l c h / 20%) 0%, transparent 70%);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -14,6 +14,7 @@ export const EXPERIENCES = [
     location: "Montreal, QC",
     description: "Built RAG (Retrieval-Augmented Generation) automation to streamline workflows and surface relevant information.\nImplemented augmented reality (AR) features as part of the product experience.",
     tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "MySQL", "RAG", "AR"],
+    links: ["https://loriginal.org", "https://artur.art"],
   },
   {
     role: "Quality Assurance",

@@ -48,6 +48,10 @@ export default function ExperienceTerminal({ experiences }: ExperienceTerminalPr
       for (const d of exp.description.split("\n")) fullLog.push(`    ${d}`);
       fullLog.push("");
       fullLog.push(`    tags: ${exp.tags.join("  ")}`);
+      const links = "links" in exp ? (exp.links as string[] | undefined) : undefined;
+      if (links?.length) {
+        for (const url of links) fullLog.push(`    link: ${url}`);
+      }
       if (i < experiences.length - 1) fullLog.push("");
     });
 
@@ -154,7 +158,7 @@ export default function ExperienceTerminal({ experiences }: ExperienceTerminalPr
 
   return (
     <Card
-      className="flex h-[440px] flex-col overflow-hidden border-zinc-800 bg-zinc-950 font-mono text-sm"
+      className="flex h-[560px] flex-col overflow-hidden border-zinc-800 bg-zinc-950 font-mono text-sm md:h-[640px] md:text-base"
       onClick={() => inputRef.current?.focus()}
     >
       {/* Title bar */}
@@ -175,20 +179,39 @@ export default function ExperienceTerminal({ experiences }: ExperienceTerminalPr
               <span className="text-primary">$</span>{" "}
               <span className="text-zinc-400">{entry.command}</span>
             </p>
-            {entry.output.map((line, j) => (
-              <p
-                key={j}
-                className={`overflow-x-auto whitespace-pre ${
-                  line.startsWith("commit ")
-                    ? "text-yellow-500"
-                    : line.startsWith("    tags:")
-                      ? "text-primary"
-                      : "text-zinc-200"
-                } ${line === "" ? "h-3" : ""}`}
-              >
-                {line}
-              </p>
-            ))}
+            {entry.output.map((line, j) => {
+              const linkMatch = line.match(/^(\s*link: )(\S+)$/);
+              if (linkMatch) {
+                return (
+                  <p key={j} className="overflow-x-auto whitespace-pre text-zinc-200">
+                    {linkMatch[1]}
+                    <a
+                      href={linkMatch[2]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-primary underline underline-offset-2 hover:text-green-300"
+                    >
+                      {linkMatch[2]}
+                    </a>
+                  </p>
+                );
+              }
+              return (
+                <p
+                  key={j}
+                  className={`overflow-x-auto whitespace-pre ${
+                    line.startsWith("commit ")
+                      ? "text-yellow-500"
+                      : line.startsWith("    tags:")
+                        ? "text-primary"
+                        : "text-zinc-200"
+                  } ${line === "" ? "h-3" : ""}`}
+                >
+                  {line}
+                </p>
+              );
+            })}
           </div>
         ))}
 

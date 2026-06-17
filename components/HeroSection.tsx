@@ -8,7 +8,7 @@ import WeatherProvider from "@/components/WeatherProvider";
 export default function HeroSection() {
   return (
     <WeatherProvider>
-      <section className="relative mb-12 pt-8">
+      <section className="relative mb-12 overflow-x-clip pt-8">
         <div className="hero-glow" aria-hidden="true" />
 
         <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">

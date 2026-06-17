@@ -28,6 +28,17 @@ export const metadata: Metadata = {
   verification: {
     google: "KobL4Bgb3W3h6bDmlj1zxDD4AQjTaeF88NL28_dIONI",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "Sunny Chen — Software Developer in Montreal",
     description: "Sunny Chen is a software developer based in Montreal. Building exceptional digital experiences with React, Next.js, TypeScript, and modern web technologies.",
@@ -35,6 +46,14 @@ export const metadata: Metadata = {
     siteName: "Sunny Chen",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Sunny Chen — Software Developer in Montreal",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

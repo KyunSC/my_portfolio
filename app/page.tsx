@@ -16,20 +16,35 @@ const ProjectTabs = dynamic(() => import("@/components/ProjectTabs"));
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Sunny Chen",
-  url: "https://chensunny.com",
-  jobTitle: "Software Developer",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Montreal",
-    addressCountry: "CA",
-  },
-  sameAs: [
-    "https://github.com/KyunSC",
-    "https://www.linkedin.com/in/sunny-chen-software/",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://chensunny.com/#person",
+      name: "Sunny Chen",
+      url: "https://chensunny.com",
+      image: "https://chensunny.com/opengraph-image",
+      email: "mailto:exsunnychen2006@gmail.com",
+      jobTitle: "Software Developer",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Montreal",
+        addressCountry: "CA",
+      },
+      sameAs: [
+        "https://github.com/KyunSC",
+        "https://www.linkedin.com/in/sunny-chen-software/",
+      ],
+      knowsAbout: ["React", "Next.js", "TypeScript", "Angular", "Python", "Java", "C#", ".NET", "Docker"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://chensunny.com/#website",
+      url: "https://chensunny.com",
+      name: "Sunny Chen — Software Developer in Montreal",
+      publisher: { "@id": "https://chensunny.com/#person" },
+      inLanguage: "en-US",
+    },
   ],
-  knowsAbout: ["React", "Next.js", "TypeScript", "Angular", "Python", "Java", "C#", ".NET", "Docker"],
 };
 
 export default function Home() {
@@ -47,14 +62,17 @@ export default function Home() {
         <section id="about" className="mb-24">
           <div>
             <SectionHeading prefix="About" highlight="Me" showSeparator />
-            <div className="space-y-4 text-muted-foreground mb-8">
+            <div className="space-y-4 text-foreground mb-8">
               <p className="leading-relaxed">
-                I&apos;m a passionate developer with expertise in modern technologies. I love turning ideas
-                into reality through code and constantly learning new technologies to stay at the forefront
-                of software development.
+                I&apos;m a software developer in Montreal with 5+ years of building, from web apps in
+                React, Next.js, and TypeScript to backend services in Python, Java, and C#/.NET. I care about
+                shipping things that hold up under real use, not just things that work.
               </p>
               <p className="leading-relaxed">
-                When I&apos;m not coding, you can find me exploring new frameworks and tools.
+                Most of what I build comes out of whatever I&apos;m into. Finance got me to ship the Azure Live
+                Market Data App, a serverless API for real-time stock data; F1 has me deep in a race prediction
+                model with machine learning; and at my Loriginal internship I worked full-stack, shipping a RAG-powered
+                feature and an AR experience. Half my projects start as &ldquo;I wonder if I could build that.&rdquo;
               </p>
             </div>
           </div>

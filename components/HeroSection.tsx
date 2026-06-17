@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import HeroAnimations from "@/components/HeroAnimations";
 import LazyTerminalBio from "@/components/LazyTerminalBio";
 import WeatherGreeting from "@/components/WeatherGreeting";
-import SunPosition from "@/components/SunPosition";
 import WeatherProvider from "@/components/WeatherProvider";
 
 export default function HeroSection() {
@@ -52,12 +51,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right: lazy terminal + sun arc — hidden on mobile */}
+          {/* Right: lazy terminal — hidden on mobile */}
           <div className="hero-fade-in hero-fade-in-delay">
             <LazyTerminalBio />
-            <div className="flex justify-center">
-              <SunPosition />
-            </div>
           </div>
         </div>
       </section>

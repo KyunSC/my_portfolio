@@ -7,8 +7,6 @@ export interface WeatherData {
   description: string;
   isSunny: boolean | null;
   weatherCode: number | null;
-  sunrise: string | null;
-  sunset: string | null;
   city: string | null;
 }
 
@@ -40,8 +38,6 @@ const FALLBACK: WeatherData = {
   description: "Unavailable",
   isSunny: null,
   weatherCode: null,
-  sunrise: null,
-  sunset: null,
   city: null,
 };
 

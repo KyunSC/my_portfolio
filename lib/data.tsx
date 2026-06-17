@@ -6,6 +6,25 @@ import {
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 
+export const EXPERIENCES = [
+  {
+    role: "Full Stack Engineer",
+    company: "Loriginal",
+    period: "Jun 2026 – Aug 2026",
+    location: "Montreal, QC",
+    description: "Built RAG (Retrieval-Augmented Generation) automation to streamline workflows and surface relevant information.\nImplemented augmented reality (AR) features as part of the product experience.",
+    tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "MySQL", "RAG", "AR"],
+  },
+  {
+    role: "Quality Assurance",
+    company: "GBT POS",
+    period: "Jun 2026 – Oct 2026",
+    location: "Montreal, QC",
+    description: "Ran test cases to validate the point-of-sale software for Revenu Québec certification.\nDocumented results and helped ensure compliance with certification requirements.",
+    tags: ["QA", "Test Cases", "Software Certification", "POS"],
+  },
+];
+
 export const COMPLETED_PROJECTS = [
   {
     title: "Azure Live Market Data App",

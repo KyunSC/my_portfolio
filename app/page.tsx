@@ -9,7 +9,8 @@ import MotionSection from "@/components/MotionSection";
 import HeroSection from "@/components/HeroSection";
 import StatCard from "@/components/StatCard";
 import SkillIcon from "@/components/SkillIcon";
-import { COMPLETED_PROJECTS, IN_PROGRESS_PROJECTS, SKILL_CATEGORIES } from "@/lib/data";
+import ExperienceTerminal from "@/components/ExperienceTerminal";
+import { COMPLETED_PROJECTS, IN_PROGRESS_PROJECTS, SKILL_CATEGORIES, EXPERIENCES } from "@/lib/data";
 
 const ProjectTabs = dynamic(() => import("@/components/ProjectTabs"));
 
@@ -68,6 +69,14 @@ export default function Home() {
               <StatCard value="4+" label="Languages" icon={<Code2 size={20} />} />
             </MotionSection>
           </div>
+        </section>
+
+        {/* Experience Section */}
+        <section id="experience" className="mb-24">
+          <MotionSection>
+            <SectionHeading prefix="Work" highlight="Experience" showSeparator />
+          </MotionSection>
+          <ExperienceTerminal experiences={EXPERIENCES} />
         </section>
 
         {/* Skills Section */}

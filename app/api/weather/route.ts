@@ -78,7 +78,7 @@ export async function GET(request: Request) {
   try {
     const [weatherRes, city] = await Promise.all([
       fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=sunrise,sunset&timezone=${timezone}&forecast_days=1`,
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&timezone=${timezone}&forecast_days=1`,
         { next: { revalidate: 600 } }
       ),
       hasCustomCoords ? reverseGeocode(lat, lon) : Promise.resolve(DEFAULT_CITY),
@@ -96,8 +96,6 @@ export async function GET(request: Request) {
       description: weather.description,
       isSunny: weather.isSunny,
       weatherCode: code,
-      sunrise: data.daily.sunrise[0],
-      sunset: data.daily.sunset[0],
       city,
     });
   } catch {

@@ -168,6 +168,7 @@
 /* ── Smooth scrolling ── */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -203,8 +204,8 @@ html {
   top: -10%;
   left: 50%;
   transform: translateX(-50%);
-  width: min(750px, 115vw);
-  height: min(750px, 115vw);
+  width: min(750px, 100vw);
+  height: min(750px, 100vw);
   background: radial-gradient(circle, oklch(from var(--glow, oklch(0.5 0.19 146)) l c h / 15%) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;

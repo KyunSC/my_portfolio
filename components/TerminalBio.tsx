@@ -253,7 +253,7 @@ export default function TerminalBio() {
               )}
             </p>
             {entry.output.map((line, j) => (
-              <p key={j} className="text-zinc-200 whitespace-pre">
+              <p key={j} className="overflow-x-auto whitespace-pre text-zinc-200">
                 {line}
               </p>
             ))}

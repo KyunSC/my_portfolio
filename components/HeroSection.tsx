@@ -2,6 +2,7 @@ import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HeroAnimations from "@/components/HeroAnimations";
 import LazyTerminalBio from "@/components/LazyTerminalBio";
+import F1Car from "@/components/F1Car";
 import WeatherGreeting from "@/components/WeatherGreeting";
 import WeatherProvider from "@/components/WeatherProvider";
 
@@ -51,9 +52,12 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right: lazy terminal */}
-          <div className="hero-fade-in hero-fade-in-delay min-w-0">
-            <LazyTerminalBio />
+          {/* Right: lazy terminal — swapped for the F1 car under the F1 theme */}
+          <div className="hero-fade-in hero-fade-in-delay min-w-0 f1-swap">
+            <div className="f1-terminal">
+              <LazyTerminalBio />
+            </div>
+            <F1Car className="f1-car-view" />
           </div>
         </div>
       </section>

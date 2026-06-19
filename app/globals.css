@@ -143,18 +143,6 @@
   --glow: oklch(0.62 0.16 255);
 }
 
-/* Coding — terminal cyan */
-:root[data-theme="coding"] {
-  --primary: oklch(0.55 0.13 195);
-  --ring: oklch(0.55 0.13 195);
-  --glow: oklch(0.55 0.13 195);
-}
-:root.dark[data-theme="coding"] {
-  --primary: oklch(0.72 0.14 195);
-  --ring: oklch(0.72 0.14 195);
-  --glow: oklch(0.72 0.14 195);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -236,6 +224,61 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-glow { animation: none; opacity: var(--glow-max-opacity, 1); }
+}
+
+/* ── F1 theme: swap terminals for a Red Bull car that rolls in ── */
+/* By default show the terminal and hide the car; under the F1 theme, swap. */
+.f1-swap .f1-car-view {
+  display: none;
+}
+
+:root[data-theme="f1"] .f1-swap .f1-terminal {
+  display: none;
+}
+
+:root[data-theme="f1"] .f1-swap .f1-car-view {
+  display: flex;
+}
+
+.f1-car-svg {
+  width: min(90%, 460px);
+  height: auto;
+}
+
+.f1-car-svg .f1-wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes f1-roll-in {
+  0%   { transform: translateX(-180%); opacity: 0; }
+  12%  { opacity: 1; }
+  75%  { transform: translateX(6%); }    /* coast slightly past center */
+  88%  { transform: translateX(-3%); }   /* brake recoil */
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes f1-wheel-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(1080deg); }    /* eases out → looks like braking */
+}
+
+/* Animation runs when the car becomes visible (display flips on theme change) */
+:root[data-theme="f1"] .f1-swap .f1-car-svg {
+  animation: f1-roll-in 1.9s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+}
+
+:root[data-theme="f1"] .f1-swap .f1-wheel {
+  animation: f1-wheel-spin 1.9s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme="f1"] .f1-swap .f1-car-svg,
+  :root[data-theme="f1"] .f1-swap .f1-wheel {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
 }
 
 /* ── Weather-reactive ambient glow ── */

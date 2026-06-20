@@ -67,6 +67,13 @@ export const COMPLETED_PROJECTS = [
     link: "https://github.com/adinashby-vanier-college/integrative-project-in-csm-project-gape-horn-123",
     github: "https://github.com/adinashby-vanier-college/integrative-project-in-csm-project-gape-horn-123",
   },
+  {
+    title: "Gmail Internship Scanner",
+    description: "LLM-powered tool that scans a Gmail inbox to surface internship-related emails and extract structured details like company, role, and status.\nIntegrates with the Gmail API to fetch messages and runs a local Qwen model via Ollama for private, offline classification and extraction.\nDesigned to keep all email content on-device while automating the tedious work of tracking internship applications.",
+    tags: ["Python", "Gmail API", "Ollama", "Qwen", "LLM"],
+    link: "https://github.com/KyunSC/gmail-internship-scanner",
+    github: "https://github.com/KyunSC/gmail-internship-scanner",
+  },
 ];
 
 export const IN_PROGRESS_PROJECTS = [
@@ -76,14 +83,6 @@ export const IN_PROGRESS_PROJECTS = [
     tags: ["Python", "Pandas", "Scikit-learn", "TensorFlow"],
     link: "https://github.com/KyunSC/F1Predictions",
     github: "https://github.com/KyunSC/F1Predictions",
-    inProgress: true,
-  },
-  {
-    title: "Gmail Internship Scanner",
-    description: "LLM-powered tool that scans a Gmail inbox to surface internship-related emails and extract structured details like company, role, and status.\nIntegrates with the Gmail API to fetch messages and runs a local Qwen model via Ollama for private, offline classification and extraction.\nDesigned to keep all email content on-device while automating the tedious work of tracking internship applications.",
-    tags: ["Python", "Gmail API", "Ollama", "Qwen", "LLM"],
-    link: "https://github.com/KyunSC/gmail-internship-scanner",
-    github: "https://github.com/KyunSC/gmail-internship-scanner",
     inProgress: true,
   },
   {

@@ -103,6 +103,16 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Projects Section */}
+        <section id="projects" className="mb-24">
+          <MotionSection>
+            <SectionHeading prefix="My" highlight="Projects" showSeparator />
+          </MotionSection>
+          <MotionSection>
+            <ProjectTabs completed={COMPLETED_PROJECTS} inProgress={IN_PROGRESS_PROJECTS} />
+          </MotionSection>
+        </section>
+
         {/* Skills Section */}
         <section id="skills" className="mb-24">
           <MotionSection>
@@ -128,16 +138,6 @@ export default function Home() {
               </MotionSection>
             ))}
           </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="mb-24">
-          <MotionSection>
-            <SectionHeading prefix="My" highlight="Projects" showSeparator />
-          </MotionSection>
-          <MotionSection>
-            <ProjectTabs completed={COMPLETED_PROJECTS} inProgress={IN_PROGRESS_PROJECTS} />
-          </MotionSection>
         </section>
 
         {/* Contact Section */}

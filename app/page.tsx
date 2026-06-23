@@ -70,10 +70,10 @@ export default function Home() {
                 shipping things that hold up under real use, not just things that work.
               </p>
               <p className="leading-relaxed">
-                Most of what I build comes out of whatever I&apos;m into. Finance got me to ship the Azure Live
-                Market Data App, a serverless API for real-time stock data; F1 has me deep in a race prediction
-                model with machine learning; and at my Loriginal internship I worked full-stack, shipping a RAG-powered
-                feature and an AR experience. Half my projects start as &ldquo;I wonder if I could build that.&rdquo;
+                Most of what I build comes out of whatever I&apos;m into &mdash; finance led to the Azure Live
+                Market Data App (a serverless API for real-time stock data), F1 has me deep in an ML race-prediction
+                model, and my Loriginal internship had me full-stack on a RAG-powered feature and an AR experience.
+                Half my projects start as &ldquo;I wonder if I could build that.&rdquo;
               </p>
             </div>
           </div>

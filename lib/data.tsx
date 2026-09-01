@@ -10,7 +10,7 @@ export const EXPERIENCES = [
   {
     role: "Full Stack Engineer",
     company: "Loriginal",
-    period: "Jun 2026 – Aug 2026",
+    period: "Jun 2026 – Present",
     location: "Montreal, QC",
     description: "Built RAG (Retrieval-Augmented Generation) automation to streamline workflows and surface relevant information.\nImplemented augmented reality (AR) features as part of the product experience.",
     tags: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "MySQL", "RAG", "AR"],

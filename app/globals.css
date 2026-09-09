@@ -464,3 +464,11 @@ html {
     transform: none;
   }
 }
+
+/* Career Circuit follows the same pre-paint theme switch as the hero. */
+.f1-career-circuit { display: none; }
+:root[data-theme="f1"] .f1-career-circuit { display: block; }
+:root[data-theme="f1"] .experience-terminal-view { display: none; }
+.f1-panel { background: var(--card); color: var(--card-foreground); }
+.f1-eyebrow { font-family: var(--font-geist-mono), monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; }
+.f1-circuit-grid { background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 32px 32px; }

@@ -12,6 +12,8 @@ import SkillIcon from "@/components/SkillIcon";
 import ExperienceTerminal from "@/components/ExperienceTerminal";
 import { COMPLETED_PROJECTS, IN_PROGRESS_PROJECTS, SKILL_CATEGORIES, EXPERIENCES } from "@/lib/data";
 
+const CareerCircuit = dynamic(() => import("@/components/CareerCircuit"));
+
 const ProjectTabs = dynamic(() => import("@/components/ProjectTabs"));
 
 const jsonLd = {
@@ -94,7 +96,8 @@ export default function Home() {
           <MotionSection>
             <SectionHeading prefix="Work" highlight="Experience" showSeparator />
           </MotionSection>
-          <ExperienceTerminal experiences={EXPERIENCES} />
+          <div className="experience-terminal-view"><ExperienceTerminal experiences={EXPERIENCES} /></div>
+          <CareerCircuit experiences={EXPERIENCES} />
         </section>
 
         {/* Projects Section */}

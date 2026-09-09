@@ -251,10 +251,10 @@ html {
 }
 
 @keyframes f1-roll-in {
-  0%   { transform: translateX(-180%); opacity: 0; }
+  0%   { transform: translateX(180%); opacity: 0; }
   12%  { opacity: 1; }
-  75%  { transform: translateX(6%); }    /* coast slightly past center */
-  88%  { transform: translateX(-3%); }   /* brake recoil */
+  75%  { transform: translateX(-6%); }    /* coast slightly past center */
+  88%  { transform: translateX(3%); }   /* brake recoil */
   100% { transform: translateX(0); opacity: 1; }
 }
 
@@ -402,7 +402,7 @@ html {
 /* A single pass on F1 activation, followed by the name reveal. The heading
    stays in flow so hiding it never shifts the surrounding content. */
 .f1-name-stage {
-  --f1-pass-duration: 1.2s;
+  --f1-pass-duration: 1.7s;
 }
 
 .f1-intro-car {

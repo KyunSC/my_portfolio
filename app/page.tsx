@@ -10,7 +10,6 @@ import HeroSection from "@/components/HeroSection";
 import StatCard from "@/components/StatCard";
 import SkillIcon from "@/components/SkillIcon";
 import ExperienceTerminal from "@/components/ExperienceTerminal";
-import F1Car from "@/components/F1Car";
 import { COMPLETED_PROJECTS, IN_PROGRESS_PROJECTS, SKILL_CATEGORIES, EXPERIENCES } from "@/lib/data";
 
 const ProjectTabs = dynamic(() => import("@/components/ProjectTabs"));
@@ -95,12 +94,7 @@ export default function Home() {
           <MotionSection>
             <SectionHeading prefix="Work" highlight="Experience" showSeparator />
           </MotionSection>
-          <div className="f1-swap">
-            <div className="f1-terminal">
-              <ExperienceTerminal experiences={EXPERIENCES} />
-            </div>
-            <F1Car className="f1-car-view" />
-          </div>
+          <ExperienceTerminal experiences={EXPERIENCES} />
         </section>
 
         {/* Projects Section */}

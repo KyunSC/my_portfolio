@@ -399,6 +399,53 @@ html {
   animation-delay: 0.4s;
 }
 
+/* A single pass on F1 activation, followed by the name reveal. The heading
+   stays in flow so hiding it never shifts the surrounding content. */
+.f1-name-stage {
+  --f1-pass-duration: 1.2s;
+}
+
+.f1-intro-car {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 20;
+  width: clamp(190px, 28vw, 320px);
+  color: var(--primary);
+  pointer-events: none;
+}
+
+.f1-intro-car svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes f1-overhead-pass {
+  from { transform: translate(100vw, -50%); }
+  to { transform: translate(-100%, -50%); }
+}
+
+@keyframes f1-name-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+:root[data-theme="f1"] .f1-intro-car {
+  display: block;
+  animation: f1-overhead-pass var(--f1-pass-duration) cubic-bezier(0.4, 0, 0.7, 1) both;
+}
+
+:root[data-theme="f1"] .f1-name {
+  animation: f1-name-reveal 0.4s ease-out var(--f1-pass-duration) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme="f1"] .f1-intro-car { display: none; animation: none; }
+  :root[data-theme="f1"] .f1-name { animation: none; opacity: 1; transform: none; }
+}
+
 @keyframes weather-greeting-fade-in {
   from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: translateY(0); }

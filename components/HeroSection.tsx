@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import HeroAnimations from "@/components/HeroAnimations";
 import LazyTerminalBio from "@/components/LazyTerminalBio";
 import F1Car from "@/components/F1Car";
+import F1IntroCar from "@/components/F1IntroCar";
 import WeatherGreeting from "@/components/WeatherGreeting";
 import WeatherProvider from "@/components/WeatherProvider";
 
@@ -20,9 +21,12 @@ export default function HeroSection() {
               <span className="text-sm font-mono text-muted-foreground">available for work</span>
             </div>
 
-            <h1 className="hero-fade-up hero-fade-up-2 mb-6 text-5xl font-bold tracking-tight md:text-7xl">
-              Sunny Chen
-            </h1>
+            <div className="f1-name-stage relative mb-6">
+              <F1IntroCar />
+              <h1 className="f1-name hero-fade-up hero-fade-up-2 text-5xl font-bold tracking-tight md:text-7xl">
+                Sunny Chen
+              </h1>
+            </div>
 
             <p className="hero-fade-up hero-fade-up-3 mb-8 text-xl text-muted-foreground md:text-2xl">
               Software Developer

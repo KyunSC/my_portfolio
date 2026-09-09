@@ -60,7 +60,7 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 flex max-w-[calc(100vw-1.5rem)] items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 backdrop-blur-md transition-shadow md:px-5 ${
+      className={`portfolio-nav fixed top-4 left-1/2 -translate-x-1/2 z-50 flex max-w-[calc(100vw-1.5rem)] items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 backdrop-blur-md transition-shadow md:px-5 ${
         scrolled ? "shadow-lg" : ""
       }`}
     >

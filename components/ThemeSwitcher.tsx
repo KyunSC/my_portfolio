@@ -11,7 +11,7 @@ type ThemeId = "default" | "f1" | "finance";
 const THEMES: { id: ThemeId; label: string; swatch: string }[] = [
   { id: "default", label: "Coding", swatch: "oklch(0.5 0.19 146)" },
   { id: "f1", label: "F1", swatch: "oklch(0.6 0.23 27)" },
-  { id: "finance", label: "Finance", swatch: "oklch(0.5 0.16 255)" },
+  { id: "finance", label: "Finance", swatch: "#c5ed85" },
 ];
 
 // Tiny external store backed by localStorage so the active theme can be read

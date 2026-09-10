@@ -216,6 +216,12 @@ html {
 
 /* ── F1 theme: swap terminals for a Red Bull car that rolls in ── */
 /* By default show the terminal and hide the car; under the F1 theme, swap. */
+:root[data-theme="f1"] {
+  --f1-pass-duration: 1.7s;
+  --f1-name-duration: 0.4s;
+  --f1-model-delay: calc(var(--f1-pass-duration) + var(--f1-name-duration));
+}
+
 .f1-swap .f1-car-view {
   display: none;
 }
@@ -226,6 +232,7 @@ html {
 
 :root[data-theme="f1"] .f1-swap .f1-car-view {
   display: flex;
+  animation: hero-fade-in 0.4s ease-out var(--f1-model-delay) both;
 }
 
 .f1-car-svg {
@@ -254,13 +261,16 @@ html {
 /* Animation runs when the car becomes visible (display flips on theme change) */
 :root[data-theme="f1"] .f1-swap .f1-car-svg {
   animation: f1-roll-in 1.9s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+  animation-delay: var(--f1-model-delay);
 }
 
 :root[data-theme="f1"] .f1-swap .f1-wheel {
   animation: f1-wheel-spin 1.9s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+  animation-delay: var(--f1-model-delay);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  :root[data-theme="f1"] .f1-swap .f1-car-view,
   :root[data-theme="f1"] .f1-swap .f1-car-svg,
   :root[data-theme="f1"] .f1-swap .f1-wheel {
     animation: none;
@@ -389,10 +399,6 @@ html {
 
 /* A single pass on F1 activation, followed by the name reveal. The heading
    stays in flow so hiding it never shifts the surrounding content. */
-.f1-name-stage {
-  --f1-pass-duration: 1.7s;
-}
-
 .f1-intro-car {
   display: none;
   position: absolute;
@@ -426,7 +432,7 @@ html {
 }
 
 :root[data-theme="f1"] .f1-name {
-  animation: f1-name-reveal 0.4s ease-out var(--f1-pass-duration) both;
+  animation: f1-name-reveal var(--f1-name-duration) ease-out var(--f1-pass-duration) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

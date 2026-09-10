@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Palette } from "lucide-react";
+import { Check, Flag, Palette, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -45,7 +45,27 @@ function applyTheme(id: ThemeId) {
 export default function ThemeSwitcher() {
   const theme = useSyncExternalStore(subscribe, getSnapshot, () => "default" as ThemeId);
   const [open, setOpen] = useState(false);
+  const [showInvite, setShowInvite] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const dismissInvite = () => {
+    setShowInvite(false);
+  };
+
+  useEffect(() => {
+    if (theme !== "default") return;
+    const timer = window.setTimeout(() => setShowInvite(true), 5000);
+    return () => window.clearTimeout(timer);
+  }, [theme]);
+
+  useEffect(() => {
+    if (!showInvite) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") dismissInvite();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [showInvite]);
 
   // Close on outside click / Escape.
   useEffect(() => {
@@ -63,12 +83,13 @@ export default function ThemeSwitcher() {
   }, [open]);
 
   const select = (id: ThemeId) => {
+    if (id !== theme) setShowInvite(false);
     applyTheme(id);
     setOpen(false);
   };
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative overflow-visible">
       <Button
         variant="ghost"
         size="icon-sm"
@@ -80,6 +101,37 @@ export default function ThemeSwitcher() {
       >
         <Palette />
       </Button>
+
+      {showInvite && !open && (
+        <aside
+          aria-label="Try the F1 theme"
+          className="f1-theme-invite absolute left-1/2 top-full z-50 mt-4 w-64 max-w-[calc(100vw-5rem)] -translate-x-1/2 rounded-xl border border-border bg-background p-4 shadow-xl md:left-auto md:right-0 md:translate-x-0"
+        >
+          {/* The navbar is fixed; this pointer stays aligned with its palette button. */}
+          <span
+            aria-hidden="true"
+            className="absolute -top-1.5 left-1/2 size-3 -translate-x-1/2 rotate-45 border-l border-t border-border bg-background md:left-auto md:right-2.5 md:translate-x-0"
+          />
+          <button
+            type="button"
+            aria-label="Dismiss F1 invitation"
+            onClick={dismissInvite}
+            className="absolute right-1 top-1 rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring"
+          >
+            <X className="size-4" />
+          </button>
+          <div className="mb-2 flex items-center gap-2 pr-5 text-sm font-semibold">
+            <Flag className="size-4 text-primary" aria-hidden="true" />
+            Fancy a lap?
+          </div>
+          <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
+            Explore my racing side with animated cars and a Nürburgring career circuit.
+          </p>
+          <Button size="sm" className="w-full text-xs" onClick={() => select("f1")}>
+            Try F1 mode
+          </Button>
+        </aside>
+      )}
 
       <AnimatePresence>
         {open && (

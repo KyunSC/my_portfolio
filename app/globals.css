@@ -627,3 +627,9 @@ html {
   .finance-search input { width: 100%; }
   :root[data-theme="finance"] .portfolio-main > section:not(.finance-hero) { margin-bottom: 48px; }
 }
+
+/* Match the pre-paint theme applied by layout.tsx, including saved themes. */
+:root[data-theme="f1"] .f1-theme-invite,
+:root[data-theme="finance"] .f1-theme-invite {
+  display: none;
+}

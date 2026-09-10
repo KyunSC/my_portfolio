@@ -467,28 +467,28 @@ html {
 .f1-eyebrow { font-family: var(--font-geist-mono), monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; }
 .f1-circuit-grid { background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 32px 32px; }
 
-/* Finance is an independent terminal treatment, selected before first paint. */
+/* Finance: an editorial edition, selected before first paint. */
 .finance-only { display: none; }
 :root[data-theme="finance"] {
-  color-scheme: dark;
-  --background: #101411;
-  --foreground: #ecede7;
-  --card: #171c18;
-  --card-foreground: #ecede7;
-  --popover: #171c18;
-  --popover-foreground: #ecede7;
-  --primary: #c5ed85;
-  --primary-foreground: #17200d;
-  --muted: #202720;
-  --muted-foreground: #a0aa9e;
-  --secondary: #202720;
-  --secondary-foreground: #ecede7;
-  --accent: #273024;
-  --accent-foreground: #ecede7;
-  --border: #30382e;
-  --input: #394235;
-  --ring: #c5ed85;
-  --radius: 0.25rem;
+  color-scheme: light;
+  --background: #f4f0e7;
+  --foreground: #292720;
+  --card: #f4f0e7;
+  --card-foreground: #292720;
+  --popover: #f4f0e7;
+  --popover-foreground: #292720;
+  --primary: #873b2c;
+  --primary-foreground: #fffaf0;
+  --muted: #eae4d8;
+  --muted-foreground: #70695e;
+  --secondary: #eae4d8;
+  --secondary-foreground: #494338;
+  --accent: #e8dfd0;
+  --accent-foreground: #292720;
+  --border: #cfc5b5;
+  --input: #b8ab98;
+  --ring: #873b2c;
+  --radius: 0;
 }
 :root[data-theme="finance"] .finance-only { display: block; }
 :root[data-theme="finance"] .standard-view,
@@ -504,7 +504,7 @@ html {
 :root[data-theme="finance"] #about .finance-section-kicker { grid-column: 1 / -1; }
 :root[data-theme="finance"] #about .space-y-4 { color: var(--muted-foreground); font-size: 15px; }
 :root[data-theme="finance"] #about > div:last-child { margin-top: 16px; }
-:root[data-theme="finance"] [data-slot="card"] { border-radius: 3px; box-shadow: none; }
+:root[data-theme="finance"] [data-slot="card"] { border-radius: 0; box-shadow: none; }
 :root[data-theme="finance"] #skills [data-slot="card"] { border-left-width: 1px; border-left-color: var(--border); height: 100%; }
 :root[data-theme="finance"] #skills [data-slot="card-header"] { border-bottom: 1px solid var(--border); margin-bottom: 16px; }
 :root[data-theme="finance"] #contact [data-slot="card"] { background: transparent; border: 0; padding: 24px 0 0; }
@@ -554,7 +554,7 @@ html {
 .finance-section-title { margin-bottom: 28px; }
 .finance-section-title h2 { font-size: 34px; }
 .finance-section-title p { font-size: 13px; color: var(--muted-foreground); margin-top: 8px; }
-.finance-ledger { border: 1px solid var(--border); background: var(--card); }
+.finance-ledger { border: 1px solid var(--border); background: var(--card); border-radius: 0; overflow: hidden; }
 .finance-ledger article { display: grid; grid-template-columns: 230px 1fr 24px; gap: 32px; padding: 30px; }
 .finance-ledger article + article { border-top: 1px solid var(--border); }
 .finance-ledger-date { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; font-size: 10px; color: var(--muted-foreground); }

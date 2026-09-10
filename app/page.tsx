@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { Code2, Globe, Briefcase, Trophy, Mail, ArrowUpRight, ArrowDown, Activity } from "lucide-react";
+import { Code2, Globe, Briefcase, Trophy, Mail, ArrowUpRight, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -62,26 +62,33 @@ export default function Home() {
 
         <div className="standard-view"><HeroSection /></div>
         <section className="finance-only finance-hero" aria-label="Finance portfolio overview">
-          <div className="finance-masthead"><span><Activity size={14} /> SC TERMINAL <b>/</b> PERSONAL PORTFOLIO</span><span>MONTRÉAL, CA <b>·</b> SOFTWARE & SYSTEMS</span></div>
-          <div className="finance-ticker">
-            <span><b>EXPERIENCE</b> 5+ YRS <i>↗ Building</i></span><span><b>PROJECTS</b> 10+ <i>↗ Shipped</i></span><span><b>GAME JAM</b> 1ST <i>2024</i></span><span><b>FOCUS</b> FULL STACK <i>● Active</i></span>
-          </div>
+          <div className="finance-masthead"><span>THE PERSONAL PORTFOLIO OF A SOFTWARE DEVELOPER</span><span>MONTRÉAL, QUÉBEC · EST. 2006</span></div>
+          <div className="finance-nameplate"><h1>Sunny Chen<span>& Co.</span></h1><div>Independent thinking.<br />Compounding curiosity.</div></div>
+          <div className="finance-edition"><span>SOFTWARE, SYSTEMS & THE OCCASIONAL MARKET OBSESSION</span><span>PERSONAL EDITION / NO. 01</span></div>
           <div className="finance-hero-grid">
-            <div className="finance-intro"><p className="finance-eyebrow"><span className="finance-dot" /> OPEN TO OPPORTUNITIES</p><h1>Sunny Chen<span>Building for<br />the long term.</span></h1><p className="finance-intro-copy">Software developer. Market enthusiast.<br />Turning curiosity into systems that deliver.</p><div className="finance-actions"><a className="finance-button" href="#projects">Explore my portfolio <ArrowUpRight size={17} /></a><a className="finance-text-link" href="#contact">Let’s connect <ArrowUpRight size={16} /></a></div><div className="finance-profile-foot"><span>BASED IN MONTRÉAL</span><span>CODE × CAPITAL × CURIOSITY</span></div></div>
-            <div className="finance-market-panel">
-              <div className="finance-panel-top"><span className="finance-eyebrow">FEATURED / MARKET INFRASTRUCTURE</span><Activity size={16} /></div>
-              <div className="finance-market-title"><div><span className="finance-symbol">AZURE / MKT</span><h2>From ticker to insight.</h2></div><span className="finance-outline-label">SERVERLESS</span></div>
-              <p>A cloud-native API built to put stock market data to work.</p>
-              <div className="finance-chart" role="img" aria-label="Decorative market-style line chart. Illustrative data, not live prices.">
-                <div className="finance-chart-label"><span>MARKET DATA PIPELINE</span><span>ILLUSTRATIVE</span></div>
-                <svg viewBox="0 0 540 210" fill="none" aria-hidden="true"><defs><linearGradient id="finance-chart-fill" x1="0" y1="0" x2="0" y2="1"><stop stopColor="currentColor" stopOpacity=".22"/><stop offset="1" stopColor="currentColor" stopOpacity="0"/></linearGradient></defs>{[40, 85, 130, 175].map(y => <path key={y} d={`M0 ${y}H540`} className="finance-gridline"/>)}<path d="M0 175 L20 167 L35 178 L58 146 L76 154 L100 125 L117 137 L140 119 L158 128 L180 95 L199 111 L220 91 L240 106 L259 71 L278 83 L300 62 L323 88 L344 70 L365 77 L390 43 L410 53 L431 30 L450 48 L470 23 L490 32 L513 12 L540 20 V210 H0Z" fill="url(#finance-chart-fill)"/><path d="M0 175 L20 167 L35 178 L58 146 L76 154 L100 125 L117 137 L140 119 L158 128 L180 95 L199 111 L220 91 L240 106 L259 71 L278 83 L300 62 L323 88 L344 70 L365 77 L390 43 L410 53 L431 30 L450 48 L470 23 L490 32 L513 12 L540 20" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round"/></svg>
-                <div className="finance-chart-label"><span>INGEST</span><span>PROCESS</span><span>SERVE</span></div>
-              </div>
-              <div className="finance-market-metrics"><div><span>COMPUTE</span><b>Azure Functions</b></div><div><span>LANGUAGE</span><b>Python</b></div><div><span>INTERFACE</span><b>REST API</b></div></div>
-              <a className="finance-feature-link" href={COMPLETED_PROJECTS[0].link} target="_blank" rel="noopener noreferrer">Explore the market data app <ArrowUpRight size={18} /></a>
+            <div className="finance-intro">
+              <p className="finance-eyebrow">A NOTE FROM THE DEVELOPER</p>
+              <h2>Good things<br />take <em>building.</em></h2>
+              <p className="finance-intro-copy">I’m Sunny, a developer in Montréal. I follow my curiosity into software, markets, and the systems that connect them.</p>
+              <p className="finance-intro-copy">This is a collection of what I’ve built, what I’m learning, and where I’m headed next.</p>
+              <div className="finance-actions"><Button asChild variant="link" className="px-0"><a href="#projects">Read the project index <ArrowUpRight size={17} /></a></Button></div>
+              <div className="finance-signature" aria-hidden="true">Sunny.</div>
             </div>
+            <figure className="finance-cover">
+              <div className="finance-cover-label"><span>FIELD NOTES</span><span>001 / MARKET DATA</span></div>
+              <div className="finance-engraving" aria-hidden="true">
+                <svg viewBox="0 0 520 360" fill="none">
+                  <defs><pattern id="finance-hatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 5L5 0" stroke="currentColor" strokeWidth=".6" /></pattern></defs>
+                  {[0,1,2,3,4,5].map(i => <g key={i} transform={`translate(${50+i*65} ${258-i*29})`}><path d="M0 0L28 -16L56 0L28 16Z" fill="var(--background)" stroke="currentColor"/><path d={`M0 0V${60+i*13}L28 ${76+i*13}V16Z`} fill="url(#finance-hatch)" stroke="currentColor"/><path d={`M28 16L56 0V${60+i*13}L28 ${76+i*13}Z`} fill="var(--background)" stroke="currentColor"/></g>)}
+                  <path d="M38 213L446 31M434 31H446V43" stroke="currentColor" strokeWidth="1.3"/>
+                  <circle cx="446" cy="31" r="20" stroke="currentColor" strokeDasharray="2 4"/>
+                </svg>
+              </div>
+              <figcaption><span className="finance-eyebrow">ON TURNING CURIOSITY INTO CODE</span><h2>A closer look<br />at the markets.</h2><p>A serverless experiment in making stock data useful. Built with Python and Azure Functions.</p><Button asChild variant="link" className="px-0"><a href={COMPLETED_PROJECTS[0].link} target="_blank" rel="noopener noreferrer">Inside the project <ArrowUpRight size={16} /></a></Button></figcaption>
+            </figure>
+            <aside className="finance-margin-notes"><span className="finance-eyebrow">AT A GLANCE</span><div><b>01</b><p>Software developer<br />Based in Montréal</p></div><div><b>02</b><p>Full-stack systems<br />From API to interface</p></div><div><b>03</b><p>Always curious<br />Currently building</p></div><a href="#contact">Let’s talk <ArrowUpRight size={14} /></a></aside>
           </div>
-          <a className="finance-scroll" href="#about"><ArrowDown size={14} /> THE FUNDAMENTALS <span>01 — 05</span></a>
+          <a className="finance-scroll" href="#about"><ArrowDown size={14} /> SCROLL TO THE FUNDAMENTALS <span>CODE / CURIOSITY / CRAFT</span></a>
         </section>
 
         {/* About Section */}

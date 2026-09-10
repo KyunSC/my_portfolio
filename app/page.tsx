@@ -94,7 +94,7 @@ export default function Home() {
         {/* About Section */}
         <section id="about" className="mb-24">
           <div>
-            <div className="finance-only finance-section-kicker">01 / INVESTMENT THESIS</div>
+            <div className="finance-only finance-section-kicker">01 / A LITTLE CONTEXT</div>
             <SectionHeading prefix="About" highlight="Me" showSeparator />
             <div className="space-y-4 text-foreground mb-8">
               <p className="leading-relaxed">
@@ -136,8 +136,8 @@ export default function Home() {
 
         {/* Projects Section */}
         <section id="projects" className="mb-24">
-          <div className="finance-only finance-section-kicker">03 / PROJECT HOLDINGS</div>
-          <div className="finance-only finance-section-title"><h2>A diversified portfolio.</h2><p>Ideas researched. Systems built. Products shipped.</p></div>
+          <div className="finance-only finance-section-kicker">03 / SELECTED WORK</div>
+          <div className="finance-only finance-section-title"><h2>The project index.</h2><p>A running record of experiments, useful tools, and things made out of curiosity.</p></div>
           <div className="finance-only"><FinanceProjects completed={COMPLETED_PROJECTS} inProgress={IN_PROGRESS_PROJECTS} /></div>
           <MotionSection>
             <SectionHeading prefix="My" highlight="Projects" showSeparator />
@@ -149,7 +149,7 @@ export default function Home() {
 
         {/* Skills Section */}
         <section id="skills" className="mb-24">
-          <div className="finance-only finance-section-kicker">04 / CORE ASSETS</div>
+          <div className="finance-only finance-section-kicker">04 / TOOLS OF THE TRADE</div>
           <MotionSection>
             <SectionHeading prefix="Skills &amp;" highlight="Technologies" showSeparator />
           </MotionSection>
@@ -177,8 +177,8 @@ export default function Home() {
 
         {/* Contact Section */}
         <section id="contact" className="mb-24">
-          <div className="finance-only finance-section-kicker">05 / THE NEXT OPPORTUNITY</div>
-          <div className="finance-only finance-contact-heading">Let’s build<br /><span>something valuable.</span></div>
+          <div className="finance-only finance-section-kicker">05 / CORRESPONDENCE</div>
+          <div className="finance-only finance-contact-heading">Have something<br /><span>in mind?</span></div>
           <MotionSection>
             <SectionHeading prefix="Let&apos;s" highlight="Connect" showSeparator />
           </MotionSection>

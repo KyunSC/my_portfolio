@@ -62,7 +62,7 @@ export default function Home() {
 
         <div className="standard-view"><HeroSection /></div>
         <section className="finance-only finance-hero" aria-label="Finance portfolio overview">
-          <div className="finance-masthead"><span>THE PERSONAL PORTFOLIO OF A SOFTWARE DEVELOPER</span><span>MONTRÉAL, QUÉBEC · EST. 2006</span></div>
+          <div className="finance-masthead"><span>THE PERSONAL PORTFOLIO OF A SOFTWARE DEVELOPER</span><span>MONTRÉAL, QUÉBEC · INDEPENDENT PORTFOLIO</span></div>
           <div className="finance-nameplate"><h1>Sunny Chen<span>& Co.</span></h1><div>Independent thinking.<br />Compounding curiosity.</div></div>
           <div className="finance-edition"><span>SOFTWARE, SYSTEMS & THE OCCASIONAL MARKET OBSESSION</span><span>PERSONAL EDITION / NO. 01</span></div>
           <div className="finance-hero-grid">

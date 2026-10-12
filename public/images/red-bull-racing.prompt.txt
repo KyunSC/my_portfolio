@@ -1,0 +1,9 @@
+Generated with the built-in imagegen tool. PNG is the original; WebP is the optimized website asset.
+
+Use case: product-mockup
+Asset type: transparent car sprite for a portfolio website, replacing a simple overhead SVG.
+Primary request: extremely realistic Red Bull Racing Formula One car, with detailed modern ground-effect F1 proportions and iconic navy, red and yellow Oracle Red Bull Racing livery.
+Composition: exact directly overhead orthographic top-down view, car long axis horizontal, FRONT NOSE POINTING LEFT, rear wing RIGHT. Entire car visible, centered, no cropped parts. Wide landscape canvas with small even transparent margins.
+Materials: satin dark navy carbon-fiber bodywork with realistic reflections, sculpted sidepods and vent channels, intricate multi-element carbon front and rear wings, exposed suspension wishbones, four realistic black slick racing tires with yellow Pirelli sidewall markings, cockpit halo and small driver helmet, red charging bull and yellow sun on engine cover. White ORACLE sponsor lettering on sidepods, Red Bull on rear wing, small realistic sponsor decals.
+Lighting: premium studio automotive product photography, soft directional highlights that clearly reveal dark bodywork against a dark website. Crisp professional high-detail photoreal 3D rendering.
+Constraints: one car only, genuinely transparent background, no floor, no ground plane, no cast shadow outside the car, no decorative text, no border, no speed trails, no perspective angle, no cartoon or vector illustration.

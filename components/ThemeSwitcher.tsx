@@ -83,9 +83,14 @@ export default function ThemeSwitcher() {
   }, [open]);
 
   const select = (id: ThemeId) => {
-    if (id !== theme) setShowInvite(false);
+    const changed = id !== theme;
+    if (changed) setShowInvite(false);
     applyTheme(id);
     setOpen(false);
+    if (changed) {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    }
   };
 
   return (

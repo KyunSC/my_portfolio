@@ -155,18 +155,15 @@ export default function CareerCircuit({ experiences }: { experiences: typeof EXP
               </g>
             ))}
             <g ref={carRef} transform="translate(279 869) rotate(-40)">
-              <g stroke="var(--background)" strokeWidth="0.8">
-                {/* Overhead car, with exposed tyres, wings, cockpit and a tapered nose. */}
-                <rect x="-12" y="-12" width="9" height="6" rx="2" fill="var(--foreground)" />
-                <rect x="-12" y="6" width="9" height="6" rx="2" fill="var(--foreground)" />
-                <rect x="10" y="-11" width="7" height="5" rx="1.5" fill="var(--foreground)" />
-                <rect x="10" y="6" width="7" height="5" rx="1.5" fill="var(--foreground)" />
-                <path d="M-14-5 L-3-7 L5-4 L21-2 L21 2 L5 4 L-3 7 L-14 5Z" fill="var(--primary)" />
-                <rect x="-17" y="-10" width="4" height="20" rx="1" fill="var(--primary)" />
-                <rect x="19" y="-10" width="4" height="20" rx="1" fill="var(--primary)" />
-                <ellipse cx="0" cy="0" rx="5" ry="3" fill="var(--background)" />
-                <circle cx="2" cy="0" r="1.8" fill="var(--foreground)" />
-              </g>
+              {/* Schumacher-inspired F2008 test car. Nose points +x along the path tangent. */}
+              <image
+                href="/images/f1/ferrari-f2008-schumacher.webp"
+                x="-32"
+                y="-12"
+                width="64"
+                height="24"
+                preserveAspectRatio="xMidYMid meet"
+              />
             </g>
           </svg>
         </div>

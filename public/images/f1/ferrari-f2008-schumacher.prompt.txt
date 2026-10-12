@@ -1,0 +1,8 @@
+Generated with built-in imagegen; optimized as a transparent 640px WebP circuit marker.
+
+Use case: product-mockup.
+Asset: transparent overhead sprite for an animated Nürburgring circuit map.
+Subject: photorealistic Ferrari F2008 Formula One car in Michael Schumacher's 2008 testing guise, classic glossy scarlet red Ferrari livery, small yellow Ferrari shield, Shell and period Bridgestone markings, white accents on front and rear wings, driver wearing Schumacher's distinctive red helmet.
+Accurate 2008-era anatomy: NO HALO, open cockpit, narrow high nose, compact sculpted sidepods, intricate small winglets and bargeboards, pre-2009 multi-element front wing and relatively wide high rear wing, exposed wishbone suspension, four BLACK GROOVED Bridgestone racing tires with four circumferential grooves, 13-inch wheels with tall sidewalls. No modern sponsors, no HP, no modern ground-effect car.
+Exact directly overhead orthographic view, car long axis horizontal, FRONT NOSE POINTING RIGHT and rear wing LEFT. Entire car visible, centered, small even transparent margins. Wide 2.7:1 composition.
+Premium automotive studio product rendering, extremely realistic fine carbon fiber and metal details, clear red silhouette readable as a small map marker, soft specular highlights. Genuinely transparent background. No floor, no scenery, no shadow outside car, no text outside car, no border, no motion trails. Single car only.

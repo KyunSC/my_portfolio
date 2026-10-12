@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { Card } from "@/components/ui/card";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Prompt, TerminalInput, TerminalWindow } from "@/components/TerminalWindow";
 import type { EXPERIENCES } from "@/lib/data";
 
 interface ExperienceTerminalProps {
@@ -23,15 +23,6 @@ function commitHash(seed: string): string {
   }
   return (h >>> 0).toString(16).padStart(8, "0").slice(0, 7);
 }
-
-const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
-const subscribe = (cb: () => void) => {
-  const mql = window.matchMedia(reducedMotionQuery);
-  mql.addEventListener("change", cb);
-  return () => mql.removeEventListener("change", cb);
-};
-const getSnapshot = () => window.matchMedia(reducedMotionQuery).matches;
-const getServerSnapshot = () => false;
 
 export default function ExperienceTerminal({ experiences }: ExperienceTerminalProps) {
   // Build all command outputs from the experiences data.
@@ -81,10 +72,8 @@ export default function ExperienceTerminal({ experiences }: ExperienceTerminalPr
     [fullLog]
   );
 
-  const prefersReducedMotion = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [history, setHistory] = useState<HistoryEntry[]>(initialHistory);
   const [input, setInput] = useState("");
-  const [focused, setFocused] = useState(false);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -110,7 +99,7 @@ export default function ExperienceTerminal({ experiences }: ExperienceTerminalPr
       if (cmd === "ls") return lsList;
       if (cmd === "git log --oneline") return oneline;
       if (cmd === "git log" || cmd === "git log --work-experience") return fullLog;
-      return [`command not found: ${raw.trim()}. Type 'help' for available commands.`];
+      return [`zsh: command not found: ${raw.trim().split(/\s+/)[0]}`, "(type 'help' for available commands)"];
     },
     [helpLines, lsList, oneline, fullLog]
   );
@@ -157,90 +146,60 @@ export default function ExperienceTerminal({ experiences }: ExperienceTerminalPr
   );
 
   return (
-    <Card
-      className="flex h-[560px] flex-col overflow-hidden border-zinc-800 bg-zinc-950 font-mono text-sm md:h-[640px] md:text-base"
-      onClick={() => inputRef.current?.focus()}
+    <TerminalWindow
+      title="career"
+      bodyRef={bodyRef}
+      onActivate={() => inputRef.current?.focus()}
+      className="h-[560px] md:h-[640px]"
+      bodyClassName="break-words [word-break:normal] md:text-[15px] md:leading-[21px]"
     >
-      {/* Title bar */}
-      <div className="flex items-center gap-2 border-b border-zinc-800 px-4 py-2">
-        <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-red-500" />
-          <span className="h-3 w-3 rounded-full bg-yellow-500" />
-          <span className="h-3 w-3 rounded-full bg-green-500" />
-        </div>
-        <span className="ml-2 text-xs text-zinc-400">sunny@portfolio: ~/career</span>
-      </div>
-
-      {/* Body */}
-      <div ref={bodyRef} className="flex-1 cursor-text space-y-1 overflow-y-auto p-4 text-zinc-300">
-        {history.map((entry, i) => (
-          <div key={i} className="space-y-0.5">
-            <p>
-              <span className="text-primary">$</span>{" "}
-              <span className="text-zinc-400">{entry.command}</span>
-            </p>
-            {entry.output.map((line, j) => {
-              const linkMatch = line.match(/^(\s*link: )(\S+)$/);
-              if (linkMatch) {
-                return (
-                  <p key={j} className="overflow-x-auto whitespace-pre text-zinc-200">
-                    {linkMatch[1]}
-                    <a
-                      href={linkMatch[2]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="text-primary underline underline-offset-2 hover:text-green-300"
-                    >
-                      {linkMatch[2]}
-                    </a>
-                  </p>
-                );
-              }
+      {history.map((entry, i) => (
+        <div key={i}>
+          <p>
+            <Prompt dir="career" />
+            {entry.command}
+          </p>
+          {entry.output.map((line, j) => {
+            const linkMatch = line.match(/^(\s*link: )(\S+)$/);
+            if (linkMatch) {
               return (
-                <p
-                  key={j}
-                  className={`overflow-x-auto whitespace-pre ${
-                    line.startsWith("commit ")
-                      ? "text-yellow-500"
-                      : line.startsWith("    tags:")
-                        ? "text-primary"
-                        : "text-zinc-200"
-                  } ${line === "" ? "h-3" : ""}`}
-                >
-                  {line}
+                <p key={j}>
+                  {linkMatch[1]}
+                  <a
+                    href={linkMatch[2]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-cyan-400 underline decoration-cyan-400/40 underline-offset-2 hover:decoration-cyan-400"
+                  >
+                    {linkMatch[2]}
+                  </a>
                 </p>
               );
-            })}
-          </div>
-        ))}
+            }
+            return (
+              <p
+                key={j}
+                className={
+                  line.startsWith("commit ")
+                    ? "text-yellow-400"
+                    : line.startsWith("    tags:")
+                      ? "text-green-400"
+                      : undefined
+                }
+              >
+                {line || "\u00a0"}
+              </p>
+            );
+          })}
+        </div>
+      ))}
 
-        {/* Input line */}
-        <form onSubmit={handleSubmit} className="mt-2 flex items-center gap-2">
-          <span className="text-primary">$</span>
-          <div className="relative flex flex-1 items-center">
-            <span className="whitespace-pre text-zinc-200">{input}</span>
-            <span
-              className={`terminal-cursor ml-px inline-block h-[1em] w-2 bg-green-400 align-middle${
-                focused || prefersReducedMotion ? "" : " opacity-0"
-              }`}
-            />
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
-              className="absolute inset-0 w-full opacity-0"
-              autoComplete="off"
-              spellCheck={false}
-              aria-label="Terminal input"
-            />
-          </div>
-        </form>
-      </div>
-    </Card>
+      {/* Input line */}
+      <form onSubmit={handleSubmit} className="relative">
+        <Prompt dir="career" />
+        <TerminalInput value={input} onChange={setInput} onKeyDown={handleKeyDown} inputRef={inputRef} />
+      </form>
+    </TerminalWindow>
   );
 }

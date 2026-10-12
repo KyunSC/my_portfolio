@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { ArrowUpRight, Flag } from "lucide-react";
 import type { EXPERIENCES } from "@/lib/data";
 import { cn } from "@/lib/utils";
@@ -77,6 +77,8 @@ function Details({ experience }: { experience: Experience }) {
 }
 
 export default function CareerCircuit({ experiences }: { experiences: typeof EXPERIENCES }) {
+  const vignetteId = useId();
+  const terrainFilterId = useId();
   const [circuitIndex, setCircuitIndex] = useState(0);
   const circuit = experiences[circuitIndex];
   const pathRef = useRef<SVGPathElement>(null);
@@ -142,19 +144,36 @@ export default function CareerCircuit({ experiences }: { experiences: typeof EXP
 
   return <div className="f1-career-circuit space-y-5">
     <p className="text-sm text-muted-foreground">Choose a stop to explore each role.</p>
-      <div className="f1-panel f1-circuit-grid overflow-hidden rounded-xl border border-border p-5 sm:p-8">
+      <div className="f1-panel overflow-hidden rounded-xl border border-border p-5 sm:p-8">
         <div className="mb-6 flex items-center justify-between"><span className="f1-eyebrow">Career circuit / Nürburgring 24H</span><Flag size={18} className="text-primary" /></div>
-        <div className="relative mx-auto mb-6 aspect-[740/760] w-full max-w-lg">
+        <div className="f1-circuit-aerial relative mx-auto mb-6 aspect-[740/760] w-full max-w-2xl overflow-hidden rounded-lg border border-border">
           <svg viewBox="75 240 740 760" className="absolute inset-0 h-full w-full" aria-hidden="true">
-            <path ref={pathRef} d={CIRCUIT_PATH} fill="none" stroke="var(--border)" strokeWidth="10" strokeLinejoin="round" />
-            <path d={CIRCUIT_PATH} fill="none" stroke="var(--primary)" strokeWidth="2" strokeDasharray="5 7" />
+            <defs>
+              <filter id={terrainFilterId} x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
+                <feColorMatrix type="saturate" values="0.12" />
+                <feComponentTransfer>
+                  <feFuncR type="linear" slope="0.72" intercept="-0.04" />
+                  <feFuncG type="linear" slope="0.72" intercept="-0.04" />
+                  <feFuncB type="linear" slope="0.72" intercept="-0.04" />
+                </feComponentTransfer>
+              </filter>
+              <radialGradient id={vignetteId} cx="50%" cy="45%" r="70%">
+                <stop offset="35%" stopColor="var(--background)" stopOpacity="0" />
+                <stop offset="100%" stopColor="var(--background)" stopOpacity="0.85" />
+              </radialGradient>
+            </defs>
+            <image filter={`url(#${terrainFilterId})`} href="/images/f1/nurburgring-aerial.webp" x="75" y="240" width="740" height="760" preserveAspectRatio="none" />
+            <rect x="75" y="240" width="740" height="760" fill={`url(#${vignetteId})`} />
+            {/* A subtle theme-colored racing line shares the car's exact centreline. */}
+            <path ref={pathRef} d={CIRCUIT_PATH} fill="none" stroke="var(--primary)" strokeOpacity="0.7" strokeWidth="1.5" strokeLinejoin="round" />
             {experiences.map((exp, index) => (
               <g key={exp.company} ref={(element) => { stopRefs.current[index] = element; }}>
-                <circle r="16" fill="var(--background)" stroke={circuitIndex === index ? "var(--primary)" : "var(--muted-foreground)"} strokeWidth="2" />
-                <path d="M0-12V12" stroke="var(--primary)" strokeWidth="2" strokeDasharray="3 3" />
+                {circuitIndex === index && <circle r="25" fill="none" stroke="var(--primary)" strokeOpacity="0.3" strokeWidth="1" />}
+                <circle r="18" fill="var(--background)" fillOpacity="0.95" stroke={circuitIndex === index ? "var(--primary)" : "var(--muted-foreground)"} strokeWidth="1.5" />
+                <text y="1" textAnchor="middle" dominantBaseline="middle" fill={circuitIndex === index ? "var(--primary)" : "var(--muted-foreground)"} fontSize="13" fontFamily="monospace" fontWeight="700">{String(index + 1).padStart(2, "0")}</text>
               </g>
             ))}
-            <g ref={carRef} transform="translate(279 869) rotate(-40)">
+            <g ref={carRef} transform="translate(279 869) rotate(-40)" className="f1-circuit-car">
               {/* Schumacher-inspired F2008 test car. Nose points +x along the path tangent. */}
               <image
                 href="/images/f1/ferrari-f2008-schumacher.webp"
@@ -166,6 +185,10 @@ export default function CareerCircuit({ experiences }: { experiences: typeof EXP
               />
             </g>
           </svg>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-background/90 to-transparent px-4 pb-3 pt-8 sm:px-5 sm:pb-4" aria-hidden="true">
+            <span className="f1-eyebrow text-muted-foreground">Nordschleife + GP</span>
+            <span className="f1-eyebrow text-primary">24H layout</span>
+          </div>
         </div>
           <div className="mb-8 flex flex-wrap justify-center gap-3">{experiences.map((exp, i) => <button key={exp.company} aria-pressed={circuitIndex === i} onClick={() => { setCircuitIndex(i); setJourney((value) => value + 1); }} className={cn("flex flex-col items-center gap-1 whitespace-nowrap rounded-lg border bg-background px-3 py-2 text-[10px] sm:text-xs shadow-sm transition-colors", circuitIndex === i ? "border-primary text-primary" : "border-border text-muted-foreground hover:border-primary")}><span className="font-mono font-bold">STOP {String(i + 1).padStart(2, "0")}</span><span>{exp.company}</span></button>)}</div>
         <div className="relative rounded-lg border border-border bg-background p-5 sm:p-6"><div className="mb-5 flex flex-wrap items-start justify-between gap-3"><div><p className="f1-eyebrow text-primary">{circuit.company}</p><h4 className="mt-2 text-xl font-bold">{circuit.role}</h4></div><p className="text-xs text-muted-foreground">{circuit.period} · {circuit.location}</p></div><Details experience={circuit} /></div>

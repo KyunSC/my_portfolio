@@ -154,14 +154,51 @@ html {
 }
 
 
-/* ── Terminal cursor blink ── */
-@keyframes terminal-blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+/* ── Terminal window ── */
+/* In a layer so per-instance Tailwind utilities (e.g. md:text-[15px]) can override. */
+@layer components {
+  .terminal-body {
+    --terminal-fg: #e4e4e7;
+    color: var(--terminal-fg);
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, var(--font-geist-mono), monospace;
+    font-size: 13px;
+    line-height: 18px;
+    font-variant-ligatures: none;
+    white-space: pre-wrap;
+    word-break: break-all;
+    -webkit-font-smoothing: antialiased;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.22) transparent;
+  }
+
+  .terminal-body ::selection {
+    background: rgb(118 138 168 / 0.5);
+  }
+
+  .terminal-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", var(--font-geist-sans), sans-serif;
+  }
 }
 
-.terminal-cursor {
-  animation: terminal-blink 1s step-end infinite;
+/* Block cursor: blinks by un-inverting, so the character under it stays readable. */
+@keyframes terminal-blink {
+  50% { background: transparent; color: var(--terminal-fg); }
+}
+
+.terminal-cursor-active {
+  background: var(--terminal-fg);
+  color: #1e1e1e;
+  animation: terminal-blink 1.06s step-end 0.5s infinite;
+}
+
+/* Unfocused window: hollow cursor, no blink (Terminal.app behaviour). */
+.terminal-cursor-idle {
+  outline: 1px solid rgb(228 228 231 / 0.6);
+  outline-offset: -1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-cursor-active { animation: none; }
 }
 
 /* ── Hero background glow ── */
@@ -465,7 +502,8 @@ html {
 :root[data-theme="f1"] .experience-terminal-view { display: none; }
 .f1-panel { background: var(--card); color: var(--card-foreground); }
 .f1-eyebrow { font-family: var(--font-geist-mono), monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; }
-.f1-circuit-grid { background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 32px 32px; }
+.f1-circuit-aerial { background: var(--background); }
+.f1-circuit-car { filter: drop-shadow(0 2px 2px rgb(0 0 0 / 65%)); }
 
 /* Finance: an editorial edition, selected before first paint. */
 .finance-only { display: none; }

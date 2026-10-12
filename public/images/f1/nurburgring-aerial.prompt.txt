@@ -1,0 +1,8 @@
+Generated using the built-in image generation tool.
+Illustrative terrain, not geographic satellite imagery. Registered to CareerCircuit.tsx viewBox 75 240 740 760.
+
+Use case: sketch-to-render.
+Asset type: photorealistic aerial terrain backdrop for an interactive Nürburgring 24H circuit on a portfolio website.
+Input image: exact track geometry and framing reference. Transform this flat schematic into a realistic straight-down orthographic aerial photograph of a race circuit embedded in lush German Eifel countryside.
+Invariants: preserve the EXACT road centerline, every bend, position, scale, orientation, and framing from the reference. No perspective tilt, no rotation, no cropping. Track must overlay the reference precisely.
+Surround the circuit with dense detailed mixed evergreen and deciduous forest, irregular rolling wooded hills with subtle elevation shadows, meadow clearings, patchwork fields and small service roads. Add realistic paddock buildings, parking and grandstands around the small GP loop at bottom left. Tiny natural tree crowns, muted varied greens, warm grass, natural asphalt, occasional red and white curbs. Late summer daylight with soft short shadows, sophisticated realistic satellite photograph appearance, very fine texture. Keep road width as reference. No text, no labels, no pins, no vehicles, no border, no UI. Fill entire image with terrain. Output aspect ratio 740:760 matching reference.

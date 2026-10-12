@@ -29,7 +29,7 @@ function subscribe(cb: () => void) {
 
 function getSnapshot(): ThemeId {
   const stored = localStorage.getItem("theme") as ThemeId | null;
-  return stored && THEMES.some((t) => t.id === stored) ? stored : "default";
+  return stored && THEMES.some((t) => t.id === stored) ? stored : "f1";
 }
 
 function applyTheme(id: ThemeId) {
@@ -43,7 +43,7 @@ function applyTheme(id: ThemeId) {
 }
 
 export default function ThemeSwitcher() {
-  const theme = useSyncExternalStore(subscribe, getSnapshot, () => "default" as ThemeId);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, () => "f1" as ThemeId);
   const [open, setOpen] = useState(false);
   const [showInvite, setShowInvite] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);

@@ -68,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="f1" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -78,7 +78,8 @@ export default function RootLayout({
               }
               try {
                 var t = localStorage.getItem('theme');
-                if (t && t !== 'default') document.documentElement.setAttribute('data-theme', t);
+                if (t === 'default') document.documentElement.removeAttribute('data-theme');
+                else if (t) document.documentElement.setAttribute('data-theme', t);
               } catch (e) {}
             `,
           }}

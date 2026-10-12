@@ -23,25 +23,27 @@ const COMMANDS: Record<string, string[]> = {
   ],
   whoami: ["sunny-chen"],
   about: [
-    "> Software developer based in Montreal",
+    "> Software Engineering Co-op @ McGill, based in Montreal",
     "> Passionate about building impactful products and finance",
-    "> Currently building: Live Market Data App",
-    "> Open to: Full-time & internship opportunities",
+    "> Currently building: Options Market Analytics Engine",
+    "> Open to: Internship & co-op opportunities",
   ],
   skills: [
-    "Languages:  TypeScript, Python, Java, C++",
-    "Frontend:   React, Next.js, Tailwind CSS",
-    "Backend:    Node.js, Express, Flask",
-    "Tools:      Git, Docker, PostgreSQL, Firebase",
+    "Languages:  TypeScript, JavaScript, C#, Python, Java, SQL, C, Bash",
+    "Frameworks: React, Next.js, Node.js, .NET, Angular, Spring Boot",
+    "ML:         PyTorch, scikit-learn",
+    "Tools:      Git, Docker, PostgreSQL, MySQL, Azure, Linux",
   ],
   projects: [
-    "Live Market Data App — Real-time stock prices via Azure Functions",
+    "Options Market Analytics Engine — Live options analytics on Azure",
     "  → github.com/KyunSC/azure-market-data",
+    "CrowdCheck — Real-time crowd tracker for McGill gyms & libraries",
+    "  → github.com/KyunSC/crowd-check",
   ],
   contact: [
-    "Email:    sunnychen.dev@gmail.com",
-    "GitHub:   github.com/sunnychen315",
-    "LinkedIn: linkedin.com/in/sunny-chen-mtl",
+    "Email:    sunny.chen@mail.mcgill.ca",
+    "GitHub:   github.com/KyunSC",
+    "LinkedIn: linkedin.com/in/sunny-chen-software",
   ],
 };
 
@@ -50,10 +52,10 @@ const INITIAL_HISTORY: HistoryEntry[] = [
   {
     command: "cat about.txt",
     output: [
-      "> Software developer based in Montreal",
+      "> Software Engineering Co-op @ McGill, based in Montreal",
       "> Passionate about building impactful products and finance",
-      "> Currently building: Live Market Data App",
-      "> Open to: Full-time & internship opportunities",
+      "> Currently building: Options Market Analytics Engine",
+      "> Open to: Internship & co-op opportunities",
     ],
   },
 ];

@@ -10,7 +10,7 @@ import HeroSection from "@/components/HeroSection";
 import StatCard from "@/components/StatCard";
 import SkillIcon from "@/components/SkillIcon";
 import ExperienceTerminal from "@/components/ExperienceTerminal";
-import { COMPLETED_PROJECTS, IN_PROGRESS_PROJECTS, SKILL_CATEGORIES, EXPERIENCES } from "@/lib/data";
+import { COMPLETED_PROJECTS, IN_PROGRESS_PROJECTS, SKILL_CATEGORIES, EXPERIENCES, EDUCATION } from "@/lib/data";
 
 const FinanceProjects = dynamic(() => import("@/components/FinanceProjects"));
 
@@ -27,8 +27,9 @@ const jsonLd = {
       name: "Sunny Chen",
       url: "https://chensunny.com",
       image: "https://chensunny.com/opengraph-image",
-      email: "mailto:exsunnychen2006@gmail.com",
+      email: "mailto:sunny.chen@mail.mcgill.ca",
       jobTitle: "Software Developer",
+      alumniOf: { "@type": "CollegeOrUniversity", name: "McGill University" },
       address: {
         "@type": "PostalAddress",
         addressLocality: "Montreal",
@@ -38,7 +39,7 @@ const jsonLd = {
         "https://github.com/KyunSC",
         "https://www.linkedin.com/in/sunny-chen-software/",
       ],
-      knowsAbout: ["React", "Next.js", "TypeScript", "Angular", "Python", "Java", "C#", ".NET", "Docker"],
+      knowsAbout: ["React", "Next.js", "TypeScript", "Angular", "Python", "Java", "C#", ".NET", "Spring Boot", "PostgreSQL", "PyTorch", "Microsoft Azure", "Docker"],
     },
     {
       "@type": "WebSite",
@@ -84,7 +85,7 @@ export default function Home() {
                   <circle cx="446" cy="31" r="20" stroke="currentColor" strokeDasharray="2 4"/>
                 </svg>
               </div>
-              <figcaption><span className="finance-eyebrow">ON TURNING CURIOSITY INTO CODE</span><h2>A closer look<br />at the markets.</h2><p>A serverless experiment in making stock data useful. Built with Python and Azure Functions.</p><Button asChild variant="link" className="px-0"><a href={COMPLETED_PROJECTS[0].link} target="_blank" rel="noopener noreferrer">Inside the project <ArrowUpRight size={16} /></a></Button></figcaption>
+              <figcaption><span className="finance-eyebrow">ON TURNING CURIOSITY INTO CODE</span><h2>A closer look<br />at the markets.</h2><p>A live engine that recomputes options-implied support and resistance every five minutes. Built with Python, PyTorch and Azure.</p><Button asChild variant="link" className="px-0"><a href={IN_PROGRESS_PROJECTS[0].link} target="_blank" rel="noopener noreferrer">Inside the project <ArrowUpRight size={16} /></a></Button></figcaption>
             </figure>
             <aside className="finance-margin-notes"><span className="finance-eyebrow">AT A GLANCE</span><div><b>01</b><p>Software developer<br />Based in Montréal</p></div><div><b>02</b><p>Full-stack systems<br />From API to interface</p></div><div><b>03</b><p>Always curious<br />Currently building</p></div><a href="#contact">Let’s talk <ArrowUpRight size={14} /></a></aside>
           </div>
@@ -98,17 +99,28 @@ export default function Home() {
             <SectionHeading prefix="About" highlight="Me" showSeparator />
             <div className="space-y-4 text-foreground mb-8">
               <p className="leading-relaxed">
-                I&apos;m a software developer in Montreal with 5+ years of building, from web apps in
+                I&apos;m a Software Engineering Co-op student at McGill and a developer in Montreal with 5+ years of building, from web apps in
                 React, Next.js, and TypeScript to backend services in Python, Java, and C#/.NET. I care about
                 shipping things that hold up under real use, not just things that work.
               </p>
               <p className="leading-relaxed">
-                Most of what I build comes out of whatever I&apos;m into &mdash; finance led to the Azure Live
-                Market Data App (a serverless API for real-time stock data), F1 has me deep in an ML race-prediction
-                model, and my Loriginal internship had me full-stack on a RAG-powered feature and an AR experience.
+                Most of what I build comes out of whatever I&apos;m into &mdash; finance led to the Options Market
+                Analytics Engine (a live options-analytics system on Azure), F1 has me deep in an ML race-prediction
+                model, and my internship at Galerie L&rsquo;Original had me shipping a RAG image verifier, a View in
+                Room AR feature, and a SAM-based auto-crop pipeline.
                 Half my projects start as &ldquo;I wonder if I could build that.&rdquo;
               </p>
             </div>
+            <dl className="mb-8 border-b border-border">
+              {EDUCATION.map(({ school, degree, period }) => (
+                <div key={school} className="flex flex-col gap-1 border-t border-border py-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                  <dt className="font-semibold">{school}</dt>
+                  <dd className="text-sm text-muted-foreground sm:text-right">
+                    {degree} <span className="font-mono text-xs">· {period}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
           <div className="grid grid-cols-3 gap-3 sm:gap-4">
             <MotionSection delay={0}>
@@ -118,7 +130,7 @@ export default function Home() {
               <StatCard value="1st" label="Game Jam 2024" icon={<Trophy size={20} />} />
             </MotionSection>
             <MotionSection delay={200}>
-              <StatCard value="4+" label="Languages" icon={<Code2 size={20} />} />
+              <StatCard value="8" label="Languages" icon={<Code2 size={20} />} />
             </MotionSection>
           </div>
         </section>
@@ -192,13 +204,13 @@ export default function Home() {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button variant="outline" asChild>
-                        <a href="mailto:exsunnychen2006@gmail.com">
+                        <a href="mailto:sunny.chen@mail.mcgill.ca">
                           <Mail size={16} />
                           Email
                         </a>
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent>exsunnychen2006@gmail.com</TooltipContent>
+                    <TooltipContent>sunny.chen@mail.mcgill.ca</TooltipContent>
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>

@@ -1,12 +1,14 @@
-import { Monitor, Server, Wrench } from "lucide-react";
+import { Braces, BrainCircuit, Database, Monitor, Server, Wrench } from "lucide-react";
 import {
-  SiReact, SiNextdotjs, SiAngular, SiTypescript, SiTailwindcss, SiHtml5,
-  SiPostgresql, SiNodedotjs, SiPython, SiJavascript, SiSharp, SiDotnet,
+  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiHtml5, SiCss3,
+  SiPostgresql, SiNodedotjs, SiPython, SiJavascript, SiDotnet,
   SiSpringboot, SiGit, SiGithub, SiGitlab, SiDocker, SiMysql, SiC,
   SiPytorch, SiScikitlearn, SiLinux, SiGnubash, SiJunit5, SiApachemaven, SiGradle,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { VscAzure } from "react-icons/vsc";
+import { FaDatabase } from "react-icons/fa";
+import { CSharpIcon, AngularIcon } from "@/components/BrandIcons";
 
 export const EXPERIENCES = [
   {
@@ -113,39 +115,34 @@ export const IN_PROGRESS_PROJECTS = [
 
 export const SKILL_CATEGORIES = [
   {
+    label: "Languages",
+    icon: <Braces size={18} className="text-primary" />,
+    skills: [
+      { icon: <DiJava style={{ color: "#ED8B00" }} />, label: "Java" },
+      { icon: <SiPython style={{ color: "#3776AB" }} />, label: "Python" },
+      { icon: <SiTypescript style={{ color: "#3178C6" }} />, label: "TypeScript" },
+      { icon: <SiJavascript style={{ color: "#F7DF1E" }} />, label: "JavaScript" },
+      { icon: <CSharpIcon />, label: "C#" },
+      { icon: <SiC style={{ color: "#A8B9CC" }} />, label: "C" },
+      { icon: <FaDatabase />, label: "SQL" },
+      { icon: <SiGnubash style={{ color: "#4EAA25" }} />, label: "Bash" },
+    ],
+  },
+  {
     label: "Frontend",
     icon: <Monitor size={18} className="text-primary" />,
-    animation: "fade-left" as const,
     skills: [
       { icon: <SiReact style={{ color: "#61DAFB" }} />, label: "React" },
       { icon: <SiNextdotjs />, label: "Next.js" },
-      { icon: <SiAngular style={{ color: "#DD0031" }} />, label: "Angular" },
-      { icon: <SiTypescript style={{ color: "#3178C6" }} />, label: "TypeScript" },
+      { icon: <AngularIcon />, label: "Angular" },
       { icon: <SiTailwindcss style={{ color: "#06B6D4" }} />, label: "Tailwind CSS" },
-      { icon: <SiHtml5 style={{ color: "#E34F26" }} />, label: "HTML5 & CSS3" },
+      { icon: <SiHtml5 style={{ color: "#E34F26" }} />, label: "HTML5" },
+      { icon: <SiCss3 style={{ color: "#1572B6" }} />, label: "CSS3" },
     ],
   },
   {
-    label: "Backend",
-    icon: <Server size={18} className="text-primary" />,
-    animation: "fade-up" as const,
-    skills: [
-      { icon: <SiPostgresql style={{ color: "#4169E1" }} />, label: "PostgreSQL" },
-      { icon: <SiNodedotjs style={{ color: "#5FA04E" }} />, label: "Node.js" },
-      { icon: <SiPython style={{ color: "#3776AB" }} />, label: "Python" },
-      { icon: <DiJava style={{ color: "#ED8B00" }} />, label: "Java" },
-      { icon: <SiSpringboot style={{ color: "#6DB33F" }} />, label: "Spring Boot" },
-      { icon: <SiJavascript style={{ color: "#F7DF1E" }} />, label: "JavaScript" },
-      { icon: <SiSharp style={{ color: "#239120" }} />, label: "C#" },
-      { icon: <SiDotnet style={{ color: "#512BD4" }} />, label: ".NET" },
-      { icon: <SiMysql style={{ color: "#4479A1" }} />, label: "MySQL" },
-      { icon: <SiC style={{ color: "#A8B9CC" }} />, label: "C" },
-    ],
-  },
-  {
-    label: "Tools & Others",
+    label: "DevOps & Tools",
     icon: <Wrench size={18} className="text-primary" />,
-    animation: "fade-right" as const,
     skills: [
       { icon: <SiGit style={{ color: "#F05032" }} />, label: "Git" },
       { icon: <SiGithub />, label: "GitHub" },
@@ -153,12 +150,34 @@ export const SKILL_CATEGORIES = [
       { icon: <SiDocker style={{ color: "#2496ED" }} />, label: "Docker" },
       { icon: <VscAzure style={{ color: "#0078D4" }} />, label: "Azure" },
       { icon: <SiLinux />, label: "Linux" },
-      { icon: <SiGnubash style={{ color: "#4EAA25" }} />, label: "Bash" },
-      { icon: <SiPytorch style={{ color: "#EE4C2C" }} />, label: "PyTorch" },
-      { icon: <SiScikitlearn style={{ color: "#F7931E" }} />, label: "scikit-learn" },
       { icon: <SiJunit5 style={{ color: "#25A162" }} />, label: "JUnit" },
       { icon: <SiApachemaven style={{ color: "#C71A36" }} />, label: "Maven" },
       { icon: <SiGradle />, label: "Gradle" },
+    ],
+  },
+  {
+    label: "Backend",
+    icon: <Server size={18} className="text-primary" />,
+    skills: [
+      { icon: <SiSpringboot style={{ color: "#6DB33F" }} />, label: "Spring Boot" },
+      { icon: <SiDotnet style={{ color: "#512BD4" }} />, label: ".NET" },
+      { icon: <SiNodedotjs style={{ color: "#5FA04E" }} />, label: "Node.js" },
+    ],
+  },
+  {
+    label: "Databases",
+    icon: <Database size={18} className="text-primary" />,
+    skills: [
+      { icon: <SiPostgresql style={{ color: "#4169E1" }} />, label: "PostgreSQL" },
+      { icon: <SiMysql style={{ color: "#4479A1" }} />, label: "MySQL" },
+    ],
+  },
+  {
+    label: "Machine Learning",
+    icon: <BrainCircuit size={18} className="text-primary" />,
+    skills: [
+      { icon: <SiPytorch style={{ color: "#EE4C2C" }} />, label: "PyTorch" },
+      { icon: <SiScikitlearn style={{ color: "#F7931E" }} />, label: "scikit-learn" },
     ],
   },
 ];

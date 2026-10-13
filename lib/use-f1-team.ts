@@ -7,15 +7,24 @@ const STORAGE_KEY = "f1-team";
 const listeners = new Set<() => void>();
 let fallback: F1TeamId = "red-bull";
 
+// Drives the per-team CSS tokens; the inline <head> script sets it pre-paint.
+function notify(id: F1TeamId) {
+  document.documentElement.dataset.f1Team = id;
+  listeners.forEach((listener) => listener());
+}
+
+// Registered once so other tabs' selections apply even with no consumer
+// mounted. Sync snaps; only a local selection cross-fades.
+function onStorage(event: StorageEvent) {
+  if (event.key === STORAGE_KEY || event.key === null) notify(getSnapshot());
+}
+
+if (typeof window !== "undefined") window.addEventListener("storage", onStorage);
+
 function subscribe(listener: () => void) {
   listeners.add(listener);
-  const onStorage = (event: StorageEvent) => {
-    if (event.key === STORAGE_KEY || event.key === null) listener();
-  };
-  window.addEventListener("storage", onStorage);
   return () => {
     listeners.delete(listener);
-    window.removeEventListener("storage", onStorage);
   };
 }
 
@@ -38,7 +47,14 @@ export function selectF1Team(id: string) {
   } catch {
     // Selection still works when browser storage is unavailable.
   }
-  listeners.forEach((listener) => listener());
+  const team = fallback;
+  // One composited cross-fade of the whole page, so every token changes together.
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if ("startViewTransition" in document && !reduceMotion) {
+    document.startViewTransition(() => notify(team));
+  } else {
+    notify(team);
+  }
 }
 
 export function useF1Team() {

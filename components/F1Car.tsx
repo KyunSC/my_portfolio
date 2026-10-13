@@ -11,7 +11,7 @@ export default function F1Car({ className }: { className?: string }) {
 
   return (
     <div className={cn(
-      "f1-car-frame relative mb-6 flex h-[340px] items-center justify-center overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950",
+      "f1-car-frame relative mb-6 flex h-[340px] items-center justify-center overflow-hidden rounded-xl border",
       className
     )}>
       <span className="absolute left-4 top-3 font-mono text-xs tracking-widest text-zinc-400">

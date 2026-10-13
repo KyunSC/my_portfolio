@@ -119,16 +119,44 @@
 /* ── Named "vibe" themes (data-theme on <html>) ──────────────────── */
 /* Default theme = no data-theme attribute → green from :root / .dark   */
 
-/* F1 — racing red */
+/* F1 — accent + surface tint follow the selected team (data-f1-team).
+   The raw --team-* values are generated from lib/f1-teams.ts by
+   lib/f1-team-css.ts and inlined in <head>; they are inert outside F1. */
+:root { --team-accent: var(--team-light); }
+:root.dark { --team-accent: var(--team-dark); }
+
 :root[data-theme="f1"] {
-  --primary: oklch(0.55 0.22 27);
-  --ring: oklch(0.55 0.22 27);
-  --glow: oklch(0.55 0.22 27);
+  --primary: var(--team-light);
+  --ring: var(--team-light);
+  --glow: var(--team-light);
+  --background: var(--team-bg);
+  --card: var(--team-card);
+  --popover: var(--card);
+  --secondary: var(--team-secondary);
+  --muted: var(--secondary);
+  --accent: var(--secondary);
+  --border: var(--team-border);
+  --input: var(--border);
+  --muted-foreground: var(--team-muted-fg);
 }
 :root.dark[data-theme="f1"] {
-  --primary: oklch(0.65 0.23 27);
-  --ring: oklch(0.65 0.23 27);
-  --glow: oklch(0.65 0.23 27);
+  --primary: var(--team-dark);
+  --primary-foreground: oklch(0.145 0 0);
+  --ring: var(--team-dark);
+  --glow: var(--team-dark);
+  --background: var(--team-bg-dark);
+  --card: var(--team-card-dark);
+  --secondary: var(--team-secondary-dark);
+  --border: var(--team-border-dark);
+  --input: var(--team-input-dark);
+  --muted-foreground: var(--team-muted-fg-dark);
+}
+
+/* A team change wraps in a view transition (lib/use-f1-team.ts): one
+   composited cross-fade, so every token changes together. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
 }
 
 @layer base {
@@ -270,6 +298,12 @@ html {
 :root[data-theme="f1"] .f1-swap .f1-car-view {
   display: flex;
   animation: hero-fade-in 0.4s ease-out var(--f1-model-delay) both;
+}
+
+/* The garage stays dark in both modes, tinted toward the selected team. */
+.f1-car-frame {
+  background: var(--team-frame-bg);
+  border-color: var(--team-frame-border);
 }
 
 .f1-car-svg {
@@ -543,7 +577,7 @@ html {
 :root[data-theme="finance"] #about .space-y-4 { color: var(--muted-foreground); font-size: 15px; }
 :root[data-theme="finance"] #about > div:last-child { margin-top: 16px; }
 :root[data-theme="finance"] [data-slot="card"] { border-radius: 0; box-shadow: none; }
-:root[data-theme="finance"] #skills [data-slot="card"] { border-left-width: 1px; border-left-color: var(--border); height: 100%; }
+:root[data-theme="finance"] #skills [data-slot="card"] { border-left-width: 1px; border-left-color: var(--border); }
 :root[data-theme="finance"] #skills [data-slot="card-header"] { border-bottom: 1px solid var(--border); margin-bottom: 16px; }
 :root[data-theme="finance"] #contact [data-slot="card"] { background: transparent; border: 0; padding: 24px 0 0; }
 :root[data-theme="finance"] #contact [data-slot="button"] { border-radius: 2px; }

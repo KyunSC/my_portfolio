@@ -4,13 +4,14 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Flag, Palette, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { playF1Pass, primeF1Pass } from "@/lib/f1-sound";
 import { cn } from "@/lib/utils";
 
 type ThemeId = "default" | "f1" | "finance";
 
 const THEMES: { id: ThemeId; label: string; swatch: string }[] = [
   { id: "default", label: "Coding", swatch: "oklch(0.5 0.19 146)" },
-  { id: "f1", label: "F1", swatch: "oklch(0.6 0.23 27)" },
+  { id: "f1", label: "F1", swatch: "var(--team-accent)" },
   { id: "finance", label: "Finance", swatch: "#c5ed85" },
 ];
 
@@ -20,10 +21,8 @@ const listeners = new Set<() => void>();
 
 function subscribe(cb: () => void) {
   listeners.add(cb);
-  window.addEventListener("storage", cb);
   return () => {
     listeners.delete(cb);
-    window.removeEventListener("storage", cb);
   };
 }
 
@@ -32,14 +31,32 @@ function getSnapshot(): ThemeId {
   return stored && THEMES.some((t) => t.id === stored) ? stored : "f1";
 }
 
-function applyTheme(id: ThemeId) {
-  localStorage.setItem("theme", id);
+function setThemeAttribute(id: ThemeId) {
   if (id === "default") {
     document.documentElement.removeAttribute("data-theme");
   } else {
     document.documentElement.setAttribute("data-theme", id);
   }
+}
+
+function notify() {
   listeners.forEach((cb) => cb());
+}
+
+function applyTheme(id: ThemeId) {
+  localStorage.setItem("theme", id);
+  setThemeAttribute(id);
+  notify();
+}
+
+// Registered once so <html data-theme> follows other tabs even with no
+// subscriber mounted. Sync is silent: the flyby only plays from a click.
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (event) => {
+    if (event.key !== "theme" && event.key !== null) return;
+    setThemeAttribute(getSnapshot());
+    notify();
+  });
 }
 
 export default function ThemeSwitcher() {
@@ -57,6 +74,11 @@ export default function ThemeSwitcher() {
     const timer = window.setTimeout(() => setShowInvite(true), 5000);
     return () => window.clearTimeout(timer);
   }, [theme]);
+
+  // Fetch the flyby before either F1 entry point can be clicked.
+  useEffect(() => {
+    if (open || showInvite) primeF1Pass();
+  }, [open, showInvite]);
 
   useEffect(() => {
     if (!showInvite) return;
@@ -89,6 +111,7 @@ export default function ThemeSwitcher() {
     setOpen(false);
     if (changed) {
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (id === "f1" && !reduceMotion) playF1Pass();
       window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
     }
   };

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Nav from "@/components/Nav";
+import { f1TeamCss } from "@/lib/f1-team-css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -68,8 +69,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="f1" suppressHydrationWarning>
+    <html lang="en" data-theme="f1" data-f1-team="red-bull" suppressHydrationWarning>
       <head>
+        <style dangerouslySetInnerHTML={{ __html: f1TeamCss }} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -80,6 +82,8 @@ export default function RootLayout({
                 var t = localStorage.getItem('theme');
                 if (t === 'default') document.documentElement.removeAttribute('data-theme');
                 else if (t) document.documentElement.setAttribute('data-theme', t);
+                var f = localStorage.getItem('f1-team');
+                if (f) document.documentElement.setAttribute('data-f1-team', f);
               } catch (e) {}
             `,
           }}

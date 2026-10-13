@@ -12,6 +12,8 @@ import SkillIcon from "@/components/SkillIcon";
 import ExperienceTerminal from "@/components/ExperienceTerminal";
 import { COMPLETED_PROJECTS, IN_PROGRESS_PROJECTS, SKILL_CATEGORIES, EXPERIENCES, EDUCATION } from "@/lib/data";
 
+const SKILL_ANIMATIONS = ["fade-left", "fade-up", "fade-right"] as const;
+
 const FinanceProjects = dynamic(() => import("@/components/FinanceProjects"));
 
 const CareerCircuit = dynamic(() => import("@/components/CareerCircuit"));
@@ -166,9 +168,9 @@ export default function Home() {
             <SectionHeading prefix="Skills &amp;" highlight="Technologies" showSeparator />
           </MotionSection>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {SKILL_CATEGORIES.map(({ label, icon, animation, skills }, i) => (
-              <MotionSection key={label} delay={i * 100} animation={animation}>
-                <Card className="border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
+            {SKILL_CATEGORIES.map(({ label, icon, skills }, i) => (
+              <MotionSection key={label} delay={i * 100} animation={SKILL_ANIMATIONS[i % SKILL_ANIMATIONS.length]}>
+                <Card className="h-full border-l-4 border-l-primary transition-all hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg flex items-center gap-2">
                       {icon}{label}
